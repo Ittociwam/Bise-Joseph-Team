@@ -18,7 +18,7 @@ public class Element implements Serializable{
 
     public Element() {
     }
-    
+ 
     public Location getLocation() {
         return location;
     }
