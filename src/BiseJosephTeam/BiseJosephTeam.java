@@ -7,6 +7,8 @@ package BiseJosephTeam;
 
 import Model.Element;
 import Model.Location;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -20,7 +22,13 @@ public class BiseJosephTeam {
     public static void main(String[] args) {
         Element firstElement = new Element();
         
-        Location myLocation = new Location();
+        firstElement.setDescription("This is an empty Element");
+        firstElement.setLocation(new Location());
+        
+        String elementInfo = firstElement.toString();
+        System.out.println(elementInfo);
+        
+        
         
     }
     
