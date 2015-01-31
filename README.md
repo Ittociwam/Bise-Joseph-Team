@@ -11,22 +11,22 @@ The game map will be 6x6 squares and each square will be a 5x5 “room” or area th
 You will slowly discover clues as you go throughout the map, as well as discover a key and a bomb. These clues will inform you that the Nazi’s have been performing experiments to reanimate the dead and militarize them. The key will be used to open the zombie fortress and the bomb to destroy the oil barrels stored at its heart.
  
 ###End User Stories(Both)
-•	        Start the program
-•	        Main menu
-•	        Getting help
-•	        Start a game
-•	        Game menu
-•	        Move to a new location
-•	   Moving around a room
-•	        Look around a “room”
-•	        View the map
-•	        View list of inventory items
-•	        Pick up item
-•	        Use an Item
-•	        Equip Item
-•	        Attack
-•	        Unlock the  base
-•	        Plant the bomb
+ * Start the program
+ * Main menu
+ * Getting help
+ * Start a game
+ * Game menu
+ * Move to a new location
+ * Moving around a room
+ * Look around a “room”
+ * View the map
+ * View list of inventory items
+ * Pick up item
+ * Use an Item
+ * Equip Item
+Attack
+Unlock the  base
+Plant the bomb
 
 ###Description of the end user Stories:
 
