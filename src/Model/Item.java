@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Robbie
  */
-public class Item extends Element {
+public class Item extends Element implements Serializable {
     private char type;
 
     public Item() {

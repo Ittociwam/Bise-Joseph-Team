@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Robbie
  */
-public class Usable extends Item {
+public class Usable extends Item implements Serializable {
     
     private int points;
 

@@ -5,13 +5,14 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Robbie
  */
-public class Player extends Character{
+public class Player extends Character implements Serializable{
 
     private ArrayList items;
 
