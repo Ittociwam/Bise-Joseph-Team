@@ -58,10 +58,12 @@ The game menu is basically just a key of the input the user can put in:
  * Each item will have unique letter-code to use or discard ex. “key - use key”
 
 ####View the map (Robbie)
-Your character will start at the far right bottom corner of the map. The map will be a 6x6 box each unvisited square will have a ‘?’ at the top showing that you have not yet visited it. You will have to make your way through the different locations or “rooms” on the map and search for different items
+Your character will start at the far right bottom corner of the map. The map will be a 6x6 box each unvisited square will have a ‘?’ at the top showing that you have not yet visited it. You will have to make your way through the different locations or “rooms” on the map and search for different items.
+![UML](map.png)
 
 ####Look around a “room”(Robbie)
 Rooms will contain various items, enemies or animals, denoted by an “i” for  investigatable object.  Your player will be shown as an ‘x’ on the screen. When you choose to look around a “room”, the description from when you first entered the room will appear on the bottom of the screen along with the map of the room. Investigated objects will be denoted by a letter showing what kind of object identified unless it was picked up or killed. (a for animal, w for weapon, m for miscellaneous item and e for enemy.)
+![UML](room.png)
 
 ####Moving around a “room”(Robbie)
 Using the N, E, S and W commands you can move your character around the board. When a character moves on top of an investigatable object the nature of the object will be revealed and the user will be prompted to pickup an item, attack an enemy or flee an enemy.  
