@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Element implements Serializable{
     private Location location;
-    private String description;
+    protected String description;
 
     public Element() {
     }

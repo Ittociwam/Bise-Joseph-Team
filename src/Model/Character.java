@@ -55,7 +55,7 @@ public class Character extends Element implements Serializable{
 
     @Override
     public String toString() {
-        return "Character{" + "health=" + health + ", attack=" + attack + '}';
+        return "Character{" + "health=" + health + ", attack=" + attack + ", description= " + description +'}';
     }
 
 }
