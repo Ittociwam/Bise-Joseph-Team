@@ -47,12 +47,12 @@ This will be an option that allows the user to start a new game. It will initiat
 
 ####Game menu (Both)
 The game menu is basically just a key of the input the user can put in:
-•	H-get help / display this menu
-•	N - travel north (E-east, S-south, w-west)
-•	L-Look around a room
-•	M-view map
-•	V-view inventory
-o	Each item will have unique letter-code to use or discard ex. “key - use key”
+ * H-get help / display this menu
+ * N - travel north (E-east, S-south, w-west)
+ * L-Look around a room
+ * M-view map
+ * V-view inventory
+ * Each item will have unique letter-code to use or discard ex. “key - use key”
 
 ####View the map (Robbie)
 Your character will start at the far right bottom corner of the map. The map will be a 6x6 box each unvisited square will have a ‘?’ at the top showing that you have not yet visited it. You will have to make your way through the different locations or “rooms” on the map and search for different items
