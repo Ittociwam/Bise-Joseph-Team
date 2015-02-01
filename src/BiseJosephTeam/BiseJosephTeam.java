@@ -12,6 +12,8 @@ import Model.Character;
 import Model.Item;
 import Model.Player;
 import Model.Usable;
+import View.Map;
+import View.Room;
 import java.util.ArrayList;
 
 
@@ -85,7 +87,19 @@ public class BiseJosephTeam {
         somePlayer.setItems(items);
         String somePlayerTest = somePlayer.toString();
         System.out.println(somePlayerTest);
-  
-    }
+        
+        //TESTING MAP
+        Map someMap = new Map();
+        someMap.setSize(5);
+        someMap.setRooms(5);
+        String someMapTest = someMap.toString();
+        System.out.println(someMapTest);
+        
+        //TESTING ROOM
+        Room someRoom = new Room();
+        someRoom.setSize(5);
+        someRoom.setDescription2("Monkey Room");
+        String someRoomTest = someRoom.toString();
+        System.out.println(someRoomTest);
     
 }
