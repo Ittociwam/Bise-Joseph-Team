@@ -20,7 +20,9 @@ public class Coordinates implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
+        hash = 67 * hash + this.x;
+        hash = 67 * hash + this.y;
         return hash;
     }
 
@@ -33,8 +35,16 @@ public class Coordinates implements Serializable{
             return false;
         }
         final Coordinates other = (Coordinates) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
         return true;
     }
+
+
 
     @Override
     public String toString() {

@@ -5,6 +5,8 @@
  */
 package Model;
 
+import Model.Element;
+import java.awt.Dimension;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,39 +14,37 @@ import java.util.Objects;
  *
  * @author Travis
  */
-public class Element implements Serializable{
-    private Location location;
-    protected String description;
+public class Room implements Serializable{
 
-    public Element() {
-    }
- 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
+    private String description;
+    private Dimension size;
+    
+    
+    public Room() {
     }
 
     public String getDescription() {
         return description;
     }
+    
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Element{" + "location=" + location + ", description=" + description + '}';
+    public Dimension getSize() {
+        return size;
+    }
+
+    public void setSize(Dimension size) {
+        this.size = size;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 83 * hash + Objects.hashCode(this.location);
-        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 13 * hash + Objects.hashCode(this.description);
+        hash = 13 * hash + Objects.hashCode(this.size);
         return hash;
     }
 
@@ -56,17 +56,27 @@ public class Element implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Element other = (Element) obj;
-        if (!Objects.equals(this.location, other.location)) {
+        final Room other = (Room) obj;
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.description, other.description)) {
+        if (!Objects.equals(this.size, other.size)) {
             return false;
         }
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Room{" + "description=" + description + ", size=" + size + '}';
+    }
+    
+    
 
+
+
+
+   
     
     
     

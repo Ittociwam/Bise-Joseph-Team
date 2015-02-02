@@ -7,6 +7,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Player extends Character implements Serializable{
 
-    private ArrayList items;
+    private ArrayList <Item> items;
 
     public Player() {
         this.items = new ArrayList();
@@ -22,7 +23,8 @@ public class Player extends Character implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.items);
         return hash;
     }
 
@@ -35,8 +37,12 @@ public class Player extends Character implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
+        if (!Objects.equals(this.items, other.items)) {
+            return false;
+        }
         return true;
     }
+
 
     @Override
     public String toString() {

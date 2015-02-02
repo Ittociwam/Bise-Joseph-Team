@@ -20,7 +20,8 @@ public class Usable extends Item implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 3;
+        hash = 79 * hash + this.points;
         return hash;
     }
 
@@ -33,6 +34,9 @@ public class Usable extends Item implements Serializable {
             return false;
         }
         final Usable other = (Usable) obj;
+        if (this.points != other.points) {
+            return false;
+        }
         return true;
     }
 

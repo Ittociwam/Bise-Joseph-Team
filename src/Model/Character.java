@@ -38,6 +38,8 @@ public class Character extends Element implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
+        hash = 83 * hash + this.health;
+        hash = 83 * hash + this.attack;
         return hash;
     }
 
@@ -50,8 +52,16 @@ public class Character extends Element implements Serializable{
             return false;
         }
         final Character other = (Character) obj;
+        if (this.health != other.health) {
+            return false;
+        }
+        if (this.attack != other.attack) {
+            return false;
+        }
         return true;
     }
+
+
 
     @Override
     public String toString() {

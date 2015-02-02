@@ -9,12 +9,17 @@ import Model.Coordinates;
 import Model.Element;
 import Model.Location;
 import Model.Character;
+import Model.Game;
 import Model.Item;
 import Model.Player;
 import Model.Usable;
-import View.Map;
-import View.Room;
+import Model.Map;
+import Model.Room;
+import java.awt.Dimension;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -88,18 +93,41 @@ public class BiseJosephTeam {
         String somePlayerTest = somePlayer.toString();
         System.out.println(somePlayerTest);
         
-        //TESTING MAP
-        Map someMap = new Map();
-        someMap.setSize(5);
-        someMap.setRooms(5);
-        String someMapTest = someMap.toString();
-        System.out.println(someMapTest);
+
+
         
         //TESTING ROOM
         Room someRoom = new Room();
-        someRoom.setSize(5);
-        someRoom.setDescription2("Monkey Room");
+        Room someOtherRoom = new Room();
+        someRoom.setDescription("A big room.");
+        someOtherRoom.setDescription("A small room.");
+        Dimension someDimension = new Dimension(20, 20);
+        someRoom.setSize(someDimension);
+        someOtherRoom.setSize(someDimension);
         String someRoomTest = someRoom.toString();
         System.out.println(someRoomTest);
+        
+                //TESTING MAP
+        Map someMap = new Map();
+        ArrayList rooms = new ArrayList();
+        rooms.add(someRoom);
+        rooms.add(someOtherRoom);
+        
+        someMap.setRooms(rooms);
+        someMap.setSize(someDimension);
+        String someMapTest = someMap.toString();
+        System.out.println(someMapTest);
+        
+        Game someGame = new Game();
+        someGame.setEnemiesKilled(5);
+        someGame.setMap(someMap);
+        someGame.setTime(LocalTime.MIN);
+        String someGameTest = someGame.toString();
+        System.out.println(someGameTest);
+        
+        
+    };
+        
+
     
 }

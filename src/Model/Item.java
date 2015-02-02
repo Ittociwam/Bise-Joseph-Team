@@ -20,6 +20,7 @@ public class Item extends Element implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
+        hash = 53 * hash + this.type;
         return hash;
     }
 
@@ -32,8 +33,12 @@ public class Item extends Element implements Serializable {
             return false;
         }
         final Item other = (Item) obj;
+        if (this.type != other.type) {
+            return false;
+        }
         return true;
     }
+
 
     @Override
     public String toString() {
