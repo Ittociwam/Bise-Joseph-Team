@@ -107,17 +107,19 @@ public class BiseJosephTeam {
         String someRoomTest = someRoom.toString();
         System.out.println(someRoomTest);
         
-                //TESTING MAP
+        //TESTING MAP
         Map someMap = new Map();
         ArrayList rooms = new ArrayList();
         rooms.add(someRoom);
         rooms.add(someOtherRoom);
         
+        //TESTING ROOM
         someMap.setRooms(rooms);
         someMap.setSize(someDimension);
         String someMapTest = someMap.toString();
         System.out.println(someMapTest);
         
+        //TESTING GAME
         Game someGame = new Game();
         someGame.setEnemiesKilled(5);
         someGame.setMap(someMap);
