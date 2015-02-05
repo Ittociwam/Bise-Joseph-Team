@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Item extends Element implements Serializable {
     private char type;
+    private int points;
 
     public Item() {
     }
@@ -43,6 +44,14 @@ public class Item extends Element implements Serializable {
     @Override
     public String toString() {
         return "Item{" + "type=" + type + '}';
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
     
     
