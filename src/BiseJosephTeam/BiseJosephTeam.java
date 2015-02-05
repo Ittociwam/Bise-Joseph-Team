@@ -12,14 +12,12 @@ import Model.Character;
 import Model.Game;
 import Model.Item;
 import Model.Player;
-import Model.Usable;
 import Model.Map;
 import Model.Room;
 import java.awt.Dimension;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+
 
 
 /**
@@ -66,19 +64,12 @@ public class BiseJosephTeam {
         //TESTING ITEM
         Item someItem = new Item();
         someItem.setDescription("A beautiful piece of cheese");
+        someItem.setLocation(someLocation);
         someItem.setType('c');
+        someItem.setPoints(5);
         someItem.setLocation(someLocation);
         String someItemTest = someItem.toString();
-        System.out.println(someItemTest);
-        
-        //TESTING USABLE
-        Usable someUsable = new Usable();
-        someUsable.setDescription("A very shiny sword");
-        someUsable.setLocation(someLocation);
-        someUsable.setPoints(5);
-        someUsable.setType('w');
-        String someUsableTest = someUsable.toString();
-        System.out.println(someUsableTest);
+        System.out.println(someItemTest);       
         
         //TESTING PLAYER
         Player somePlayer = new Player();
@@ -88,14 +79,10 @@ public class BiseJosephTeam {
         somePlayer.setLocation(someLocation);
         ArrayList items = new ArrayList();
         items.add(someItem);
-        items.add(someUsable);
         somePlayer.setItems(items);
         String somePlayerTest = somePlayer.toString();
         System.out.println(somePlayerTest);
-        
 
-
-        
         //TESTING ROOM
         Room someRoom = new Room();
         Room someOtherRoom = new Room();
