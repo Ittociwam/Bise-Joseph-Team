@@ -56,7 +56,7 @@ public class BiseJosephTeam {
         Character someCharacter = new Character();
         someCharacter.setAttack(8);
         someCharacter.setDescription("One crazy dude who will kill you.");
-        someCharacter.setHealth(2);
+        someCharacter.setHealth(10);
         someCharacter.setLocation(someLocation);
         String someCharacterTest = someCharacter.toString();
         System.out.println(someCharacterTest);
@@ -75,7 +75,7 @@ public class BiseJosephTeam {
         Player somePlayer = new Player();
         somePlayer.setAttack(9);
         somePlayer.setDescription("A not so crazy heroic dude");
-        somePlayer.setHealth(6);
+        somePlayer.setHealth(22);
         somePlayer.setLocation(someLocation);
         ArrayList items = new ArrayList();
         items.add(someItem);
@@ -113,6 +113,15 @@ public class BiseJosephTeam {
         someGame.setTime(LocalTime.MIN);
         String someGameTest = someGame.toString();
         System.out.println(someGameTest);
+        
+        
+                    //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
+            String response;
+            // response = PLAYERS INPUT
+            if ("no".equals(response.toLowerCase())) 
+            {
+            done = true;
+            }
         
         
     };
