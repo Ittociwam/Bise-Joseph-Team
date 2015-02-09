@@ -5,6 +5,7 @@
  */
 package BiseJosephTeam;
 
+import Control.PlayerControls;
 import Model.Coordinates;
 import Model.Element;
 import Model.Location;
@@ -17,9 +18,7 @@ import Model.Room;
 import java.awt.Dimension;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
-
-
+import java.util.Scanner;
 /**
  *
  * @author Robbie
@@ -31,27 +30,29 @@ public class BiseJosephTeam {
      */
     public static void main(String[] args) {
         
+        
+        PlayerControls playerControls = new PlayerControls();
         //TESTING ELEMENT
         Element someElement = new Element();
         someElement.setDescription("This is an empty Element");
         someElement.setLocation(new Location());
         String someElementTest = someElement.toString();
         System.out.println(someElementTest);
-        
+
         //TESTING COORDINATES
         Coordinates someCoords = new Coordinates();
         someCoords.setX(4);
         someCoords.setY(3);
         String someCoordsTest = someCoords.toString();
         System.out.println(someCoordsTest);
-        
+
         //TESTING LOCATION
         Location someLocation = new Location();
         someLocation.setMapCoords(someCoords);
         someLocation.setRoomCoords(someCoords);
         String someLocationTest = someLocation.toString();
         System.out.println(someLocationTest);
-        
+
         //TESTING CHARACTER
         Character someCharacter = new Character();
         someCharacter.setAttack(8);
@@ -60,7 +61,7 @@ public class BiseJosephTeam {
         someCharacter.setLocation(someLocation);
         String someCharacterTest = someCharacter.toString();
         System.out.println(someCharacterTest);
-        
+
         //TESTING ITEM
         Item someItem = new Item();
         someItem.setDescription("A beautiful piece of cheese");
@@ -69,8 +70,8 @@ public class BiseJosephTeam {
         someItem.setPoints(5);
         someItem.setLocation(someLocation);
         String someItemTest = someItem.toString();
-        System.out.println(someItemTest);       
-        
+        System.out.println(someItemTest);
+
         //TESTING PLAYER
         Player somePlayer = new Player();
         somePlayer.setAttack(9);
@@ -93,19 +94,19 @@ public class BiseJosephTeam {
         someOtherRoom.setSize(someDimension);
         String someRoomTest = someRoom.toString();
         System.out.println(someRoomTest);
-        
+
         //TESTING MAP
         Map someMap = new Map();
         ArrayList rooms = new ArrayList();
         rooms.add(someRoom);
         rooms.add(someOtherRoom);
-        
+
         //TESTING ROOM
         someMap.setRooms(rooms);
         someMap.setSize(someDimension);
         String someMapTest = someMap.toString();
         System.out.println(someMapTest);
-        
+
         //TESTING GAME
         Game someGame = new Game();
         someGame.setEnemiesKilled(5);
@@ -113,19 +114,27 @@ public class BiseJosephTeam {
         someGame.setTime(LocalTime.MIN);
         String someGameTest = someGame.toString();
         System.out.println(someGameTest);
-        
-        
-                    //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
-            String response;
-            // response = PLAYERS INPUT
-            if ("no".equals(response.toLowerCase())) 
-            {
-            done = true;
-            }
-        
-        
-    };
-        
 
+      boolean done = false;
+        while (!done) {
+            playerControls.attack(somePlayer, someCharacter);
+            //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
+            System.out.println("currentHealth" + somePlayer.getHealth());
+            System.out.println("characterHealth" + someCharacter.getHealth());
+            System.out.println("Would you like to attack again?");
+            Scanner input = new Scanner(System.in);
+            String response = input.next();
+            
+            
+            
+            // response = PLAYERS INPUT
+            if ("no".equals(response.toLowerCase())) {
+                done = true;
+            }
+        }
+
+    
+        
+    }
     
 }
