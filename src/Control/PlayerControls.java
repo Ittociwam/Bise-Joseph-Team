@@ -6,6 +6,7 @@
 package Control;
 
 import Model.Character;
+import Model.Player;
 
 /**
  *
@@ -13,14 +14,18 @@ import Model.Character;
  */
 public class PlayerControls {
 
-    String dicipherCode(String code) {
+    public PlayerControls() {
+    }
+
+    
+    public String dicipherCode(String code) {
 
         String message = null;
 
         return message;
     }
 
-    void attack(Character player, Character enemy) {
+    public void attack(Player player, Character enemy) {
         boolean done = false;
 
         if (enemy.getType() != 'e') {
@@ -41,5 +46,7 @@ public class PlayerControls {
 
         return;
     }
+
+   
 
 }
