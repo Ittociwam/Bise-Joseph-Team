@@ -15,6 +15,15 @@ import java.util.Objects;
 public class Element implements Serializable{
     private Location location;
     protected String description;
+    protected char type;
+
+    public char getType() {
+        return type;
+    }
+
+    public void setType(char type) {
+        this.type = type;
+    }
 
     public Element() {
     }
