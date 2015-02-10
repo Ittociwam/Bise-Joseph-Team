@@ -5,25 +5,24 @@
  */
 package Control;
 
-import static java.lang.System.in;
-
 /**
  *
- * @author Travis
+ * @author Robbie
  */
-public class BMI {
-        
-        private int bmi(){
-        int weight;
-        int height;
+public class GameControls {
+    
+            private int bmi(){
+        int weight = 0;
+        int height = 0;
         
         System.out.println("Enter a weight");
-        weight.nextInt();
+       //user input
         
         System.out.println("Enter a height");
-        height.nextInt();
+        //user input
         
         int extraPoints = weight / height;
         return extraPoints;
         }
+    
 }
