@@ -25,26 +25,37 @@ public class PlayerControls {
         return message;
     }
 
-    public void attack(Player player, Character enemy) {
-        boolean done = false;
+    public int attack(Player player, Character enemy) {
 
         if (enemy.getType() != 'e') {
-            //ERROR MESSAGE HERE
+            return -1;
+        } // Invalid enemy
+        
+        if(player.getType() != 'p'){
+            return -2; // invalid player
         }
 
-        if (enemy.getAttack() < 0 || enemy.getHealth() < 0) {
-            //INVALID ENEMY STATS ERROR
+        if (enemy.getAttack() < 0) {
+            return -3; // invalid enemy attack value
         }
 
-        if (player.getAttack() < 0 || player.getHealth() < 0) {
-            //INVALID ENEMY STATS ERROR
+        if (player.getAttack() < 0) {
+            return -4; // invalid player attack value
+        }
+
+        if (enemy.getHealth() <= 0) {
+            return 1; // Player has won the fight
+        }
+
+        if (player.getHealth() <= 0) {
+            return 2; // enemy has won  the fight
         }
 
         enemy.setHealth(enemy.getHealth() - player.getAttack());
 
         player.setHealth(player.getHealth() - enemy.getAttack());
 
-        return;
+        return 0;
     }
 
    

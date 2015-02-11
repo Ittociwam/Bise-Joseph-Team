@@ -55,7 +55,8 @@ public class BiseJosephTeam {
 
         //TESTING CHARACTER
         Character someCharacter = new Character();
-        someCharacter.setAttack(8);
+        someCharacter.setAttack(-5);
+        someCharacter.setType('e');
         someCharacter.setDescription("One crazy dude who will kill you.");
         someCharacter.setHealth(10);
         someCharacter.setLocation(someLocation);
@@ -75,6 +76,7 @@ public class BiseJosephTeam {
         //TESTING PLAYER
         Player somePlayer = new Player();
         somePlayer.setAttack(9);
+        somePlayer.setType('p');        
         somePlayer.setDescription("A not so crazy heroic dude");
         somePlayer.setHealth(22);
         somePlayer.setLocation(someLocation);
@@ -117,10 +119,48 @@ public class BiseJosephTeam {
 
       boolean done = false;
         while (!done) {
-            playerControls.attack(somePlayer, someCharacter);
+            int returnValue = playerControls.attack(somePlayer, someCharacter);
             //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
-            System.out.println("currentHealth" + somePlayer.getHealth());
-            System.out.println("characterHealth" + someCharacter.getHealth());
+            switch(returnValue){
+                case 2:
+                    System.out.println("Player has lost");
+                    done = true;
+                    break;
+                case 1:
+                    System.out.println("Enemy has lost");
+                    done = true;
+                    break;
+                case 0:
+                    System.out.println("Continue the fight");
+                    done = false;
+                    break;
+                case -1:
+                    System.out.println("Invalid enemy type");
+                    done = true;
+                    break;
+                case -2:
+                    System.out.println("Invalid player type");
+                    done = true;
+                    break;
+                case -3:
+                    System.out.println("Invalid enemy attack value");
+                    done = true;
+                    break;
+                case -4:
+                    System.out.println("Invalid player attack value");
+                    done = true;
+                    break;
+                default:
+                    System.out.println("Attack has returned an invalid value!");
+                    done = true;
+                    break;     
+            }
+            if(done == true)
+            {
+                break;
+            }
+            System.out.println("currentHealth: " + somePlayer.getHealth());
+            System.out.println("characterHealth: " + someCharacter.getHealth());
             System.out.println("Would you like to attack again?");
             Scanner input = new Scanner(System.in);
             String response = input.next();
