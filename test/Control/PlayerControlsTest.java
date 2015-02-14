@@ -31,8 +31,18 @@ public class PlayerControlsTest {
         boolean expResult = true;
         boolean result = instance.isAlpha(code);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        
+        code = "4ello";
+        expResult = false;
+        result = instance.isAlpha(code);
+        assertEquals(expResult, result);
+        
+        code = "hell0";
+        expResult = false;
+        result = instance.isAlpha(code);
+        assertEquals(expResult, result);
+        
+
     }
 
     /**
@@ -41,14 +51,27 @@ public class PlayerControlsTest {
     @Test
     public void testDicipherCode() 
     {
+        // no error
         System.out.println("dicipherCode");
         String code = "prfne pvcure";
         PlayerControls instance = new PlayerControls();
         String expResult = "CESAR CIPHER";
         String result = instance.dicipherCode(code);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        
+        // invalid input
+        code = "prfne pv5ure";
+        expResult = "!";
+        result = instance.dicipherCode(code);
+        assertEquals(expResult, result);
+        
+        
+        // empty input
+        code = "";
+        expResult = "*";
+        result = instance.dicipherCode(code);
+        assertEquals(expResult, result);
+        
     }
 
     /**
