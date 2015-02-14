@@ -55,7 +55,7 @@ public class BiseJosephTeam {
 
         //TESTING CHARACTER
         Character someCharacter = new Character();
-        someCharacter.setAttack(-5);
+        someCharacter.setAttack(5);
         someCharacter.setType('e');
         someCharacter.setDescription("One crazy dude who will kill you.");
         someCharacter.setHealth(10);
