@@ -79,6 +79,24 @@ public class BiseJosephTeam {
         somePlayer.setType('p');        
         somePlayer.setDescription("A not so crazy heroic dude");
         somePlayer.setHealth(22);
+        //this is the bmi control function, I didn't feel the need to include anything in another class, since everything worked so efficiently here. if you'd like I can make it into another class.
+        System.out.println("How much do you weigh?");    
+        Scanner weight = new Scanner(System.in);
+        int fat = weight.nextInt();
+        System.out.println("How tall are you?");
+        Scanner height = new Scanner(System.in);
+        int tall = height.nextInt();
+        int bmi = fat / tall;
+        somePlayer.setHealth(somePlayer.getHealth() + bmi);
+        if (bmi < 0)
+            System.out.println("Error: incorrect BMI value");
+        else if (fat < 0)
+            System.out.println("Error: incorrect weight value");
+        else if (tall < 0)
+            System.out.println("Error: incorrect height value");
+        else
+            System.out.println("Your Health =" + somePlayer.getHealth());
+        
         somePlayer.setLocation(someLocation);
         ArrayList items = new ArrayList();
         items.add(someItem);
@@ -170,14 +188,7 @@ public class BiseJosephTeam {
             // response = PLAYERS INPUT
             if ("no".equals(response.toLowerCase())) {
                 done = true;
-            
-                //this is the bmi control function, I didn't feel the need to include anything in another class, since everything worked so efficiently here. if you'd like I can make it into another class.
-            Scanner weight = new Scanner(System.in);
-            int fat = weight.nextInt();
-            Scanner height = new Scanner(System.in);
-            int tall = height.nextInt();
-            int bmi = fat / tall;
-            somePlayer.setHealth(somePlayer.getHealth() + bmi);
+          
             }
         }
 
