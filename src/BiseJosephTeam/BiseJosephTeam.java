@@ -170,6 +170,14 @@ public class BiseJosephTeam {
             // response = PLAYERS INPUT
             if ("no".equals(response.toLowerCase())) {
                 done = true;
+            
+                //this is the bmi control function, I didn't feel the need to include anything in another class, since everything worked so efficiently here. if you'd like I can make it into another class.
+            Scanner weight = new Scanner(System.in);
+            int fat = weight.nextInt();
+            Scanner height = new Scanner(System.in);
+            int tall = height.nextInt();
+            int bmi = fat / tall;
+            somePlayer.setHealth(somePlayer.getHealth() + bmi);
             }
         }
 
