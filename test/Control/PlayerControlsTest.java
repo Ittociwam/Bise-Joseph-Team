@@ -193,5 +193,36 @@ public class PlayerControlsTest {
         //fail("The test case is a prototype.");
 
     }
+     @Test
+    public void testCalcBMI() 
+    {
+        System.out.println("calcBMI");
+        Player player = new Player();
+        player.setHealth(25);
+        int fat = 200;
+        int tall = 5;
+        PlayerControls instance = new PlayerControls();
+        int expResult = 65;
+        int result = instance.calcBMI(player, fat, tall);
+        assertEquals(expResult, result);
+        
+        System.out.println("calcBMI");
+        player.setHealth(25);
+        fat = 200;
+        tall = -5;
+        expResult = -1;
+        result = instance.calcBMI(player, fat, tall);
+        assertEquals(expResult, result);
+        
+        System.out.println("calcBMI");
+        player.setHealth(25);
+        fat = -200;
+        tall = 5;
+        expResult = -2;
+        result = instance.calcBMI(player, fat, tall);
+        assertEquals(expResult, result);
+
+    }
+
 
 }
