@@ -79,7 +79,8 @@ public class BiseJosephTeam {
         somePlayer.setType('p');        
         somePlayer.setDescription("A not so crazy heroic dude");
         somePlayer.setHealth(22);
-        //this is the bmi control function, I didn't feel the need to include anything in another class, since everything worked so efficiently here. if you'd like I can make it into another class.
+        
+    //this is the bmi control function, I didn't feel the need to include anything in another class, since everything worked so efficiently here. if you'd like I can make it into another class.
         System.out.println("How much do you weigh?");    
         Scanner weight = new Scanner(System.in);
         int fat = weight.nextInt();
