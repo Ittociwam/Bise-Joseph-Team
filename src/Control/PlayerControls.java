@@ -17,12 +17,39 @@ public class PlayerControls {
     public PlayerControls() {
     }
 
-    
+    public boolean isAlpha(String code) {
+        return code.matches("[a-zA-Z\\s]+");
+    }
+
     public String dicipherCode(String code) {
 
-        String message = null;
+        if (code.isEmpty()) {
+            return "*"; // EMPTY ERROR FLAG
+        }
+        String message = "";
+        if (isAlpha(code)) {
+            code = code.toUpperCase();
+            for (int i = 0; i < code.length(); i++) {
+                char c = code.charAt(i);
+                if (c == ' ') {
+                    message += ' ';
+                    continue;
+                }
+                int n = (int)c;
+                n = ((n - 65) - 13);
+                if (n < 0) 
+                {
+                    n += 26;
+                }
+                n = ((n % 26) + 65);
+                c = (char)n;
+                message += c;
+            }
 
-        return message;
+            return message;
+        }
+        return "!"; // INVALID INPUT ERROR flag
+
     }
 
     public int attack(Player player, Character enemy) {
@@ -30,8 +57,8 @@ public class PlayerControls {
         if (enemy.getType() != 'e') {
             return -1;
         } // Invalid enemy
-        
-        if(player.getType() != 'p'){
+
+        if (player.getType() != 'p') {
             return -2; // invalid player
         }
 
@@ -43,6 +70,10 @@ public class PlayerControls {
             return -4; // invalid player attack value
         }
 
+        enemy.setHealth(enemy.getHealth() - player.getAttack());
+
+        player.setHealth(player.getHealth() - enemy.getAttack());
+
         if (enemy.getHealth() <= 0) {
             return 1; // Player has won the fight
         }
@@ -51,13 +82,7 @@ public class PlayerControls {
             return 2; // enemy has won  the fight
         }
 
-        enemy.setHealth(enemy.getHealth() - player.getAttack());
-
-        player.setHealth(player.getHealth() - enemy.getAttack());
-
         return 0;
     }
-
-   
 
 }
