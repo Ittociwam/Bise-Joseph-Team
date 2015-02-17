@@ -81,7 +81,7 @@ public class BiseJosephTeam {
         somePlayer.setHealth(22);
         
     //this is the bmi control function, I didn't feel the need to include anything in another class, since everything worked so efficiently here. if you'd like I can make it into another class.
-        System.out.println("How much do you weigh?");    
+        /*System.out.println("How much do you weigh?");    
         Scanner weight = new Scanner(System.in);
         int fat = weight.nextInt();
         System.out.println("How tall are you?");
@@ -97,6 +97,7 @@ public class BiseJosephTeam {
             System.out.println("Error: incorrect height value");
         else
             System.out.println("Your Health =" + somePlayer.getHealth());
+        */
         
         somePlayer.setLocation(someLocation);
         ArrayList items = new ArrayList();
