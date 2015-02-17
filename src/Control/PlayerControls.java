@@ -8,6 +8,7 @@ package Control;
 import Model.Character;
 import Model.Player;
 
+
 /**
  *
  * @author Robbie
@@ -84,5 +85,16 @@ public class PlayerControls {
 
         return 0;
     }
-
+    
+    public int calcBMI(Player player, int fat, int tall){
+        int bmi = fat / tall;
+        player.setHealth(player.getHealth() + bmi);
+        if (fat < 0)
+            return -2;
+        else if (tall < 0)
+            return -1;
+        else
+            return player.getHealth();
+    }
+        
 }
