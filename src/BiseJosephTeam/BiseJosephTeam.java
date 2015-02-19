@@ -14,7 +14,9 @@ import Model.Game;
 import Model.Item;
 import Model.Player;
 import Model.Map;
+import Model.Person;
 import Model.Room;
+import View.StartProgramView;
 import java.awt.Dimension;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -25,10 +27,29 @@ import java.util.Scanner;
  */
 public class BiseJosephTeam {
 
-    /**
-     * @param args the command line arguments
-     */
+    private static Game currentGame = null;
+    private static Person person = null;
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        BiseJosephTeam.currentGame = currentGame;
+    }
+
+    public static Person getPerson() {
+        return person;
+    }
+
+    public static void setPerson(Person person) {
+        BiseJosephTeam.person = person;
+    }
     public static void main(String[] args) {
+        
+        StartProgramView startProgramView = new StartProgramView();
+        
+        startProgramView.startProgram();
         
         
         PlayerControls playerControls = new PlayerControls();
@@ -137,7 +158,7 @@ public class BiseJosephTeam {
         String someGameTest = someGame.toString();
         System.out.println(someGameTest);
 
-      boolean done = false;
+      /*boolean done = false;
         while (!done) {
             int returnValue = playerControls.attack(somePlayer, someCharacter);
             //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
@@ -193,7 +214,7 @@ public class BiseJosephTeam {
           
             }
         }
-
+*/
     
         
     }
