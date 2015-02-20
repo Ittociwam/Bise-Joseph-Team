@@ -26,6 +26,10 @@ public class StartProgramView {
         Person person = GameControls.createPerson(playersName);
 
         this.displayWelcomMessage(person);
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
+        
+        
 
     }
 
@@ -63,7 +67,7 @@ public class StartProgramView {
     private void displayWelcomMessage(Person person) {
         System.out.println("\n\n================================\n"
                               +"Welcome to the game, " + person.getName() + "\n"
-                              +"We hope you make it out alive!\nasdf"
+                              +"We hope you make it out alive!\n"
                               +"================================");
     }
 

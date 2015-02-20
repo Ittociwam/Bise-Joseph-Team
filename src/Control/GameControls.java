@@ -27,6 +27,10 @@ public class GameControls {
         return person;
     }
 
+    public static void createNewGame(Person person) {
+        System.out.println("***Create new game function called ***\n");
+    }
+
     private int bmi() {
         int weight = 0;
         int height = 0;
