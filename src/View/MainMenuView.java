@@ -26,6 +26,8 @@ public class MainMenuView {
             + "          E - Exit                   \n"
             + "-------------------------------------\n";
 
+
+
     void displayMenu() {
         char selection = ' ';
         do {
@@ -35,6 +37,11 @@ public class MainMenuView {
 
             this.doAction(selection);
         } while (selection != 'E');
+    }
+
+    void displayHelpMenu() {
+        HelpMenuView helpMenuView = new HelpMenuView();
+        helpMenuView.display();
     }
 
     private char getInput() {
@@ -52,7 +59,7 @@ public class MainMenuView {
                 case 'E':
                     return value;
                 default:
-                    System.out.println(value + "is not a Invalid Input");
+                    System.out.println(value + " is not a valid input");
                     valid = false;
             }
 
@@ -84,7 +91,7 @@ public class MainMenuView {
 
     private void startNewGame() {
         GameControls.createNewGame(BiseJosephTeam.getPerson());
-        
+
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
         System.out.println("*** StartNewGame Function called ***");
@@ -92,14 +99,6 @@ public class MainMenuView {
 
     private void startExistingGame() {
         System.out.println("*** StartExistingGame Function called ***");
-    }
-
-    private void displayHelpMenu() {
-        GameControls.displayHelpMenu();
-        
-        displayMenuView displayMenuView = new displayMenuView();
-        displayMenuView.displayHelpMenu();
-        System.out.println("*** displayHelpMenu Function called ***");
     }
 
     private void saveGame() {
