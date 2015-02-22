@@ -95,6 +95,10 @@ public class MainMenuView {
     }
 
     private void displayHelpMenu() {
+        GameControls.displayHelpMenu();
+        
+        displayMenuView displayMenuView = new displayMenuView();
+        displayMenuView.displayHelpMenu();
         System.out.println("*** displayHelpMenu Function called ***");
     }
 
