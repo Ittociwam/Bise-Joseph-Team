@@ -5,6 +5,9 @@
  */
 package View;
 
+import Control.PlayerControls;
+import java.util.Scanner;
+
 /**
  *
  * @author Robbie
@@ -21,20 +24,49 @@ public class MoveView {
             + "          W - Move West              \n"
             + "          H - Display this menu      \n"
             + "-------------------------------------\n";    
-    void displayMoveMenu(){
+    void displayMoveMenu(PlayerControls playerControls){
         System.out.println("Which way would you like to move?\n");
         System.out.println("Press 'H' for help\n ");
         char choice = getInput();
-        doAction();
+        doAction(choice, playerControls);
         
     }
-
     private char getInput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        boolean valid = false;
+        while (!valid) {
+            Scanner keyboard = new Scanner(System.in);
+            char value = keyboard.next().charAt(0);
+            value = Character.toUpperCase(value);
+            switch (value) {
+                case 'N':
+                case 'E':
+                case 'S':
+                case 'W':
+                case 'H':
+                    return value;
+                default:
+                    System.out.println(value + " is not a valid input");
+                    valid = false;
+            }
+
+        }
+        return 0;
     }
 
-    private void doAction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void doAction(char input, PlayerControls playerControls) {
+        switch (input) {
+            case 'N':
+            case 'E':
+            case 'S':
+            case 'W':
+                playerControls.move(input);
+                break;
+            case 'H':
+                System.out.println(HELPMENU);
+            default:
+                System.out.println(input + "is not a Invalid Input");
+        }
     }
     
 }

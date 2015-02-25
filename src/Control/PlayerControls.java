@@ -98,6 +98,11 @@ public class PlayerControls {
             return player.getHealth();
     }
     
+    public void move(char direction)
+    {
+        // move the character in the direction sent in
+    }
+    
     public void useItem(Item item)
     {
         System.out.println("use item called\n");

@@ -50,7 +50,7 @@ public class GameMenuView {
                     this.viewMap();
                     break;
                 case 'I':
-                    itemView.openItemMenu();
+                    itemView.openItemMenu(); // Needs parameters
                     break;
                 case 'E':
                     break;
