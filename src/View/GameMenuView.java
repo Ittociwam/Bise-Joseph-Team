@@ -5,9 +5,6 @@
  */
 package View;
 import java.util.Scanner;
-import Model.Player;
-import View.ItemView;
-import java.util.Scanner;
 
 /**
  *
@@ -54,32 +51,6 @@ public class GameMenuView {
                     break;
                 case 'I':
                     itemView.openItemMenu();
-                    
-    void displayGameMenu(Player player) {
-    char value = ' ';
-        do {
-            System.out.println(GAMEMENU);
-
-            Scanner keyboard = new Scanner(System.in);
-            value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
-
-            switch (value) {
-                    
-                case 'H':
-                    System.out.println(GAMEMENU);
-                    break;
-                case 'M':
-                    this.move();
-                    break;
-                case 'L':
-                    this.viewRoom();
-                    break;
-                case 'V':
-                    this.viewMap();
-                    break;
-                case 'I':
-                    ItemView.openItemView(player.getItems());
                     break;
                 case 'E':
                     break;
