@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package View;
+import Model.Player;
 import View.ItemView;
 import java.util.Scanner;
+
 
 /**
  *
@@ -13,7 +15,7 @@ import java.util.Scanner;
  */
 public class GameMenuView {
 
-        itemView itemView = new itemView();
+        ItemView itemView = new ItemView();
         private final String GAMEMENU = "\n"
             + "------------------------------------------\n"
             + "            Game Menu                     \n"
@@ -27,7 +29,7 @@ public class GameMenuView {
             + "             E- Exit Menu                 \n"   
             + "------------------------------------------\n";
                     
-    void display() {
+    void displayGameMenu(Player player) {
     char value = ' ';
         do {
             System.out.println(GAMEMENU);
@@ -51,7 +53,7 @@ public class GameMenuView {
                     this.viewMap();
                     break;
                 case 'I':
-                    itemView.openItemMenu();
+                    ItemView.openItemView(player.getItems());
                     break;
                 case 'E':
                     break;
