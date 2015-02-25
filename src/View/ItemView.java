@@ -18,7 +18,7 @@ public class ItemView {
 
     private final String INVENTORY = "\n Your current inventory: \n";
 
-    public int OpenItemMenu(ArrayList<Item> items, PlayerControls playerControls) {
+    public int openItemMenu(ArrayList<Item> items, PlayerControls playerControls) {
         displayInventory(items);
         int choice = getInput(items.size());
         if (choice > 0) {

@@ -108,7 +108,7 @@ public class MainMenuView {
     }
 
     private void saveGame() {
-        System.out.println("*** saveGamerob Function called ***");
+        System.out.println("*** saveGame Function called ***");
     }
 
 }

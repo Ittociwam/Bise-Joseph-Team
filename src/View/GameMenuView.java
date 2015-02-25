@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package View;
-import View.ItemView;
 import java.util.Scanner;
 
 /**
@@ -13,7 +12,7 @@ import java.util.Scanner;
  */
 public class GameMenuView {
 
-        itemView itemView = new itemView();
+        ItemView itemView = new ItemView();
         private final String GAMEMENU = "\n"
             + "------------------------------------------\n"
             + "            Game Menu                     \n"
