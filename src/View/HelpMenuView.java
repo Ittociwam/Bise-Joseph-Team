@@ -17,7 +17,7 @@ public class HelpMenuView {
             + "-------------------------------------\n"
             + "            Help Menu                \n"
             + "-------------------------------------\n"
-            + "          G - The Goal of  the game  \n"
+            + "          G - The Goal of the game  \n"
             + "          M - Moving help           \n"
             + "          I - Item help              \n"
             + "          B - Battle Help            \n"
@@ -34,7 +34,7 @@ public class HelpMenuView {
             + "To pick up an item you simply walk over it. The game will \n"
             + " then ask you if you would like to pick it up or not. You \n"
             + " then can equip the item by viewing your inventory and    \n"
-            + " entering the letter of the item you want to equip.       \n";
+            + " entering the number of the item you want to equip.       \n";
     private final String BATTLE = "\n"
             + "To engage an enemy in battle you pass over a square with an \n"
             + " enemy inside of it. The game will then automatically apply \n"

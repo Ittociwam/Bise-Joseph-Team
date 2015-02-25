@@ -12,7 +12,6 @@ import java.io.Serializable;
  * @author Robbie
  */
 public class Item extends Element implements Serializable {
-    private char type;
     private int points;
 
     public Item() {
@@ -52,17 +51,5 @@ public class Item extends Element implements Serializable {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-    
-    
-    public char getType() {
-        return type;
-    }
-
-    public void setType(char type) {
-        this.type = type;
-    }
-   
-    
-    
+    }     
 }

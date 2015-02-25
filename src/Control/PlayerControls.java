@@ -6,7 +6,9 @@
 package Control;
 
 import Model.Character;
+import Model.Item;
 import Model.Player;
+import java.util.ArrayList;
 
 
 /**
@@ -50,7 +52,6 @@ public class PlayerControls {
             return message;
         }
         return "!"; // INVALID INPUT ERROR flag
-
     }
 
     public int attack(Player player, Character enemy) {
@@ -95,6 +96,28 @@ public class PlayerControls {
             return -1;
         else
             return player.getHealth();
+    }
+    
+    public void useItem(Item item)
+    {
+        System.out.println("use item called\n");
+        
+        if(item.getType() == 'Q')
+        {
+            //if item is of type Q it is equipable
+        }
+        
+         else if(item.getType() == 'U')
+        {
+            // if item is of type U it is usable once
+        }
+        
+        else
+         {
+             //is not an item!
+         }
+        
+        
     }
         
 }
