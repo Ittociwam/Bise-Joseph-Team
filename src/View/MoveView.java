@@ -19,10 +19,22 @@ public class MoveView {
             + "          E - Move East              \n"
             + "          S - Move South             \n"
             + "          W - Move West              \n"
+            + "          H - Display this menu      \n"
             + "-------------------------------------\n";    
     void displayMoveMenu(){
-        System.out.println("Which way would you like to move\n");
+        System.out.println("Which way would you like to move?\n");
+        System.out.println("Press 'H' for help\n ");
+        char choice = getInput();
+        doAction();
         
+    }
+
+    private char getInput() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void doAction() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
