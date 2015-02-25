@@ -93,7 +93,7 @@ public class MainMenuView {
         GameControls.createNewGame(BiseJosephTeam.getPerson());
 
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
         System.out.println("*** StartNewGame Function called ***");
     }
 
