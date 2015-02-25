@@ -18,7 +18,7 @@ public class ItemView {
 
     private final String INVENTORY = "\n Your current inventory: \n";
 
-    public int itemMenu(ArrayList<Item> items, PlayerControls playerControls) {
+    public int OpenItemMenu(ArrayList<Item> items, PlayerControls playerControls) {
         displayInventory(items);
         int choice = getInput(items.size());
         if (choice > 0) {
@@ -54,9 +54,14 @@ public class ItemView {
             int index = Character.getNumericValue(value);
             if (value < 1 || value > size) {
                 System.out.println(ERROR);
+                valid = false;
             }
-            if ((int) value <= size) {
+            else if ((int) value <= size) {
                 return value - 1;
+            }
+            else
+            {
+                valid = false;
             }
         }
         return 0;
