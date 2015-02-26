@@ -43,6 +43,11 @@ public class ItemView {
         final String ERROR = "Invalid item! Please enter a number"
                 + "between 1 and" + size + "\n";
         boolean valid = false;
+        if(size <= 0)
+        {
+            System.out.println("Cannot select from an empty inventory!\n");
+            return -1;
+        }
         while (!valid) {
             System.out.println("\t>");
             Scanner keyboard = new Scanner(System.in);
@@ -50,6 +55,7 @@ public class ItemView {
             value = Character.toUpperCase(value);
             if (value == 'E' || value == 'e') {
                 break;
+                
             }
             int index = Character.getNumericValue(value);
             if (value < 1 || value > size) {

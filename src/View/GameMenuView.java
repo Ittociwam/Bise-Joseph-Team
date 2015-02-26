@@ -26,7 +26,7 @@ public class GameMenuView {
             + "             E- Exit Menu                 \n"   
             + "------------------------------------------\n";
                     
-    void display() {
+    void displayGameMenu() {
     char value = ' ';
         do {
             System.out.println(GAMEMENU);
