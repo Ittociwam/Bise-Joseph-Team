@@ -25,8 +25,9 @@ public class GameMenuView {
             + "   Each Item will have a unique letter    \n"
             + "             E- Exit Menu                 \n"   
             + "------------------------------------------\n";
-                    
-    void displayGameMenu() {
+               
+        // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
+    void displayGameMenu()  {
     char value = ' ';
         do {
             System.out.println(GAMEMENU);
@@ -62,7 +63,7 @@ public class GameMenuView {
 }
 
     private void move() {
-        
+        // this will make a new move view item and call display move menu.
     }
 
     private void viewRoom() {
