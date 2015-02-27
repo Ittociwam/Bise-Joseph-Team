@@ -5,6 +5,9 @@
  */
 package View;
 import java.util.Scanner;
+import Control.PlayerControls;
+import Model.Item;
+import java.util.ArrayList;
 
 /**
  *
@@ -51,7 +54,7 @@ public class GameMenuView {
                     this.viewMap();
                     break;
                 case 'I':
-                    itemView.openItemMenu(); // Needs parameters
+                    ItemView.openItemMenu(items, playerControls); // Needs parameters
                     break;
                 case 'E':
                     break;
