@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class GameMenuView {
 
     ItemView itemView = new ItemView();
+    MoveView moveView = new MoveView();
     private final String GAMEMENU = "\n"
             + "------------------------------------------\n"
             + "            Game Menu                     \n"
@@ -48,7 +49,7 @@ public class GameMenuView {
                     System.out.println(GAMEMENU);
                     break;
                 case 'M':
-                    this.move();
+                    moveView.displayMoveMenu(playerControls);
                     break;
                 case 'L':
                     this.viewRoom();
@@ -66,11 +67,6 @@ public class GameMenuView {
 
             }
         } while (value != 'E');
-    }
-
-    private void move() {
-        // this will make a new move view item and call display move menu.
-        System.out.println("Move function called");
     }
 
     private void viewRoom() {
