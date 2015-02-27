@@ -69,6 +69,7 @@ public class MoveView {
                 break;
             case 'H':
                 System.out.println(HELPMENU);
+                break;
             default:
                 System.out.println(input + "is not a Invalid Input");
         }
