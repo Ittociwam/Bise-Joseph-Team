@@ -23,7 +23,12 @@ public class MoveView {
             + "          S - Move South             \n"
             + "          W - Move West              \n"
             + "          H - Display this menu      \n"
-            + "-------------------------------------\n";    
+            + "-------------------------------------\n";  
+
+    public MoveView() {
+    }
+        
+        
     void displayMoveMenu(PlayerControls playerControls){
         System.out.println("Which way would you like to move?\n");
         System.out.println("Press 'H' for help\n ");

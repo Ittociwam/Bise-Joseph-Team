@@ -19,7 +19,8 @@ public class ItemView {
     private final String INVENTORY = "\n Your current inventory: \n";
 
     public int openItemMenu(ArrayList<Item> items, PlayerControls playerControls) {
-        displayInventory(items);
+        if(!displayInventory(items))
+            return -1;
         int choice = getInput(items.size());
         if (choice > 0) {
             doAction(items.get(choice), playerControls);
@@ -29,14 +30,16 @@ public class ItemView {
         }
     }
 
-    private void displayInventory(ArrayList<Item> items) {
+    private boolean displayInventory(ArrayList<Item> items) {
         if (items.isEmpty()) {
             System.out.println("You have no items!\n");
-            return;
+            return false;
         }
         for (int i = 0; i < items.size(); i++) {
             System.out.println(i + ". " + items.get(i) + "\n");
+            
         }
+        return true;
     }
 
     private int getInput(int size) {
