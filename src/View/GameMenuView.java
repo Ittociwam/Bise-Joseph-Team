@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package View;
+
 import java.util.Scanner;
 import Control.PlayerControls;
 import Model.Item;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
  */
 public class GameMenuView {
 
-        ItemView itemView = new ItemView();
-        private final String GAMEMENU = "\n"
+    ItemView itemView = new ItemView();
+    private final String GAMEMENU = "\n"
             + "------------------------------------------\n"
             + "            Game Menu                     \n"
             + "------------------------------------------\n"
@@ -26,12 +27,13 @@ public class GameMenuView {
             + "             V - View Room                \n"
             + "            I - View Inventory            \n"
             + "   Each Item will have a unique letter    \n"
-            + "             E- Exit Menu                 \n"   
+            + "             E- Exit Menu                 \n"
             + "------------------------------------------\n";
-               
-        // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
-    void displayGameMenu()  {
-    char value = ' ';
+
+    // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
+    void displayGameMenu() {
+        
+        char value = ' ';
         do {
             System.out.println(GAMEMENU);
 
@@ -40,7 +42,7 @@ public class GameMenuView {
             value = Character.toUpperCase(value);
 
             switch (value) {
-                    
+
                 case 'H':
                     System.out.println(GAMEMENU);
                     break;
@@ -54,16 +56,16 @@ public class GameMenuView {
                     this.viewMap();
                     break;
                 case 'I':
-                    ItemView.openItemMenu(items, playerControls); // Needs parameters
+                    ItemView.openItemMenu(); // Needs parameters
                     break;
                 case 'E':
                     break;
                 default:
                     System.out.println("Invalid input, Try again\n");
-                            
+
             }
         } while (value != 'E');
-}
+    }
 
     private void move() {
         // this will make a new move view item and call display move menu.
@@ -80,6 +82,4 @@ public class GameMenuView {
     private void viewInventory() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    }
-    
-
+}
