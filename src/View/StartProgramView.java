@@ -7,6 +7,7 @@ package View;
 
 import Control.GameControls;
 import Model.Person;
+import Model.Player;
 import java.util.Scanner;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Scanner;
  * @author Robbie
  */
 public class StartProgramView {
-
+    
     public StartProgramView() {
     }
 

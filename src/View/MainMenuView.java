@@ -7,6 +7,7 @@ package View;
 
 import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
+import Control.PlayerControls;
 import Model.Player;
 import java.util.Scanner;
 
@@ -95,15 +96,16 @@ public class MainMenuView {
 
         // Make a player
         Player player = new Player();
+        PlayerControls playerControls = new PlayerControls();
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenu(player);
+        gameMenu.displayGameMenu(player, playerControls);
         System.out.println("*** StartNewGame Function called ***");
     }
 
     private void startExistingGame() {
         // load a player
         GameMenuView gameMenu = new GameMenuView();
-        //gameMenu.displayGameMenu(player);
+       // gameMenu.displayGameMenu(player, playerControls);
         System.out.println("*** StartExistingGame Function called ***");
     }
 

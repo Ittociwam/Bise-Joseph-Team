@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package View;
+
 import java.util.Scanner;
+import Control.PlayerControls;
+import Model.Item;
+import Model.Player;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,8 +17,8 @@ import java.util.Scanner;
  */
 public class GameMenuView {
 
-        ItemView itemView = new ItemView();
-        private final String GAMEMENU = "\n"
+    ItemView itemView = new ItemView();
+    private final String GAMEMENU = "\n"
             + "------------------------------------------\n"
             + "            Game Menu                     \n"
             + "------------------------------------------\n"
@@ -23,12 +28,13 @@ public class GameMenuView {
             + "             V - View Room                \n"
             + "            I - View Inventory            \n"
             + "   Each Item will have a unique letter    \n"
-            + "             E- Exit Menu                 \n"   
+            + "             E- Exit Menu                 \n"
             + "------------------------------------------\n";
-               
-        // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
-    void displayGameMenu()  {
-    char value = ' ';
+
+    // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
+    void displayGameMenu(Player player, PlayerControls playerControls) {
+        
+        char value = ' ';
         do {
             System.out.println(GAMEMENU);
 
@@ -37,7 +43,7 @@ public class GameMenuView {
             value = Character.toUpperCase(value);
 
             switch (value) {
-                    
+
                 case 'H':
                     System.out.println(GAMEMENU);
                     break;
@@ -51,32 +57,28 @@ public class GameMenuView {
                     this.viewMap();
                     break;
                 case 'I':
-                    itemView.openItemMenu(); // Needs parameters
+                    itemView.openItemMenu(player.getItems(), playerControls); // Needs parameters
                     break;
                 case 'E':
                     break;
                 default:
                     System.out.println("Invalid input, Try again\n");
-                            
+
             }
         } while (value != 'E');
-}
+    }
 
     private void move() {
         // this will make a new move view item and call display move menu.
+        System.out.println("Move function called");
     }
 
     private void viewRoom() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("View Room function called");
     }
 
     private void viewMap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("View Map function called");
     }
 
-    private void viewInventory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    }
-    
-
+}
