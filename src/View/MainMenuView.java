@@ -103,7 +103,7 @@ public class MainMenuView {
     private void startExistingGame() {
         // load a player
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenu(player);
+        //gameMenu.displayGameMenu(player);
         System.out.println("*** StartExistingGame Function called ***");
     }
 
