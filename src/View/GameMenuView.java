@@ -8,6 +8,7 @@ package View;
 import java.util.Scanner;
 import Control.PlayerControls;
 import Model.Item;
+import Model.Player;
 import java.util.ArrayList;
 
 /**
@@ -31,7 +32,7 @@ public class GameMenuView {
             + "------------------------------------------\n";
 
     // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
-    void displayGameMenu() {
+    void displayGameMenu(Player player, PlayerControls playerControls) {
         
         char value = ' ';
         do {
@@ -56,7 +57,7 @@ public class GameMenuView {
                     this.viewMap();
                     break;
                 case 'I':
-                    ItemView.openItemMenu(); // Needs parameters
+                    itemView.openItemMenu(player.getItems(), playerControls); // Needs parameters
                     break;
                 case 'E':
                     break;
@@ -69,17 +70,15 @@ public class GameMenuView {
 
     private void move() {
         // this will make a new move view item and call display move menu.
+        System.out.println("Move function called");
     }
 
     private void viewRoom() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("View Room function called");
     }
 
     private void viewMap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("View Map function called");
     }
 
-    private void viewInventory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
