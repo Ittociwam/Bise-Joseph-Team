@@ -38,6 +38,7 @@ public class GameMenuView {
         char value = ' ';
         do {
             System.out.println(GAMEMENU);
+            System.out.println("Please enter a command");
 
             Scanner keyboard = new Scanner(System.in);
             value = keyboard.next().charAt(0);
