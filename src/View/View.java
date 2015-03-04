@@ -5,10 +5,31 @@
  */
 package View;
 
+import Control.PlayerControls;
+import java.util.Scanner;
+
 /**
  *
  * @author Robbie
  */
-public class View {
+public abstract class View implements ViewInterface {
+    Object menu = new Object();
     
+    public int openMenu(Object object) {
+        display(menu);
+        char choice = getInput();
+        doAction(choice, object);
+        return 1;
+    }
+
+    public void display(Object object) {
+        System.out.println(object);
+    }
+
+    public char getInput() {
+        char value = ' ';
+        Scanner keyboard = new Scanner(System.in);
+        value = keyboard.next().charAt(0);
+        return Character.toUpperCase(value);
+    }
 }

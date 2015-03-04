@@ -33,7 +33,7 @@ public class GameMenuView {
             + "------------------------------------------\n";
 
     public void getInput() {
-        char value = ' '
+        char value = ' ';
         Scanner keyboard = new Scanner(System.in);
         value = keyboard.next().charAt(0);
         value = Character.toUpperCase(value);

@@ -5,12 +5,16 @@
  */
 package View;
 
+import Control.PlayerControls;
+
 /**
  *
  * @author Robbie
  */
 public interface ViewInterface {
-    
-    
-    
+    public int openMenu(Object object); 
+    public void display(Object Object);
+    public char getInput();
+    public void doAction(char choice, Object obj);
+        
 }
