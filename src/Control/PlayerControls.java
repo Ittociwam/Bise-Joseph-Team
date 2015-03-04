@@ -100,8 +100,22 @@ public class PlayerControls {
     
     public void move(char direction)
     {
-        System.out.println("You moved" + direction + "!\n");
         // move the character in the direction sent in
+        System.out.print("You moved ");
+        switch (direction){
+            case 'N':
+                System.out.print("North.\n");
+                break;
+            case 'E':
+                System.out.print("East.\n");
+                break;
+            case 'W':
+                System.out.print("West.\n");
+                break;
+            case 'S':
+                System.out.print("South.\n");
+                break;                
+        }
     }
     
     public void useItem(Item item)

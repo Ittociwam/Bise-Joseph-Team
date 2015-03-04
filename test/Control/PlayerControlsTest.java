@@ -7,8 +7,8 @@ package Control;
 
 import Model.Character;
 import Model.Player;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
