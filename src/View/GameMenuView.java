@@ -21,7 +21,7 @@ public class GameMenuView {
     MoveView moveView = new MoveView();
     private final String GAMEMENU = "\n"
             + "------------------------------------------\n"
-            + "            Game Menu                     \n"
+            + "                 Game Menu                \n"
             + "------------------------------------------\n"
             + "          H - Get Help/Display Menu       \n"
             + "M -  Move Menu (N-north, E-east, S-south, W-west)\n"
@@ -32,17 +32,19 @@ public class GameMenuView {
             + "             E- Exit Menu                 \n"
             + "------------------------------------------\n";
 
+    public void getInput() {
+        char value = ' '
+        Scanner keyboard = new Scanner(System.in);
+        value = keyboard.next().charAt(0);
+        value = Character.toUpperCase(value);
+    }
+
     // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
     void displayGameMenu(Player player, PlayerControls playerControls) {
-        
-        char value = ' ';
+
         do {
             System.out.println(GAMEMENU);
             System.out.println("Please enter a command");
-
-            Scanner keyboard = new Scanner(System.in);
-            value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
 
             switch (value) {
 
