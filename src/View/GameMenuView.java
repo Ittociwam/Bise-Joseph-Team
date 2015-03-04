@@ -41,10 +41,21 @@ public class GameMenuView {
 
     // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
     void displayGameMenu(Player player, PlayerControls playerControls) {
-
+        System.out.println(GAMEMENU);
+    }
+        
+        public char getInput()
+        {
+            char value = ' ';
+                    Scanner keyboard = new Scanner(System.in);
+            value = keyboard.next().charAt(0);
+            return Character.toUpperCase(value);
+        }
+        
+        void doAction(){
+            
+        
         do {
-            System.out.println(GAMEMENU);
-            System.out.println("Please enter a command");
 
             switch (value) {
 
