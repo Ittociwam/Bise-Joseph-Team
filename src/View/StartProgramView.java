@@ -28,7 +28,7 @@ public class StartProgramView {
 
         this.displayWelcomMessage(person);
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.openMenu();
         
         
 

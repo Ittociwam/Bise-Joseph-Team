@@ -19,11 +19,13 @@ public abstract class View implements ViewInterface {
     
     public boolean display(Object object) 
     {
-        String MENU = null;
+         MENU = null;
         if(object instanceof String)
         {
              MENU = (String) object;
         }
+        else
+            return false;
        System.out.println(MENU);
         return true;
     }

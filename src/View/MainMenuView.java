@@ -29,7 +29,7 @@ public class MainMenuView extends View {
 
 
 
-    void openMainMenu() {
+    void openMenu() {
         
         Object object = null;
         char selection = ' ';

@@ -8,12 +8,15 @@ package View;
 import Control.PlayerControls;
 import Model.Item;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
  * @author Robbie
  */
+class ContAndItem {
+    public Item myItem;
+    public PlayerControls myPlayerControls;
+}
 public class ItemView extends View{
 
     private final String INVENTORY = "\n Your current inventory: \n";
@@ -21,9 +24,12 @@ public class ItemView extends View{
     public int openItemMenu(ArrayList<Item> items, PlayerControls playerControls) {
         if(!display(items))
             return -1;
-        int choice = getInput(items.size());
+        int choice = validateInput(items.size());
         if (choice > 0) {
-            doAction(items.get(choice), playerControls);
+            ContAndItem myStuff = null;
+            myStuff.myItem = items.get(choice);
+            myStuff.myPlayerControls = playerControls;
+            doAction(myStuff);
             return 1;
         } else {
             return -1;
@@ -66,7 +72,7 @@ public class ItemView extends View{
             
         
             System.out.println("\t>");
-            char value = getInput();
+            char value = getInput(); // calling get input here
 
             if (value == 'E' || value == 'e') {
                 break;
@@ -89,7 +95,11 @@ public class ItemView extends View{
 
     }
 
-    private void doAction(Item item, PlayerControls playerControls) {
+    public void doAction(Object obj) {
+        
+        ContAndItem myStuff = (ContAndItem)obj;
+        Item item = myStuff.myItem;
+        PlayerControls playerControls = myStuff.myPlayerControls;
         playerControls.useItem(item);
     }
 }

@@ -4,16 +4,13 @@
  * and open the template in the editor.
  */
 package View;
-
-import java.util.Scanner;
-
 /**
  *
  * @author Robbie
  */
 public class HelpMenuView extends View {
-    
-        private final String HELPMENU = "\n"
+
+    private final String HELPMENU = "\n"
             + "-------------------------------------\n"
             + "            Help Menu                \n"
             + "-------------------------------------\n"
@@ -40,36 +37,42 @@ public class HelpMenuView extends View {
             + " enemy inside of it. The game will then automatically apply \n"
             + " the first attack and ask you if you would like to flee or  \n"
             + " continue attacking\n";
-    
-    
+
     void openMenu() {
         char value = ' ';
         do {
             display(HELPMENU);
-            
-            value = getInput();
 
-            switch (value) {
-                    
+            value = getInput();
+            doAction(value);
+
+            
+        } while (value != 'E');
+    }
+    
+    public void doAction(Object obj)
+    {
+        char value = (char)obj;
+         switch (value) {
+
                 case 'G':
-                    System.out.println(GOAL);
+                    display(GOAL);
                     break;
                 case 'M':
-                    System.out.println(MOVING);
+                    display(MOVING);
                     break;
                 case 'I':
-                    System.out.println(ITEM);
+                    display(ITEM);
                     break;
                 case 'B':
-                    System.out.println(BATTLE);
+                    display(BATTLE);
                     break;
                 case 'E':
                     break;
                 default:
-                    System.out.println("Invalid input, Try again\n");
-                            
+                    display("Invalid input, Try again\n");
+
             }
-        } while (value != 'E');
-}
-    
+    }
+
 }
