@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Robbie
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
     
         private final String HELPMENU = "\n"
             + "-------------------------------------\n"
@@ -42,14 +42,12 @@ public class HelpMenuView {
             + " continue attacking\n";
     
     
-    void display() {
-    char value = ' ';
+    void openMenu() {
+        char value = ' ';
         do {
-            System.out.println(HELPMENU);
-
-            Scanner keyboard = new Scanner(System.in);
-            value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
+            display(HELPMENU);
+            
+            value = getInput();
 
             switch (value) {
                     

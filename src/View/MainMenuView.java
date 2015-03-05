@@ -9,13 +9,12 @@ import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
 import Control.PlayerControls;
 import Model.Player;
-import java.util.Scanner;
 
 /**
  *
  * @author Robbie
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
     private final String MENU = "\n"
             + "-------------------------------------\n"
@@ -30,47 +29,29 @@ public class MainMenuView {
 
 
 
-    void displayMenu() {
+    void openMainMenu() {
+        
+        Object object = null;
         char selection = ' ';
         do {
-            System.out.println(MENU);
+            display(MENU);
 
-            selection = this.getInput();
+            
+            selection = getInput();
+            object = selection;
 
-            this.doAction(selection);
+            this.doAction(object);
         } while (selection != 'E');
     }
 
     void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.display();
+        helpMenuView.openMenu();
     }
 
-    private char getInput() {
 
-        boolean valid = false;
-        while (!valid) {
-            Scanner keyboard = new Scanner(System.in);
-            char value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
-            switch (value) {
-                case 'G':
-                case 'N':
-                case 'H':
-                case 'S':
-                case 'E':
-                    return value;
-                default:
-                    System.out.println(value + " is not a valid input");
-                    valid = false;
-            }
-
-        }
-        return 0;
-
-    }
-
-    private void doAction(char input) {
+    public void doAction(Object obj) {
+        char input = (char)obj;
         switch (input) {
             case 'N':
                 this.startNewGame();

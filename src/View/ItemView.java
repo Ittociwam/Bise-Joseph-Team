@@ -14,12 +14,12 @@ import java.util.Scanner;
  *
  * @author Robbie
  */
-public class ItemView {
+public class ItemView extends View{
 
     private final String INVENTORY = "\n Your current inventory: \n";
 
     public int openItemMenu(ArrayList<Item> items, PlayerControls playerControls) {
-        if(!displayInventory(items))
+        if(!display(items))
             return -1;
         int choice = getInput(items.size());
         if (choice > 0) {
@@ -29,20 +29,31 @@ public class ItemView {
             return -1;
         }
     }
-
-    private boolean displayInventory(ArrayList<Item> items) {
-        if (items.isEmpty()) {
+    
+   
+    @Override
+    public boolean display(Object object) 
+    {
+        ArrayList<Item> items = new ArrayList<Item>();
+        if(object instanceof ArrayList)
+        {
+             items = (ArrayList<Item>) object;
+        }
+  
+        // if object is an array list
+        if (items.isEmpty())
+        {
             System.out.println("You have no items!\n");
             return false;
         }
-        for (int i = 0; i < items.size(); i++) {
+        for (int i = 0; i < items.size(); i++)
+        {
             System.out.println(i + ". " + items.get(i) + "\n");
-            
         }
-        return true;
+         return true;   
     }
 
-    private int getInput(int size) {
+    private int validateInput(int size) {
         final String ERROR = "Invalid item! Please enter a number"
                 + "between 1 and" + size + "\n";
         boolean valid = false;
@@ -52,10 +63,11 @@ public class ItemView {
             return -1;
         }
         while (!valid) {
+            
+        
             System.out.println("\t>");
-            Scanner keyboard = new Scanner(System.in);
-            char value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
+            char value = getInput();
+
             if (value == 'E' || value == 'e') {
                 break;
                 
@@ -63,14 +75,14 @@ public class ItemView {
             int index = Character.getNumericValue(value);
             if (value < 1 || value > size) {
                 System.out.println(ERROR);
-                valid = false;
+                valid = false; // input is less than one or greater than the size of array
             }
             else if ((int) value <= size) {
-                return value - 1;
+                return value - 1; // return array index
             }
             else
             {
-                valid = false;
+                valid = false; // anything other than this is bad
             }
         }
         return 0;

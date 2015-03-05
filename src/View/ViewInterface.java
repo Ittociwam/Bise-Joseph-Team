@@ -12,9 +12,8 @@ import Control.PlayerControls;
  * @author Robbie
  */
 public interface ViewInterface {
-    public int openMenu(Object object); 
-    public void display(Object Object);
+    public boolean display(Object obj);
     public char getInput();
-    public void doAction(char choice, Object obj);
+    public void doAction(Object obj);
         
 }

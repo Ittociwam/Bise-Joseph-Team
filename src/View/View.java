@@ -5,7 +5,7 @@
  */
 package View;
 
-import Control.PlayerControls;
+
 import java.util.Scanner;
 
 /**
@@ -13,23 +13,33 @@ import java.util.Scanner;
  * @author Robbie
  */
 public abstract class View implements ViewInterface {
-    Object menu = new Object();
     
-    public int openMenu(Object object) {
-        display(menu);
-        char choice = getInput();
-        doAction(choice, object);
-        return 1;
+    private String MENU;
+
+    
+    public boolean display(Object object) 
+    {
+        String MENU = null;
+        if(object instanceof String)
+        {
+             MENU = (String) object;
+        }
+       System.out.println(MENU);
+        return true;
     }
 
-    public void display(Object object) {
-        System.out.println(object);
-    }
-
-    public char getInput() {
+    public char getInput() {  
         char value = ' ';
         Scanner keyboard = new Scanner(System.in);
         value = keyboard.next().charAt(0);
-        return Character.toUpperCase(value);
+        if(Character.isLetter(value))
+            return Character.toUpperCase(value);
+        else if (Character.isDigit(value))
+            return value;
+        else
+        {
+            return '!';
+        }
+            
     }
 }
