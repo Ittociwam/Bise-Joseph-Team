@@ -16,9 +16,14 @@ import java.util.ArrayList;
  * @author Robbie
  */
 public class GameMenuView extends View {
-    PlayerControls playerControls = new PlayerControls();
     ItemView itemView = new ItemView();
     MoveView moveView = new MoveView();
+    
+    class ContandItem {
+        ArrayList<Item> items;
+        PlayerControls playerControls;
+    }
+   
     private final String MENU = "\n"
             + "------------------------------------------\n"
             + "                 Game Menu                \n"
@@ -33,7 +38,7 @@ public class GameMenuView extends View {
             + "------------------------------------------\n";
 
     // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
-    void displayGameMenu() {
+    void openMenu(Player player, PlayerControls playerControls) {
         Object object = null;
         char value = ' ';
         do {
@@ -53,7 +58,7 @@ public class GameMenuView extends View {
                     System.out.println(MENU);
                     break;
                 case 'M':
-                    moveView.displayMoveMenu(playerControls);
+                    moveView.openMenu(playerControls);
                     break;
                 case 'L':
                     this.viewRoom();

@@ -79,7 +79,7 @@ public class MainMenuView extends View {
         Player player = new Player();
         PlayerControls playerControls = new PlayerControls();
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenu(player, playerControls);
+        gameMenu.openMenu(player, playerControls);
         System.out.println("*** StartNewGame Function called ***");
     }
 
