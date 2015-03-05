@@ -12,7 +12,12 @@ import java.util.Scanner;
  *
  * @author Robbie
  */
-public class MoveView {
+
+class ContAndInput {
+    public char value;
+    public PlayerControls myPlayerControls;
+}
+public class MoveView extends View {
     
         private final String HELPMENU = "\n"
             + "-------------------------------------\n"
@@ -33,33 +38,21 @@ public class MoveView {
         System.out.println("Which way would you like to move?\n");
         System.out.println("Press 'H' for help\n ");
         char choice = getInput();
-        doAction(choice, playerControls);
+        ContAndInput contAndInput = null;
+        contAndInput.value = choice;
+        contAndInput.myPlayerControls = playerControls;
+        doAction(contAndInput);
         
     }
-    private char getInput() {
 
-        boolean valid = false;
-        while (!valid) {
-            Scanner keyboard = new Scanner(System.in);
-            char value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
-            switch (value) {
-                case 'N':
-                case 'E':
-                case 'S':
-                case 'W':
-                case 'H':
-                    return value;
-                default:
-                    System.out.println(value + " is not a valid input");
-                    valid = false;
-            }
 
-        }
-        return 0;
-    }
 
-    private void doAction(char input, PlayerControls playerControls) {
+    public void doAction(Object obj) {
+        ContAndInput myStuff = (ContAndInput)obj;
+        char input = myStuff.value;
+        PlayerControls playerControls = new PlayerControls();
+        playerControls = myStuff.myPlayerControls;
+
         switch (input) {
             case 'N':
             case 'E':
