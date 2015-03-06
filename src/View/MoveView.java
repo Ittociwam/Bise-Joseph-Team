@@ -34,7 +34,7 @@ public class MoveView extends View {
     }
         
         
-    void displayMoveMenu(PlayerControls playerControls){
+    void openMenu(PlayerControls playerControls){
         System.out.println("Which way would you like to move?\n");
         System.out.println("Press 'H' for help\n ");
         char choice = getInput();

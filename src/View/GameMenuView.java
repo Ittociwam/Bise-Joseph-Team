@@ -20,8 +20,8 @@ public class GameMenuView extends View {
     MoveView moveView = new MoveView();
     
     class ContandItem {
-        ArrayList<Item> items;
-        PlayerControls playerControls;
+        public ArrayList<Item> items;
+        public PlayerControls playerControls;
     }
    
     private final String MENU = "\n"
@@ -43,17 +43,19 @@ public class GameMenuView extends View {
         char value = ' ';
         do {
             System.out.println(MENU);
-
             value = getInput();
             object = value;
-
             this.doAction(object);
         } while (value != 'E');
     }
 
     public void doAction(Object obj) {
         char value = (char)obj;
-            switch (value) {
+        ContAndItem myItem = (ContAndItem)obj;
+        ArrayList<Item> items = items = null;
+        PlayerControls playerControls = myItem.myPlayerControls;
+        
+        switch (value) {
                 case 'H':
                     System.out.println(MENU);
                     break;
@@ -67,7 +69,7 @@ public class GameMenuView extends View {
                     this.viewMap();
                     break;
                 case 'I':
-                    itemView.openItemMenu(player.getItems(), playerControls); // Needs parameters
+                    itemView.openItemMenu(items, playerControls); // Needs parameters
                     break;
                 case 'E':
                     break;
