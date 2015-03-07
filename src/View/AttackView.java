@@ -9,14 +9,28 @@ import java.util.Scanner;
  *
  * @author Travis
  */
-public class AttackView {
+public class AttackView extends View {
 
     boolean done = false;
     PlayerControls playerControls = new PlayerControls();
     Player somePlayer = new Player();
     Character someCharacter = new Character();
 
-    private void doAction() {
+    void openMenu(PlayerControls playerControls) {
+        Object object = null;
+        char value = ' ';
+        System.out.println("currentHealth: " + somePlayer.getHealth());
+        System.out.println("characterHealth: " + someCharacter.getHealth());
+        System.out.println("Would you like to attack again?");
+        value = getInput();
+        object = value;
+        this.doAction(object);
+        if (value == 'Y') {
+            this.doAction(object);
+        }
+    }
+
+    public void doAction(Object obj) {
         while (!done) {
             int returnValue = playerControls.attack(somePlayer, someCharacter);
             //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
@@ -57,20 +71,6 @@ public class AttackView {
             if (done == true) {
                 break;
             }
-
-        }
-    }
-
-    private void getInput() {
-        System.out.println("currentHealth: " + somePlayer.getHealth());
-        System.out.println("characterHealth: " + someCharacter.getHealth());
-        System.out.println("Would you like to attack again?");
-        Scanner input = new Scanner(System.in);
-        String response = input.next();
-
-        // response = PLAYERS INPUT
-        if ("no".equals(response.toLowerCase())) {
-            done = true;
 
         }
     }
