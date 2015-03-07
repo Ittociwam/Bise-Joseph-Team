@@ -11,4 +11,10 @@ package Control;
  */
 public class ItemControl {
     
+    public boolean checkForItem(String item)
+    {
+        System.out.println("check for item called");
+        return true;
+    }
+    
 }
