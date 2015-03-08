@@ -8,7 +8,7 @@ package Control;
 import Model.Character;
 import Model.Item;
 import Model.Player;
-import java.util.ArrayList;
+import View.ClueView;
 
 
 /**
@@ -131,6 +131,13 @@ public class PlayerControls {
         {
             // if item is of type U it is usable once
         }
+         
+         else if(item.getType() == 'C')
+         {
+             ClueView clueView = new ClueView();
+             ItemControl itemControl = new ItemControl();
+             clueView.openClueView(this, item.getDescription(), itemControl);
+         }
         
         else
          {

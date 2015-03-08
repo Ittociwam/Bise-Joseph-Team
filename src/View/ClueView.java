@@ -26,6 +26,13 @@ public class ClueView extends View {
             if(getInput() == 'Y')
             doAction(code);
         }
+        
+        else
+        {
+            System.out.println("Your code cannot be read.");
+        }
+        
+        
     }
     @Override
     public void doAction(Object obj) {
