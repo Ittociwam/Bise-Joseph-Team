@@ -38,7 +38,7 @@ public class MoveView extends View {
         System.out.println("Which way would you like to move?\n");
         System.out.println("Press 'H' for help\n ");
         char choice = getInput();
-        ContAndInput contAndInput = null;
+        ContAndInput contAndInput = new ContAndInput();
         contAndInput.value = choice;
         contAndInput.myPlayerControls = playerControls;
         doAction(contAndInput);

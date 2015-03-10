@@ -31,6 +31,8 @@ public abstract class View implements ViewInterface {
     }
 
     public char getInput() {  
+        
+        System.out.print("\t >");
         char value = ' ';
         Scanner keyboard = new Scanner(System.in);
         value = keyboard.next().charAt(0);

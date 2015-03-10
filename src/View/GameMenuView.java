@@ -15,15 +15,19 @@ import java.util.ArrayList;
  *
  * @author Robbie
  */
+class Stuff {
+
+    public ArrayList<Item> items;
+    public PlayerControls playerControls;
+    public char myValue;
+    
+}
+
 public class GameMenuView extends View {
+
     ItemView itemView = new ItemView();
     MoveView moveView = new MoveView();
-    
-    class ContandItem {
-        public ArrayList<Item> items;
-        public PlayerControls playerControls;
-    }
-   
+
     private final String MENU = "\n"
             + "------------------------------------------\n"
             + "                 Game Menu                \n"
@@ -39,44 +43,53 @@ public class GameMenuView extends View {
 
     // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
     void openMenu(Player player, PlayerControls playerControls) {
-        Object object = null;
+        Stuff myStuff = new Stuff();
+        myStuff.items = player.getItems();
+        myStuff.playerControls = playerControls;
+        
+        
         char value = ' ';
         do {
             System.out.println(MENU);
             value = getInput();
-            object = value;
-            this.doAction(object);
+            myStuff.myValue = value;
+            this.doAction(myStuff
+            );
         } while (value != 'E');
     }
 
     public void doAction(Object obj) {
-        char value = (char)obj;
-        ContAndItem myItem = (ContAndItem)obj;
-        ArrayList<Item> items = items = null;
-        PlayerControls playerControls = myItem.myPlayerControls;
         
-        switch (value) {
-                case 'H':
-                    System.out.println(MENU);
-                    break;
-                case 'M':
-                    moveView.openMenu(playerControls);
-                    break;
-                case 'L':
-                    this.viewRoom();
-                    break;
-                case 'V':
-                    this.viewMap();
-                    break;
-                case 'I':
-                    itemView.openItemMenu(items, playerControls); // Needs parameters
-                    break;
-                case 'E':
-                    break;
-                default:
-                    System.out.println("Invalid input, Try again\n");
+        Stuff myStuff = (Stuff) obj;
+        char value = myStuff.myValue;
+        
+        ArrayList<Item> items = myStuff.items; 
+        
+        PlayerControls playerControls = myStuff.playerControls;
 
-            }
+        switch (value) {
+            case 'H':
+                HelpMenuView helpMenu = new HelpMenuView();
+                helpMenu.openMenu();
+                break;
+            case 'M':
+                moveView.openMenu(playerControls);
+                break;
+            case 'L':
+                this.viewRoom();
+                break;
+            case 'V':
+                this.viewMap();
+                break;
+            case 'I':
+                itemView.openItemMenu(items, playerControls); // Needs parameters
+                break;
+            case 'E':
+                break;
+            default:
+                System.out.println("Invalid input, Try again\n");
+
+        }
     }
 
     private void viewRoom() {
