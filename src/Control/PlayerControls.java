@@ -9,6 +9,7 @@ import Model.Character;
 import Model.Item;
 import Model.Player;
 import View.ClueView;
+import java.util.ArrayList;
 
 
 /**
@@ -145,6 +146,10 @@ public class PlayerControls {
          }
         
         
+    }
+
+    ArrayList<Item> createItemList() {
+        throw new UnsupportedOperationException("Create item list called"); //To change body of generated methods, choose Tools | Templates.
     }
         
 }

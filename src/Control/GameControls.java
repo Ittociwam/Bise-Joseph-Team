@@ -6,7 +6,14 @@
 package Control;
 
 import BiseJosephTeam.BiseJosephTeam;
+import Model.Element;
+import Model.Game;
+import Model.Item;
+import Model.Map;
 import Model.Person;
+import Model.Player;
+import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +21,7 @@ import Model.Person;
  */
 public class GameControls {
 
+    private static Game game;
     public static Person createPerson(String playersName) {
         if(playersName == null)
         {
@@ -22,13 +30,32 @@ public class GameControls {
         
         Person person = new Person();
         person.setName(playersName);
-        BiseJosephTeam.setPerson(person);
+        game = BiseJosephTeam.getGame();
+        game.setPerson(person);
+        // call bmiView 
         System.out.println("***createPerson function called ***\n");
         return person;
     }
 
-    public static void createNewGame(Person person) {
-        System.out.println("***Create new game function called ***\n");
+    public static Game createNewGame(Person person) {
+        PlayerControls playerControls = new PlayerControls();
+        Game game = new Game();
+        BiseJosephTeam.setGame(game);
+        game.setPerson(person);
+        Player player = new Player();
+        game.setPlayer(player);
+        Map map = MapControls.createMap();
+        game.setMap(map);
+        MapControls.movePlayerToStartingLocation(map);
+        ArrayList<Item> items = playerControls.createItemList();
+        player.setItems(items);
+        player.setItems(null);
+        ArrayList<Element> elements = new ArrayList<>();
+        game.setElements(elements);
+        game.setEnemiesKilled(0);
+        game.setTime(LocalTime.MIN);
+        
+        return game;
     }
 
     private int bmi() {

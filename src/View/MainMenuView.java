@@ -8,6 +8,8 @@ package View;
 import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
 import Control.PlayerControls;
+import Model.Game;
+import Model.Person;
 import Model.Player;
 
 /**
@@ -27,10 +29,11 @@ public class MainMenuView extends View {
             + "          E - Exit                   \n"
             + "-------------------------------------\n";
 
+    private Person myPerson;
 
-
-    void openMenu() {
+    void openMenu(Person person) {
         
+        myPerson = person;
         Object object = null;
         char selection = ' ';
         do {
@@ -73,13 +76,16 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        GameControls.createNewGame(BiseJosephTeam.getPerson());
+        
+        
+        
+        Game game = GameControls.createNewGame(myPerson);
 
         // Make a player
-        Player player = new Player();
+        
         PlayerControls playerControls = new PlayerControls();
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.openMenu(player, playerControls);
+        gameMenu.openMenu(game.getPlayer(), playerControls);
         System.out.println("*** StartNewGame Function called ***");
     }
 

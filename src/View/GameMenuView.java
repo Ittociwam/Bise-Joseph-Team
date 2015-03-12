@@ -53,8 +53,7 @@ public class GameMenuView extends View {
             System.out.println(MENU);
             value = getInput();
             myStuff.myValue = value;
-            this.doAction(myStuff
-            );
+            this.doAction(myStuff);
         } while (value != 'E');
     }
 
