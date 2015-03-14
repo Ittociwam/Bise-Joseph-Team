@@ -5,7 +5,9 @@
  */
 package View;
 
+import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
+import Model.Game;
 import Model.Person;
 import Model.Player;
 import java.util.Scanner;
@@ -24,11 +26,11 @@ public class StartProgramView {
 
         String playersName = this.getPlayersName();
 
-        Person person = GameControls.createPerson(playersName);
+      
 
-        this.displayWelcomMessage(person);
+        this.displayWelcomMessage(playersName);
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.openMenu(person);
+        mainMenu.openMenu(playersName);
         
         
 
@@ -65,11 +67,12 @@ public class StartProgramView {
 
     }
 
-    private void displayWelcomMessage(Person person) {
+    private void displayWelcomMessage(String name) {
         System.out.println("\n\n================================\n"
-                              +"Welcome to the game, " + person.getName() + "\n"
+                              +"Welcome to the game, " + name + "\n"
                               +"We hope you make it out alive!\n"
                               +"================================");
     }
 
+   
 }

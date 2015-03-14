@@ -21,29 +21,29 @@ import java.util.ArrayList;
  */
 public class GameControls {
 
-    private static Game game;
-    public static Person createPerson(String playersName) {
+    public static void createPerson(String playersName) {
         if(playersName == null)
         {
-            return null;
+            return;
         }
-        
-        Person person = new Person();
-        person.setName(playersName);
-        game = BiseJosephTeam.getGame();
-        game.setPerson(person);
+
+        System.out.println(playersName);
+        BiseJosephTeam.game.getPerson().setName(playersName);
+
         // call bmiView 
         System.out.println("***createPerson function called ***\n");
-        return person;
     }
 
-    public static Game createNewGame(Person person) {
+    public static Game  createNewGame(String name) {
         PlayerControls playerControls = new PlayerControls();
         
         Game game = new Game();
+        
         BiseJosephTeam.setGame(game);
         
-        game.setPerson(person);
+        createPerson(name);
+        
+        game.setPerson(BiseJosephTeam.game.getPerson());
         
         Player player = new Player();
         game.setPlayer(player);

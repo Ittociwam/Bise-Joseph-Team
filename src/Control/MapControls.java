@@ -15,6 +15,12 @@ import java.util.ArrayList;
  * @author Robbie
  */
 public class MapControls {
+
+        private Room[] roomTypes;
+    
+    public MapControls() {
+        roomTypes = new Room[5];
+    }
     
     
     
@@ -29,6 +35,26 @@ public class MapControls {
 
     private static void Map(int i, int i0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+        public void initializeRooms() {
+
+        for (int i = 0; i < 5; i++) {
+            roomTypes[i] = new Room();
+        }
+
+        System.out.println(roomTypes[0].getDescription());
+
+        roomTypes[0].setDescription("A forest area");
+        roomTypes[1].setDescription("A Beach Area");
+        roomTypes[2].setDescription("A picnic area");
+        roomTypes[3].setDescription("A zoo");
+        roomTypes[4].setDescription("A bathroom");
+    }
+        
+            public Room getARoom(int num) {
+
+        System.out.println("Returning room: " + roomTypes[num].getDescription() + "\n");
+        return roomTypes[num];
     }
     
 }

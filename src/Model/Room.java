@@ -25,6 +25,7 @@ public class Room implements Serializable{
     
     
     public Room() {
+        description = "a";
         size = new Dimension(5, 5);
     }
 

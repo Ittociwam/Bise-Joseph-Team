@@ -18,32 +18,36 @@ import java.util.Objects;
  * @author Robbie
  */
 public class Game implements Serializable {
-    
-    
+
     private Player player;
     private Person person;
     private int enemiesKilled;
     private LocalTime time;
     private Map map;
     private ArrayList<Item> itemGameList;
-     private ArrayList<Character> enemies;
-     
-     private final Room[] roomTypes;
-     
-        public Game() {
-            player = null;
-            person = null;
-            map = null;
-            itemGameList = new ArrayList<>();
-            enemies = new ArrayList<>();
-            
-            roomTypes = new Room[5];
-            
-            roomTypes[0].setDescription(null);
-            
-            
-            
+    private ArrayList<Character> enemies;
+
+
+    public Game() {
+        player = new Player();
+        person = new Person();
+        
+        itemGameList = new ArrayList<>();
+        enemies = new ArrayList<>();
+
+        map = new Map();
+
     }
+
+    public ArrayList<Item> getItemGameList() {
+        return itemGameList;
+    }
+
+    public void setItemGameList(ArrayList<Item> itemGameList) {
+        this.itemGameList = itemGameList;
+    }
+
+
 
     public ArrayList<Item> getitemGameList() {
         return itemGameList;
@@ -61,7 +65,6 @@ public class Game implements Serializable {
         this.enemies = enemies;
     }
 
-    
     public Player getPlayer() {
         return player;
     }
@@ -69,8 +72,9 @@ public class Game implements Serializable {
     public void setPlayer(Player player) {
         this.player = player;
     }
-    
+
     public Person getPerson() {
+        System.out.println("getPerson called\n");
         return person;
     }
 
@@ -78,7 +82,6 @@ public class Game implements Serializable {
         this.person = person;
     }
 
-    
     public Map getMap() {
         return map;
     }
@@ -102,15 +105,12 @@ public class Game implements Serializable {
     public void setTime(LocalTime time) {
         this.time = time;
     }
-    
-    public void initializeElements(Player player)
-    {
-        
-        
+
+    public void initializeElements(Player player) {
+
         ItemControl itemControl = new ItemControl();
-       
+
         // set location for player to start location
-        
         // each element will be set to a random location after player
         // generate random numbers 
         LocationControl locationControl = new LocationControl();
@@ -120,17 +120,16 @@ public class Game implements Serializable {
         itemGameList.add(itemControl.newItem("A sexy shotgun", 7, 'w', LocationControl.generateRandomLocation()));
         itemGameList.add(itemControl.newItem("A friggen Katana", 10, 'w', LocationControl.generateRandomLocation()));
         itemGameList.add(itemControl.newItem("A flame-thrower", 10, 'w', LocationControl.generateRandomLocation()));
-        
+
         CharacterControl characterControl = new CharacterControl();
         // Adding Enemies
-        for(int i = 0; i < 4; i++)
-        {
-        enemies.add(characterControl.generateRandomEnemy());
+        for (int i = 0; i < 4; i++) {
+            enemies.add(characterControl.generateRandomEnemy());
         }
-        
+
         // Add clues
         itemGameList.add(itemControl.newItem("wklv lv d vhfuhw phvvdjh", 0, 'c', LocationControl.generateRandomLocation()));
-        
+
     }
 
     @Override
@@ -163,7 +162,7 @@ public class Game implements Serializable {
     public String toString() {
         return "Game{" + "enemiesKilled=" + enemiesKilled + ", time=" + time + '}';
     }
-    
-    
-    
+
+
+
 }

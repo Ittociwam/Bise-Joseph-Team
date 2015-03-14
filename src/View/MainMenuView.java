@@ -16,6 +16,12 @@ import Model.Player;
  *
  * @author Robbie
  */
+
+class OtherStuff{
+    String name;
+    char input;
+}
+
 public class MainMenuView extends View {
 
     private final String MENU = "\n"
@@ -31,19 +37,23 @@ public class MainMenuView extends View {
 
     private Person myPerson;
 
-    void openMenu(Person person) {
+    void openMenu(String name) {
         
-        myPerson = person;
-        Object object = null;
+        //myPerson = person;
+        
+        OtherStuff stuff = new OtherStuff();
+        
+        stuff.name = name;
+         
         char selection = ' ';
         do {
             display(MENU);
 
             
             selection = getInput();
-            object = selection;
+            stuff.input = selection;
 
-            this.doAction(object);
+            this.doAction(stuff);
         } while (selection != 'E');
     }
 
@@ -54,10 +64,15 @@ public class MainMenuView extends View {
 
 
     public void doAction(Object obj) {
-        char input = (char)obj;
+        
+        OtherStuff stuff = (OtherStuff)obj;
+        
+        char input = stuff.input;
+        String name = stuff.name;
+        
         switch (input) {
             case 'N':
-                this.startNewGame();
+                this.startNewGame(name);
                 break;
             case 'G':
                 this.startExistingGame();
@@ -75,11 +90,11 @@ public class MainMenuView extends View {
         }
     }
 
-    private void startNewGame() {
+    private void startNewGame(String name) {
         
         
         
-        Game game = GameControls.createNewGame(myPerson);
+        Game game = GameControls.createNewGame(name);
 
         // Make a player
         

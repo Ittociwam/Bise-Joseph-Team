@@ -5,17 +5,23 @@
  */
 package Control;
 
+import BiseJosephTeam.BiseJosephTeam;
 import Model.Room;
+
+import java.util.Random;
 
 /**
  *
  * @author Robbie
  */
 public class RoomControls {
-    public Room generateRandomRoom;
 
     public Room generateRandomRoom() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Random randomGenerator = new Random();
+        MapControls mapControls = new MapControls();
+        int num = randomGenerator.nextInt(5);
+        System.out.println("random number: " + Integer.toString(num));
+        return mapControls.getARoom(num);
     }
     
 }

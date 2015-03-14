@@ -27,10 +27,15 @@ import java.util.Scanner;
  */
 public class BiseJosephTeam {
 
-    private static Game game;
+    public static Game game;
+
+    public BiseJosephTeam() {
+        game = new Game();
+    }
     
 
     public static Game getGame() {
+        System.out.println("get game called\n");
         return game;
     }
 

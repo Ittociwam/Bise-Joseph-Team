@@ -13,13 +13,14 @@ import java.io.Serializable;
  */
 public class Person implements Serializable{
 
-    public Person() {
-        name = "";
-        bmi = 0;
-    }
     private String name;
     private int bmi;
 
+    public Person() {
+        System.out.println("Person Constructor called\n");
+        name = "noName";
+        bmi = 0;
+    }
 
     public int getBmi() {
         return bmi;
