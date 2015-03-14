@@ -5,16 +5,15 @@
  */
 package Control;
 
-import Model.Room;
+import Model.Location;
 
 /**
  *
  * @author Robbie
  */
-public class RoomControls {
-    public Room generateRandomRoom;
+public class LocationControl {
 
-    public Room generateRandomRoom() {
+    public static Location generateRandomLocation() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

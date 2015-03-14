@@ -148,8 +148,20 @@ public class PlayerControls {
         
     }
 
-    ArrayList<Item> createItemList() {
-        throw new UnsupportedOperationException("Create item list called"); //To change body of generated methods, choose Tools | Templates.
+    ArrayList<Item> createItemList(Player player) {
+        ArrayList<Item> items = new ArrayList<>();
+        
+
+                
+        ItemControl itemControl = new ItemControl();
+        
+        Item pistol = itemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
+                                                                                                   // item will not follow player... set it to null?
+        
+        items.add(pistol);
+        
+        return items;
+        
     }
         
 }

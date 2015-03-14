@@ -5,6 +5,10 @@
  */
 package Model;
 
+import Control.CharacterControl;
+import Control.ItemControl;
+import Control.LocationControl;
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -13,7 +17,7 @@ import java.util.Objects;
  *
  * @author Robbie
  */
-public class Game {
+public class Game implements Serializable {
     
     
     private Player player;
@@ -21,17 +25,40 @@ public class Game {
     private int enemiesKilled;
     private LocalTime time;
     private Map map;
-    private ArrayList<Element> elements;
-
-    public ArrayList<Element> getElements() {
-        return elements;
+    private ArrayList<Item> itemGameList;
+     private ArrayList<Character> enemies;
+     
+     private final Room[] roomTypes;
+     
+        public Game() {
+            player = null;
+            person = null;
+            map = null;
+            itemGameList = new ArrayList<>();
+            enemies = new ArrayList<>();
+            
+            roomTypes = new Room[5];
+            
+            roomTypes[0].setDescription(null);
+            
+            
+            
     }
 
-    public void setElements(ArrayList<Element> elements) {
-        this.elements = elements;
+    public ArrayList<Item> getitemGameList() {
+        return itemGameList;
     }
 
-    public Game() {
+    public void setitemGameList(ArrayList<Item> itemGameList) {
+        this.itemGameList = itemGameList;
+    }
+
+    public ArrayList<Character> getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(ArrayList<Character> enemies) {
+        this.enemies = enemies;
     }
 
     
@@ -74,6 +101,36 @@ public class Game {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+    
+    public void initializeElements(Player player)
+    {
+        
+        
+        ItemControl itemControl = new ItemControl();
+       
+        // set location for player to start location
+        
+        // each element will be set to a random location after player
+        // generate random numbers 
+        LocationControl locationControl = new LocationControl();
+        // Adding Items
+        itemGameList.add(itemControl.newItem("A light-weight Sword", 4, 'w', LocationControl.generateRandomLocation()));
+        itemGameList.add(itemControl.newItem("A rusty old rifle", 5, 'w', LocationControl.generateRandomLocation()));
+        itemGameList.add(itemControl.newItem("A sexy shotgun", 7, 'w', LocationControl.generateRandomLocation()));
+        itemGameList.add(itemControl.newItem("A friggen Katana", 10, 'w', LocationControl.generateRandomLocation()));
+        itemGameList.add(itemControl.newItem("A flame-thrower", 10, 'w', LocationControl.generateRandomLocation()));
+        
+        CharacterControl characterControl = new CharacterControl();
+        // Adding Enemies
+        for(int i = 0; i < 4; i++)
+        {
+        enemies.add(characterControl.generateRandomEnemy());
+        }
+        
+        // Add clues
+        itemGameList.add(itemControl.newItem("wklv lv d vhfuhw phvvdjh", 0, 'c', LocationControl.generateRandomLocation()));
+        
     }
 
     @Override

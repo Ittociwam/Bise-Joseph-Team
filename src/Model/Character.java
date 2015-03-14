@@ -17,6 +17,11 @@ public class Character extends Element implements Serializable{
     private int attack;
 
     public Character() {
+        this.attack = 0;
+        this.health = 0;
+        this.description = "";
+        this.type = 'e';
+        
     }
 
     public int getHealth() {
@@ -63,6 +68,7 @@ public class Character extends Element implements Serializable{
 
 
 
+    
     @Override
     public String toString() {
         return "Character{" + "health=" + health + ", attack=" + attack + ", description= " + description +'}';

@@ -39,20 +39,28 @@ public class GameControls {
 
     public static Game createNewGame(Person person) {
         PlayerControls playerControls = new PlayerControls();
+        
         Game game = new Game();
         BiseJosephTeam.setGame(game);
+        
         game.setPerson(person);
+        
         Player player = new Player();
         game.setPlayer(player);
-        Map map = MapControls.createMap();
+        
+        Map map = new Map();
         game.setMap(map);
         MapControls.movePlayerToStartingLocation(map);
-        ArrayList<Item> items = playerControls.createItemList();
-        player.setItems(items);
-        player.setItems(null);
-        ArrayList<Element> elements = new ArrayList<>();
-        game.setElements(elements);
+        
+        ArrayList<Item> items = playerControls.createItemList(player);
+        player.setItems(items);        
+        
+        ArrayList<Item> itemGameList = new ArrayList<>();
+        ArrayList<Character> enemies = new ArrayList<>();
+        game.setitemGameList(itemGameList);
+        
         game.setEnemiesKilled(0);
+        
         game.setTime(LocalTime.MIN);
         
         return game;

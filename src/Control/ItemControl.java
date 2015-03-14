@@ -5,16 +5,31 @@
  */
 package Control;
 
+import Model.Item;
+import Model.Location;
+
 /**
  *
  * @author Robbie
  */
 public class ItemControl {
-    
-    public boolean checkForItem(String item)
-    {
+
+    public boolean checkForItem(String item) {
         System.out.println("check for item called");
         return true;
     }
-    
+
+    public Item newItem(String description, int i, char c, Location l) {
+        
+        Item item = new Item();
+
+        item.setDescription("A short range pistol");
+        item.setPoints(3);
+        item.setType('w');
+        item.setLocation(l);
+        
+        
+        return item;
+    }
+
 }

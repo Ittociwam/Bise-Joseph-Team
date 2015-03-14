@@ -21,10 +21,11 @@ public class Room implements Serializable{
     private String description;
     private Dimension size;
     
-    //ArrayList<ArrayList<int> > roomArray = new ArrayList<ArrayList<int> >;
+    
     
     
     public Room() {
+        size = new Dimension(5, 5);
     }
 
     public String getDescription() {

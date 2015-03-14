@@ -6,6 +6,9 @@
 package Control;
 
 import Model.Map;
+import Model.Room;
+import java.awt.Dimension;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,14 +16,19 @@ import Model.Map;
  */
 public class MapControls {
     
-    public static Map createMap() 
-    {
-        System.out.println("create map");
-        return null;
+    
+    
+    public static void createMap() 
+    {           
+        // this is done in map constructor
     }
 
     static void movePlayerToStartingLocation(Map map) {
         throw new UnsupportedOperationException("move player to starting location called"); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static void Map(int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

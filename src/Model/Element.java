@@ -13,9 +13,11 @@ import java.util.Objects;
  * @author Travis
  */
 public class Element implements Serializable{
-    private Location location;
+
     protected String description;
     protected char type;
+    
+    private Location location;
 
     public char getType() {
         return type;
