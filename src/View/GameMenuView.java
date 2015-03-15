@@ -37,7 +37,6 @@ public class GameMenuView extends View {
             + "         L - Look around the room         \n"
             + "             V - View Room                \n"
             + "            I - View Inventory            \n"
-            + "   Each Item will have a unique letter    \n"
             + "             E- Exit Menu                 \n"
             + "------------------------------------------\n";
 
@@ -64,6 +63,8 @@ public class GameMenuView extends View {
         
         ArrayList<Item> items = myStuff.items; 
         
+        PlayerView playerView = new PlayerView();
+        
         PlayerControls playerControls = myStuff.playerControls;
 
         switch (value) {
@@ -81,7 +82,7 @@ public class GameMenuView extends View {
                 this.viewMap();
                 break;
             case 'I':
-                itemView.openItemMenu(items, playerControls); // Needs parameters
+                itemView.openItemMenu(items, playerControls); 
                 break;
             case 'E':
                 break;

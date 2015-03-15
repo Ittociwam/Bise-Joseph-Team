@@ -52,16 +52,18 @@ public class ItemView extends View{
             System.out.println("You have no items!\n");
             return false;
         }
+        System.out.println("Please select the item you wish to equip or use"
+                + "Or press 'E to exit.");
         for (int i = 0; i < items.size(); i++)
         {
-            System.out.println(i + ". " + items.get(i) + "\n");
+            System.out.println(i + 1 + ". " + items.get(i).getDescription() + "\n");
         }
          return true;   
     }
 
     private int validateInput(int size) {
-        final String ERROR = "Invalid item! Please enter a number"
-                + "between 1 and" + size + "\n";
+        final String ERROR = "Invalid item! Please enter a number "
+                + "between 1 and " + size + "\n";
         boolean valid = false;
         if(size <= 0)
         {
@@ -69,22 +71,22 @@ public class ItemView extends View{
             return -1;
         }
         while (!valid) {
-            
-        
-            System.out.println("\t>");
+
             char value = getInput(); // calling get input here
 
             if (value == 'E' || value == 'e') {
+                valid = false;
                 break;
                 
             }
             int index = Character.getNumericValue(value);
-            if (value < 1 || value > size) {
+            if (index < 1 || index > size) {
                 System.out.println(ERROR);
+                System.out.println("value: " + index);
                 valid = false; // input is less than one or greater than the size of array
             }
-            else if ((int) value <= size) {
-                return value - 1; // return array index
+            else if ( index <= size) {
+                return index - 1; // return array index
             }
             else
             {

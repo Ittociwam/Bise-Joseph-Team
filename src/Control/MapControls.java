@@ -20,6 +20,7 @@ public class MapControls {
     
     public MapControls() {
         roomTypes = new Room[5];
+        initializeRooms();
     }
     
     
@@ -30,12 +31,9 @@ public class MapControls {
     }
 
     static void movePlayerToStartingLocation(Map map) {
-        throw new UnsupportedOperationException("move player to starting location called"); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
-    private static void Map(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
         public void initializeRooms() {
 
         for (int i = 0; i < 5; i++) {

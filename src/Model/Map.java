@@ -29,7 +29,7 @@ public class Map {
 
         
         MapControls mapControls = new MapControls();
-        mapControls.initializeRooms();
+        
 
         RoomControls roomControls = new RoomControls();
         for (int row = 0; row < 6; row++) {
