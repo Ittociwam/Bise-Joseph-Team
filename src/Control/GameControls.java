@@ -11,9 +11,11 @@ import Model.Game;
 import Model.Item;
 import Model.Map;
 import Model.Person;
+import Model.Character;
 import Model.Player;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import static java.util.Collections.max;
 
 /**
  *
@@ -68,11 +70,14 @@ public class GameControls {
     
     public void findStrongestEnemy()
     {
-        ArrayList<Character> charCompare = new ArrayList<>();
-        for(Model.Character character : BiseJosephTeam.getGame().getEnemies())
+        ArrayList<Character> characterCompare = new ArrayList<>();
+        for(Character character : BiseJosephTeam.getGame().getEnemies())
         {
-            
+            characterCompare.add(character);
         }
+        
+        max(characterCompare);
+        
     }
 
     private int bmi() {
