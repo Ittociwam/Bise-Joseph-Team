@@ -65,6 +65,15 @@ public class GameControls {
         
         return game;
     }
+    
+    public void findStrongestEnemy()
+    {
+        ArrayList<Character> charCompare = new ArrayList<>();
+        for(Model.Character character : BiseJosephTeam.getGame().getEnemies())
+        {
+            
+        }
+    }
 
     private int bmi() {
         int weight = 0;

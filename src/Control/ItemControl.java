@@ -23,9 +23,9 @@ public class ItemControl {
         
         Item item = new Item();
 
-        item.setDescription("A short range pistol");
-        item.setPoints(3);
-        item.setType('w');
+        item.setDescription(description);
+        item.setPoints(i);
+        item.setType(c);
         item.setLocation(l);
         
         
