@@ -16,25 +16,22 @@ import java.util.ArrayList;
  */
 public class MapControls {
 
-        private Room[] roomTypes;
-    
+    private Room[] roomTypes;
+
     public MapControls() {
         roomTypes = new Room[5];
         initializeRooms();
     }
-    
-    
-    
-    public static void createMap() 
-    {           
+
+    public static void createMap() {
         // this is done in map constructor
     }
 
     static void movePlayerToStartingLocation(Map map) {
-        
+
     }
 
-        public void initializeRooms() {
+    public void initializeRooms() {
 
         for (int i = 0; i < 5; i++) {
             roomTypes[i] = new Room();
@@ -48,11 +45,11 @@ public class MapControls {
         roomTypes[3].setDescription("A zoo");
         roomTypes[4].setDescription("A bathroom");
     }
-        
-            public Room getARoom(int num) {
+
+    public Room getARoom(int num) {
 
         System.out.println("Returning room: " + roomTypes[num].getDescription() + "\n");
         return roomTypes[num];
     }
-    
+
 }

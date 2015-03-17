@@ -4,22 +4,55 @@
  * and open the template in the editor.
  */
 package Control;
+
 import Model.Character;
+import BiseJosephTeam.BiseJosephTeam;
+import Model.Room;
+import Control.LocationControl;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
  * @author Robbie
  */
 public class CharacterControl {
-    
+
+    private String[] enemyTypes;
 
     public Character generateRandomEnemy() {
-             final String enemies[] = new String[4]; 
-             enemies[0] = "An ugly looking zombie";
-             enemies[1] = "Another ugly looking zombie";
-             enemies[2] = "A really ugly looking zombie";
-             enemies[3] = "An ugly looking nazi-zombie";
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        Character character = new Character();
+        enemyTypes = new String[4];
+        enemyTypes[0] = ("An ugly looking zombie");
+        enemyTypes[1] = ("Another ugly looking zombie");
+        enemyTypes[2] = ("A really ugly looking zombie");
+        enemyTypes[3] = ("An ugly looking nazi-zombie");
+
+        LocationControl lC = new LocationControl();
+
+        character.setDescription(enemyTypes[BiseJosephTeam.randInt(0, 3)]);
+        character.setAttack(BiseJosephTeam.randInt(1, 20));
+        character.setHealth(BiseJosephTeam.randInt(1, 15));
+        character.setLocation(LocationControl.generateRandomLocation());
+
+        return character;
+
     }
-    
+
+    public void addEnemies(int numEnemies) {
+
+        ArrayList<Character> enemies = new ArrayList<>();
+
+        for (int i = 0; i < numEnemies; i++) {
+            
+            Character enemy = generateRandomEnemy();
+            
+            enemies.add(enemy);
+
+        }
+
+        BiseJosephTeam.game.setEnemies(enemies);
+    }
+
 }

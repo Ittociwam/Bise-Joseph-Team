@@ -5,6 +5,7 @@
  */
 package View;
 
+import Control.GameControls;
 import java.util.Scanner;
 import Control.PlayerControls;
 import Model.Item;
@@ -37,6 +38,7 @@ public class GameMenuView extends View {
             + "         L - Look around the room         \n"
             + "             V - View Room                \n"
             + "            I - View Inventory            \n"
+            + "            F - Find Strongest Enemy      \n"
             + "             E- Exit Menu                 \n"
             + "------------------------------------------\n";
 
@@ -66,6 +68,8 @@ public class GameMenuView extends View {
         PlayerView playerView = new PlayerView();
         
         PlayerControls playerControls = myStuff.playerControls;
+        
+        GameControls gameControls = new GameControls();
 
         switch (value) {
             case 'H':
@@ -83,6 +87,9 @@ public class GameMenuView extends View {
                 break;
             case 'I':
                 itemView.openItemMenu(items, playerControls); 
+                break;
+            case 'F':
+                gameControls.findStrongestEnemy();
                 break;
             case 'E':
                 break;

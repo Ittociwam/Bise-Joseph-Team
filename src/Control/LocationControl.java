@@ -5,7 +5,9 @@
  */
 package Control;
 
+import BiseJosephTeam.BiseJosephTeam;
 import Model.Location;
+import java.awt.Point;
 
 /**
  *
@@ -14,7 +16,20 @@ import Model.Location;
 public class LocationControl {
 
     public static Location generateRandomLocation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Location location = new Location();
+        
+        Point point = new Point();
+        
+        point.x = BiseJosephTeam.randInt(0, 4);
+        point.y = BiseJosephTeam.randInt(0, 4);
+        
+        location.setPoint(point);
+        
+        location.setRoom(BiseJosephTeam.game.getMap().getRooms()
+                [BiseJosephTeam.randInt(0, 5)]
+                [BiseJosephTeam.randInt(0, 5)]);
+        
+        return location;
     }
     
 }

@@ -38,4 +38,9 @@ public class Location implements Serializable{
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Location{" + "room=" + room + ", point=" + point + '}';
+    }
+
 }
