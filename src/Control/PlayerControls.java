@@ -156,9 +156,16 @@ public class PlayerControls {
         ItemControl itemControl = new ItemControl();
         
         Item pistol = itemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
-                                                                                                   // item will not follow player... set it to null?
-        
+//        Item rifle = itemControl.newItem("A Rusty Rifle", 4, 'w', player.getLocation()); // item will not follow player... set it to null?
+//        Item sword = itemControl.newItem("A sharp sword", 5, 'w', player.getLocation());
+//        Item bazooka = itemControl.newItem("A boomin boomer", 10, 'w', player.getLocation());
+//        Item flameThrower = itemControl.newItem("A flamin' flamer", 12, 'w', player.getLocation());
+//        
         items.add(pistol);
+//        items.add(rifle);
+//        items.add(sword);
+//        items.add(bazooka);
+//        items.add(flameThrower);
         
         return items;
         
