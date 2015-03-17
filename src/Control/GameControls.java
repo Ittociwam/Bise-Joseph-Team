@@ -101,23 +101,18 @@ public class GameControls {
         
         Item smallerNumber = new Item();
         ArrayList<Item> arr = game.getItemGameList();
-        Item[] sortedGameList = null;
-        sortedGameList[0] = arr.get(0);
-        sortedGameList[1] = arr.get(1);
-        sortedGameList[2] = arr.get(2);
-        sortedGameList[3] = arr.get(3);
-        sortedGameList[4] = arr.get(4);
         
-        for (int i = 0; i < sortedGameList.length - 1; i++)
+        for (int i = 0; i < arr.size() - 1; i++)
         {
             int index = i;
-            for (int j = i + 1; j < sortedGameList.length; j++)
-                if (sortedGameList[j].getPoints() < sortedGameList[index].getPoints())
+            for (int j = i + 1; j < arr.size(); j++)
+                if (arr.get(j).getPoints() < arr.get(index).getPoints())
                     index = j;
       
-            smallerNumber = sortedGameList[index]; 
-            sortedGameList[index] = sortedGameList[i];
-            sortedGameList[i] = smallerNumber;
+            smallerNumber = arr.get(index); 
+            arr.set(index, arr.get(i));
+            arr.set(i, smallerNumber);
+            System.out.println(arr.get(index));
         }
         
         
