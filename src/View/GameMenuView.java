@@ -92,7 +92,8 @@ public class GameMenuView extends View {
             case 'F':
                 gameControls.findStrongestEnemy();
                 break;
-            case 'S': gameControls.sortGameItems();
+            case 'S': 
+                gameControls.sortGameItems();
                 break;
             case 'E':
                 break;

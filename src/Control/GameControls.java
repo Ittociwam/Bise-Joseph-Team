@@ -99,9 +99,9 @@ public class GameControls {
     
     public void sortGameItems(){
         
-        Item smallerNumber = new Item();
-        ArrayList<Item> arr = game.getItemGameList();
-        Item newListItem = new Item();
+        Item smallerNumber = null;
+        ArrayList<Item> arr = BiseJosephTeam.getGame().getItemGameList();
+        Item newListItem = null;
         for (int i = 0; i < arr.size() - 1; i++)
         {
             int index = i;
@@ -113,7 +113,7 @@ public class GameControls {
             arr.set(index, arr.get(i));
             arr.set(i, smallerNumber);
             newListItem = arr.get(index);
-            System.out.println(newListItem.toString());
+            System.out.println("Your weapons from strongest to weakest" + newListItem.toString() + "\n");
         }
         
         
