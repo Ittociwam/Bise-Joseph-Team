@@ -101,7 +101,7 @@ public class GameControls {
         
         Item smallerNumber = new Item();
         ArrayList<Item> arr = game.getItemGameList();
-        
+        Item newListItem = new Item();
         for (int i = 0; i < arr.size() - 1; i++)
         {
             int index = i;
@@ -112,7 +112,8 @@ public class GameControls {
             smallerNumber = arr.get(index); 
             arr.set(index, arr.get(i));
             arr.set(i, smallerNumber);
-            System.out.println(arr.get(index));
+            newListItem = arr.get(index);
+            System.out.println(newListItem.toString());
         }
         
         
