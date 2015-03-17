@@ -16,6 +16,7 @@ import Model.Character;
 import Model.Player;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import static java.util.Collections.max;
 
 /**
@@ -62,6 +63,10 @@ public class GameControls {
         ArrayList<Character> enemies = new ArrayList<>();
         game.setitemGameList(itemGameList);
         
+        CharacterControl cC = new CharacterControl();
+        
+        cC.addEnemies(10);
+        
         game.setEnemiesKilled(0);
         
         game.setTime(LocalTime.MIN);
@@ -77,7 +82,18 @@ public class GameControls {
             characterCompare.add(character);
         }
         
-        max(characterCompare);
+        Character tmp = characterCompare.get(0);
+        
+        for(int i = 1; i < characterCompare.size(); i++)
+        {
+            if(characterCompare.get(i).getAttack() > tmp.getAttack())
+            {
+                tmp = characterCompare.get(i);
+            }
+        }
+        
+        System.out.println("The strongest enemy in this game is: " + tmp.toString() + "\n");
+        
         
     }
     

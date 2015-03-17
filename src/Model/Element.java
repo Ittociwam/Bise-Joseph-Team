@@ -17,7 +17,7 @@ public class Element implements Serializable{
     protected String description;
     protected char type;
     
-    private Location location;
+    protected Location location;
 
     public char getType() {
         return type;

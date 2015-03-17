@@ -20,7 +20,9 @@ import View.StartProgramView;
 import java.awt.Dimension;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
+
 /**
  *
  * @author Robbie
@@ -32,7 +34,6 @@ public class BiseJosephTeam {
     public BiseJosephTeam() {
         game = new Game();
     }
-    
 
     public static Game getGame() {
         System.out.println("get game called\n");
@@ -42,15 +43,22 @@ public class BiseJosephTeam {
     public static void setGame(Game game) {
         BiseJosephTeam.game = game;
     }
+
     
+    // a random number function to use in the game. pass in 2 ints and it will give
+    // you an int in that range. 
+    public static int randInt(int min, int max) {
+        Random randomGenerator = new Random();
+        int num = randomGenerator.nextInt((max - min) + 1) + min;
+        return num;
+    }
 
     public static void main(String[] args) {
-        
+
         StartProgramView startProgramView = new StartProgramView();
-        
+
         startProgramView.startProgram();
-        
-        
+
 //        PlayerControls playerControls = new PlayerControls();
 //        //TESTING ELEMENT
 //        Element someElement = new Element();
@@ -157,5 +165,5 @@ public class BiseJosephTeam {
 //        String someGameTest = someGame.toString();
 //        System.out.println(someGameTest);       
     }
-    
+
 }

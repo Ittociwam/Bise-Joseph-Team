@@ -21,6 +21,7 @@ public class Character extends Element implements Serializable{
         this.health = 0;
         this.description = "";
         this.type = 'e';
+        this.location = new Location();
         
     }
 
@@ -71,7 +72,8 @@ public class Character extends Element implements Serializable{
     
     @Override
     public String toString() {
-        return "Character{" + "health=" + health + ", attack=" + attack + ", description= " + description +'}';
+        return "Character{" + "health=" + health + ", attack=" + attack +
+                ", description= " + description + "location= " + location +'}';
     }
 
 }
