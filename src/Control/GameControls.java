@@ -99,9 +99,9 @@ public class GameControls {
     
     public void sortGameItems(){
         
-        Item smallerNumber = null;
-        ArrayList<Item> arr = BiseJosephTeam.getGame().getItemGameList();
-        Item newListItem = null;
+        Item smallerNumber = new Item();
+        ArrayList<Item> arr = BiseJosephTeam.game.getItemGameList();
+        Item newListItem = new Item();
         for (int i = 0; i < arr.size() - 1; i++)
         {
             int index = i;
