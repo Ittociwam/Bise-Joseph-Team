@@ -59,9 +59,9 @@ public class GameControls {
         ArrayList<Item> items = playerControls.createItemList(player);
         player.setItems(items);        
         
-        ArrayList<Item> itemGameList = new ArrayList<>();
+        BiseJosephTeam.game.initializeGameItems();
         ArrayList<Character> enemies = new ArrayList<>();
-        game.setitemGameList(itemGameList);
+        
         
         CharacterControl cC = new CharacterControl();
         
@@ -99,23 +99,26 @@ public class GameControls {
     
     public void sortGameItems(){
         
+        System.out.println("sort game called\n");
         Item smallerNumber = new Item();
         ArrayList<Item> arr = BiseJosephTeam.game.getItemGameList();
+        System.out.println(arr.toString());
         Item newListItem = new Item();
         for (int i = 0; i < arr.size() - 1; i++)
         {
             int index = i;
-            for (int j = i + 1; j < arr.size(); j++)
+            for (int j = i + 1; j < arr.size(); j++){
                 if (arr.get(j).getPoints() < arr.get(index).getPoints())
                     index = j;
+            }
       
             smallerNumber = arr.get(index); 
             arr.set(index, arr.get(i));
             arr.set(i, smallerNumber);
             newListItem = arr.get(index);
-            System.out.println("Your weapons from strongest to weakest" + newListItem.toString() + "\n");
+            
         }
-        
+        System.out.println("Your weapons from strongest to weakest" + newListItem.toString() + "\n");
         
     }
 

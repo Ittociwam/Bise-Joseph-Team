@@ -106,7 +106,7 @@ public class Game implements Serializable {
         this.time = time;
     }
 
-    public void initializeElements(Player player) {
+    public void initializeGameItems() {
 
         ItemControl itemControl = new ItemControl();
 
