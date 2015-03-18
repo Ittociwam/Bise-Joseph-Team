@@ -6,6 +6,7 @@
 package Control;
 
 import BiseJosephTeam.BiseJosephTeam;
+import static BiseJosephTeam.BiseJosephTeam.game;
 import Model.Element;
 import Model.Game;
 import Model.Item;
@@ -96,7 +97,27 @@ public class GameControls {
         
     }
     
-    
+    public void sortGameItems(){
+        
+        Item smallerNumber = null;
+        ArrayList<Item> arr = BiseJosephTeam.getGame().getItemGameList();
+        Item newListItem = null;
+        for (int i = 0; i < arr.size() - 1; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < arr.size(); j++)
+                if (arr.get(j).getPoints() < arr.get(index).getPoints())
+                    index = j;
+      
+            smallerNumber = arr.get(index); 
+            arr.set(index, arr.get(i));
+            arr.set(i, smallerNumber);
+            newListItem = arr.get(index);
+            System.out.println("Your weapons from strongest to weakest" + newListItem.toString() + "\n");
+        }
+        
+        
+    }
 
     private int bmi() {
         int weight = 0;
