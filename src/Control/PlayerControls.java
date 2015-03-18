@@ -92,9 +92,9 @@ public class PlayerControls {
         int bmi = fat / tall;
         player.setHealth(player.getHealth() + bmi);
         if (fat < 0)
-            return -2;
+            return -2; // throw error
         else if (tall < 0)
-            return -1;
+            return -1; // throw error
         else
             return player.getHealth();
     }
