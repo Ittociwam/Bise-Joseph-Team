@@ -28,7 +28,7 @@ public class GameControls {
     public static void createPerson(String playersName) {
         if(playersName == null)
         {
-            return;
+            return; // throw
         }
 
         System.out.println(playersName);
@@ -80,6 +80,11 @@ public class GameControls {
         for(Character character : BiseJosephTeam.getGame().getEnemies())
         {
             characterCompare.add(character);
+        } 
+        
+        if(characterCompare.isEmpty())
+        {
+            //throw
         }
         
         Character tmp = characterCompare.get(0);
@@ -120,20 +125,6 @@ public class GameControls {
         }
         System.out.println("Your weapons from strongest to weakest" + newListItem.toString() + "\n");
         
-    }
-
-    private int bmi() {
-        int weight = 0;
-        int height = 0;
-
-        System.out.println("Enter a weight");
-       //user input
-
-        System.out.println("Enter a height");
-        //user input
-
-        int extraPoints = weight / height;
-        return extraPoints;
     }
 
 }
