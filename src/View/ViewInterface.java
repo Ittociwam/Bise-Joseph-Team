@@ -13,7 +13,7 @@ import Control.PlayerControls;
  */
 public interface ViewInterface {
     public boolean display(Object obj);
-    public char getInput();
+    public String getInput();
     public void doAction(Object obj);
         
 }

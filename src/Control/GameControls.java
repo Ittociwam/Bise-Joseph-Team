@@ -14,6 +14,7 @@ import Model.Map;
 import Model.Person;
 import Model.Character;
 import Model.Player;
+import exceptions.GameControlException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,10 +26,12 @@ import static java.util.Collections.max;
  */
 public class GameControls {
 
-    public static void createPerson(String playersName) {
+    public static void createPerson(String playersName)throws GameControlException {
         if(playersName == null)
         {
-            return; // throw
+            throw new GameControlException("Cannot create person when"
+                    + "playersName is null."
+                    + "playersName: " + playersName);
         }
 
         System.out.println(playersName);
@@ -38,7 +41,7 @@ public class GameControls {
         System.out.println("***createPerson function called ***\n");
     }
 
-    public static Game  createNewGame(String name) {
+    public static Game  createNewGame(String name) throws GameControlException {
         PlayerControls playerControls = new PlayerControls();
         
         Game game = new Game();
@@ -74,7 +77,7 @@ public class GameControls {
         return game;
     }
     
-    public void findStrongestEnemy()
+    public void findStrongestEnemy() throws GameControlException
     {
         ArrayList<Character> characterCompare = new ArrayList<>();
         for(Character character : BiseJosephTeam.getGame().getEnemies())
@@ -84,7 +87,7 @@ public class GameControls {
         
         if(characterCompare.isEmpty())
         {
-            //throw
+            throw new GameControlException("Enemy array is empty.");
         }
         
         Character tmp = characterCompare.get(0);

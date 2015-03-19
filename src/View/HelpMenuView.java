@@ -39,7 +39,7 @@ public class HelpMenuView extends View {
             + " continue attacking\n";
 
     void openMenu() {
-        char value = ' ';
+        String value = " ";
         do {
             display(HELPMENU);
 
@@ -47,27 +47,27 @@ public class HelpMenuView extends View {
             doAction(value);
 
             
-        } while (value != 'E');
+        } while (value != "E");
     }
     
     public void doAction(Object obj)
     {
-        char value = (char)obj;
+        String value = (String)obj;
          switch (value) {
 
-                case 'G':
+                case "G":
                     display(GOAL);
                     break;
-                case 'M':
+                case "M":
                     display(MOVING);
                     break;
-                case 'I':
+                case "I":
                     display(ITEM);
                     break;
-                case 'B':
+                case "B":
                     display(BATTLE);
                     break;
-                case 'E':
+                case "E":
                     break;
                 default:
                     display("Invalid input, Try again\n");

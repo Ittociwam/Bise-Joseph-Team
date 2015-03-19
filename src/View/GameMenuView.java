@@ -10,7 +10,10 @@ import java.util.Scanner;
 import Control.PlayerControls;
 import Model.Item;
 import Model.Player;
+import exceptions.GameControlException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,8 +23,8 @@ class Stuff {
 
     public ArrayList<Item> items;
     public PlayerControls playerControls;
-    public char myValue;
-    
+    public String myValue;
+
 }
 
 public class GameMenuView extends View {
@@ -48,54 +51,58 @@ public class GameMenuView extends View {
         Stuff myStuff = new Stuff();
         myStuff.items = player.getItems();
         myStuff.playerControls = playerControls;
-        
-        
-        char value = ' ';
+
+        String value = " ";
         do {
             System.out.println(MENU);
             value = getInput();
             myStuff.myValue = value;
             this.doAction(myStuff);
-        } while (value != 'E');
+        } while (value != "E");
     }
 
     public void doAction(Object obj) {
-        
+
         Stuff myStuff = (Stuff) obj;
-        char value = myStuff.myValue;
-        
-        ArrayList<Item> items = myStuff.items; 
-        
+        String value = myStuff.myValue;
+
+        ArrayList<Item> items = myStuff.items;
+
         PlayerView playerView = new PlayerView();
-        
+
         PlayerControls playerControls = myStuff.playerControls;
-        
+
         GameControls gameControls = new GameControls();
 
         switch (value) {
-            case 'H':
+            case "H":
                 HelpMenuView helpMenu = new HelpMenuView();
                 helpMenu.openMenu();
                 break;
-            case 'M':
+            case "M":
                 moveView.openMenu(playerControls);
                 break;
-            case 'L':
+            case "L":
                 this.viewRoom();
                 break;
-            case 'V':
+            case "V":
                 this.viewMap();
                 break;
-            case 'I':
-                itemView.openItemMenu(items, playerControls); 
+            case "I":
+                itemView.openItemMenu(items, playerControls);
                 break;
-            case 'F':
-                gameControls.findStrongestEnemy();
-                break;
-            case 'S': 
+            case "F": {
+                try {
+                    gameControls.findStrongestEnemy();
+                } catch (GameControlException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+            break;
+            case "S":
                 gameControls.sortGameItems();
                 break;
-            case 'E':
+            case "E":
                 break;
             default:
                 System.out.println("Invalid input, Try again\n");

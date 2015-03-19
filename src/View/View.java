@@ -5,7 +5,6 @@
  */
 package View;
 
-
 import java.util.Scanner;
 
 /**
@@ -13,37 +12,53 @@ import java.util.Scanner;
  * @author Robbie
  */
 public abstract class View implements ViewInterface {
-    
+
     private String MENU;
 
-    
-    public boolean display(Object object) 
-    {
-         MENU = null;
-        if(object instanceof String)
-        {
-             MENU = (String) object;
-        }
-        else
+    public boolean display(Object object) {
+        MENU = null;
+        if (object instanceof String) {
+            MENU = (String) object;
+        } else {
             return false;
-       System.out.println(MENU);
+        }
+        System.out.println(MENU);
         return true;
     }
 
-    public char getInput() {  
-        
-        System.out.print("\t >");
-        char value = ' ';
-        Scanner keyboard = new Scanner(System.in);
-        value = keyboard.next().charAt(0);
-        if(Character.isLetter(value))
-            return Character.toUpperCase(value);
-        else if (Character.isDigit(value))
-            return value;
-        else
-        {
-            return '!';
+    public boolean isInteger(String input) {
+        try {
+            Integer.parseInt(input);
+            return true;
+        } catch (NumberFormatException nf ) {
+            return false;
         }
+    }
+
+    public String getInput() {
+
+       
+        
+        String value = "";
+        String firstLetter = "";
+         while("".equals(value))
+         {
+             System.out.print("\t >");
+        Scanner input = new Scanner(System.in);
+        value=input.nextLine();
+        try{
             
+       firstLetter = String.valueOf(value.charAt(0));
+        }
+        catch(StringIndexOutOfBoundsException siobe){
+            continue;
+        }
+         }
+        
+        if (isInteger(firstLetter)) {
+            return value;
+        }
+        return value.toUpperCase();
+
     }
 }

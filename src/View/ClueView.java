@@ -23,7 +23,7 @@ public class ClueView extends View {
     public void openClueView(PlayerControls playerControls, String code, ItemControl itemControl) {
         if (display(code)) {
             System.out.println("Would you like to decode this clue?");
-            if(getInput() == 'Y')
+            if(getInput() == "Y")
             doAction(code);
         }
         

@@ -18,14 +18,14 @@ public class AttackView extends View {
 
     void openMenu(PlayerControls playerControls) {
         Object object = null;
-        char value = ' ';
+        String value = " ";
         System.out.println("currentHealth: " + somePlayer.getHealth());
         System.out.println("characterHealth: " + someCharacter.getHealth());
         System.out.println("Would you like to attack again?");
         value = getInput();
         object = value;
         this.doAction(object);
-        if (value == 'Y') {
+        if (value == "Y") {
             this.doAction(object);
         }
     }

@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 
 class ContAndInput {
-    public char value;
+    public String value;
     public PlayerControls myPlayerControls;
 }
 public class MoveView extends View {
@@ -37,7 +37,7 @@ public class MoveView extends View {
     void openMenu(PlayerControls playerControls){
         System.out.println("Which way would you like to move?\n");
         System.out.println("Press 'H' for help\n ");
-        char choice = getInput();
+        String choice = getInput();
         ContAndInput contAndInput = new ContAndInput();
         contAndInput.value = choice;
         contAndInput.myPlayerControls = playerControls;
@@ -49,18 +49,18 @@ public class MoveView extends View {
 
     public void doAction(Object obj) {
         ContAndInput myStuff = (ContAndInput)obj;
-        char input = myStuff.value;
+        String input = myStuff.value;
         PlayerControls playerControls = new PlayerControls();
         playerControls = myStuff.myPlayerControls;
 
         switch (input) {
-            case 'N':
-            case 'E':
-            case 'S':
-            case 'W':
+            case "N":
+            case "E":
+            case "S":
+            case "W":
                 playerControls.move(input);
                 break;
-            case 'H':
+            case "H":
                 System.out.println(HELPMENU);
                 break;
             default:

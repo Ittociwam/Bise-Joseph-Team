@@ -99,21 +99,21 @@ public class PlayerControls {
             return player.getHealth();
     }
     
-    public void move(char direction)
+    public void move(String direction)
     {
         // move the character in the direction sent in
         System.out.print("You moved ");
         switch (direction){
-            case 'N':
+            case "N":
                 System.out.print("North.\n");
                 break;
-            case 'E':
+            case "E":
                 System.out.print("East.\n");
                 break;
-            case 'W':
+            case "W":
                 System.out.print("West.\n");
                 break;
-            case 'S':
+            case "S":
                 System.out.print("South.\n");
                 break;                
         }
