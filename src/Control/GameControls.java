@@ -16,6 +16,7 @@ import Model.Character;
 import Model.Player;
 import View.BMIView;
 import exceptions.GameControlException;
+import exceptions.PlayerControlsException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +28,7 @@ import static java.util.Collections.max;
  */
 public class GameControls {
 
-    public static void createPerson(String playersName)throws GameControlException {
+    public static void createPerson(String playersName)throws GameControlException, PlayerControlsException {
         if(playersName == null)
         {
             throw new GameControlException("Cannot create person when"
@@ -43,7 +44,7 @@ public class GameControls {
         System.out.println("***createPerson function called ***\n");
     }
 
-    public static Game  createNewGame(String name) throws GameControlException {
+    public static Game  createNewGame(String name) throws GameControlException, PlayerControlsException {
         PlayerControls playerControls = new PlayerControls();
         
         Game game = new Game();

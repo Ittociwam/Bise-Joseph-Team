@@ -89,7 +89,7 @@ public class PlayerControls {
         return 0;
     }
     
-    public int calcBMI(Player player, int fat, int tall)throws PlayerControlsException{
+    public int calcBMI(int fat, int tall)throws PlayerControlsException{
         if (fat < 0)
             throw new PlayerControlsException("Invalid weight input in calcBMI"); // throw error
         else if (tall < 0)
@@ -97,8 +97,8 @@ public class PlayerControls {
         else
         {
             int bmi = fat / tall;
-            player.setHealth(player.getHealth() + bmi);
-            return player.getHealth();
+           
+            return bmi;
         }
     }
     
