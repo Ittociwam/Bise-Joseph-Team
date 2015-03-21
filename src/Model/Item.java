@@ -15,7 +15,7 @@ import java.io.Serializable;
 
 
 public class Item extends Element implements Serializable {
-    private int points;
+    public int points;
 
     public Item() {
     }
