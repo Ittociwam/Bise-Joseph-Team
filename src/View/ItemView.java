@@ -7,7 +7,10 @@ package View;
 
 import Control.PlayerControls;
 import Model.Item;
+import exceptions.PlayerControlsException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -103,6 +106,10 @@ public class ItemView extends View {
         ContAndItem myStuff = (ContAndItem) obj;
         Item item = myStuff.myItem;
         PlayerControls playerControls = myStuff.myPlayerControls;
-        playerControls.useItem(item);
+        try {
+            playerControls.useItem(item);
+        } catch (PlayerControlsException ex) {
+            Logger.getLogger(ItemView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

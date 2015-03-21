@@ -6,20 +6,24 @@
 package View;
 
 import Control.PlayerControls;
+import exceptions.PlayerControlsException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Robbie
  */
-
 class ContAndInput {
+
     public String value;
     public PlayerControls myPlayerControls;
 }
+
 public class MoveView extends View {
-    
-        private final String HELPMENU = "\n"
+
+    private final String HELPMENU = "\n"
             + "-------------------------------------\n"
             + "            Move Menu                \n"
             + "-------------------------------------\n"
@@ -28,13 +32,12 @@ public class MoveView extends View {
             + "          S - Move South             \n"
             + "          W - Move West              \n"
             + "          H - Display this menu      \n"
-            + "-------------------------------------\n";  
+            + "-------------------------------------\n";
 
     public MoveView() {
     }
-        
-        
-    void openMenu(PlayerControls playerControls){
+
+    void openMenu(PlayerControls playerControls) {
         System.out.println("Which way would you like to move?\n");
         System.out.println("Press 'H' for help\n ");
         String choice = getInput();
@@ -42,13 +45,11 @@ public class MoveView extends View {
         contAndInput.value = choice;
         contAndInput.myPlayerControls = playerControls;
         doAction(contAndInput);
-        
+
     }
 
-
-
     public void doAction(Object obj) {
-        ContAndInput myStuff = (ContAndInput)obj;
+        ContAndInput myStuff = (ContAndInput) obj;
         String input = myStuff.value;
         PlayerControls playerControls = new PlayerControls();
         playerControls = myStuff.myPlayerControls;
@@ -57,9 +58,14 @@ public class MoveView extends View {
             case "N":
             case "E":
             case "S":
-            case "W":
-                playerControls.move(input);
-                break;
+            case "W": {
+                try {
+                    playerControls.move(input);
+                } catch (PlayerControlsException ex) {
+                    Logger.getLogger(MoveView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
             case "H":
                 System.out.println(HELPMENU);
                 break;
@@ -67,5 +73,5 @@ public class MoveView extends View {
                 System.out.println(input + "is not a Invalid Input");
         }
     }
-    
+
 }

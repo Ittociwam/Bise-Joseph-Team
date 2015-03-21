@@ -11,6 +11,7 @@ import Control.PlayerControls;
 import Model.Item;
 import Model.Player;
 import exceptions.GameControlException;
+import exceptions.PlayerControlsException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +48,7 @@ public class GameMenuView extends View {
             + "------------------------------------------\n";
 
     // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
-    void openMenu(Player player, PlayerControls playerControls) {
+    void openMenu(Player player, PlayerControls playerControls) throws PlayerControlsException {
         Stuff myStuff = new Stuff();
         myStuff.items = player.getItems();
         myStuff.playerControls = playerControls;
@@ -58,7 +59,7 @@ public class GameMenuView extends View {
             value = getInput();
             myStuff.myValue = value;
             this.doAction(myStuff);
-        } while (value != "E");
+        } while (!"E".equals(value));
     }
 
     public void doAction(Object obj) {

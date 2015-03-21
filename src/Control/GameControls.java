@@ -14,6 +14,7 @@ import Model.Map;
 import Model.Person;
 import Model.Character;
 import Model.Player;
+import View.BMIView;
 import exceptions.GameControlException;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -37,7 +38,8 @@ public class GameControls {
         System.out.println(playersName);
         BiseJosephTeam.game.getPerson().setName(playersName);
 
-        // call bmiView 
+        BMIView bMIView = new BMIView();
+        bMIView.openBMIView();
         System.out.println("***createPerson function called ***\n");
     }
 

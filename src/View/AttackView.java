@@ -3,7 +3,10 @@ package View;
 import Control.PlayerControls;
 import Model.Player;
 import Model.Character;
+import exceptions.PlayerControlsException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +35,12 @@ public class AttackView extends View {
 
     public void doAction(Object obj) {
         while (!done) {
-            int returnValue = playerControls.attack(somePlayer, someCharacter);
+            int returnValue = 0;
+            try {
+                returnValue = playerControls.attack(somePlayer, someCharacter);
+            } catch (PlayerControlsException ex) {
+                System.out.println(ex.getMessage());
+            }
             //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
             switch (returnValue) {
                 case 2:

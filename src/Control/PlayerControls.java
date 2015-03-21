@@ -9,6 +9,7 @@ import Model.Character;
 import Model.Item;
 import Model.Player;
 import View.ClueView;
+import exceptions.PlayerControlsException;
 import java.util.ArrayList;
 
 
@@ -25,10 +26,10 @@ public class PlayerControls {
         return code.matches("[a-zA-Z\\s]+");
     }
 
-    public String dicipherCode(String code) {
+    public String dicipherCode(String code) throws PlayerControlsException {
 
         if (code.isEmpty()) {
-            return "*"; // EMPTY ERROR FLAG
+            throw new PlayerControlsException("Cannot decode an empty string."); // EMPTY ERROR FLAG
         }
         String message = "";
         if (isAlpha(code)) {
@@ -55,22 +56,22 @@ public class PlayerControls {
         return "!"; // INVALID INPUT ERROR flag
     }
 
-    public int attack(Player player, Character enemy) {
+    public int attack(Player player, Character enemy) throws PlayerControlsException {
 
         if (enemy.getType() != 'e') {
-            return -1;
+            throw new PlayerControlsException("Cannot fight this type of character");
         } // Invalid enemy
 
         if (player.getType() != 'p') {
-            return -2; // invalid player
+            throw new PlayerControlsException("Cannot battle with this type of character"); // invalid player
         }
 
         if (enemy.getAttack() < 0) {
-            return -3; // invalid enemy attack value
+            throw new PlayerControlsException("Enemy attack cannot be below zero"); // invalid enemy attack value
         }
 
         if (player.getAttack() < 0) {
-            return -4; // invalid player attack value
+            throw new PlayerControlsException("Player attack cannot be below zero"); // invalid player attack value
         }
 
         enemy.setHealth(enemy.getHealth() - player.getAttack());
@@ -88,18 +89,20 @@ public class PlayerControls {
         return 0;
     }
     
-    public int calcBMI(Player player, int fat, int tall){
-        int bmi = fat / tall;
-        player.setHealth(player.getHealth() + bmi);
+    public int calcBMI(Player player, int fat, int tall)throws PlayerControlsException{
         if (fat < 0)
-            return -2; // throw error
+            throw new PlayerControlsException("Invalid weight input in calcBMI"); // throw error
         else if (tall < 0)
-            return -1; // throw error
+            throw new PlayerControlsException("Invalid height input in calcBMI"); // throw error
         else
+        {
+            int bmi = fat / tall;
+            player.setHealth(player.getHealth() + bmi);
             return player.getHealth();
+        }
     }
     
-    public void move(String direction)
+    public void move(String direction) throws PlayerControlsException
     {
         // move the character in the direction sent in
         System.out.print("You moved ");
@@ -115,11 +118,13 @@ public class PlayerControls {
                 break;
             case "S":
                 System.out.print("South.\n");
-                break;                
+                break;
+            default:
+                throw new PlayerControlsException("Cannot decode an empty string.");
         }
     }
     
-    public void useItem(Item item)
+    public void useItem(Item item) throws PlayerControlsException
     {
         System.out.println("use item called\n");
         
@@ -142,7 +147,7 @@ public class PlayerControls {
         
         else
          {
-             //is not an item!
+             throw new PlayerControlsException("Cannot use item of type: " + item.getType());
          }
         
         
@@ -156,16 +161,8 @@ public class PlayerControls {
         ItemControl itemControl = new ItemControl();
         
         Item pistol = itemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
-//        Item rifle = itemControl.newItem("A Rusty Rifle", 4, 'w', player.getLocation()); // item will not follow player... set it to null?
-//        Item sword = itemControl.newItem("A sharp sword", 5, 'w', player.getLocation());
-//        Item bazooka = itemControl.newItem("A boomin boomer", 10, 'w', player.getLocation());
-//        Item flameThrower = itemControl.newItem("A flamin' flamer", 12, 'w', player.getLocation());
-//        
+                                                                                                // item will not follow player... set it to null? 
         items.add(pistol);
-//        items.add(rifle);
-//        items.add(sword);
-//        items.add(bazooka);
-//        items.add(flameThrower);
         
         return items;
         
