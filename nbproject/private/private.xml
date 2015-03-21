@@ -3,13 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/MoveView.java</file>
             <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/GameControls.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/BiseJosephTeam/BiseJosephTeam.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/HelpMenuView.java</file>
             <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/PlayerControls.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/PlayerView.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/ItemView.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/View.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/ClueView.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/MainMenuView.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/exceptions/GameControlException.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/ViewInterface.java</file>
             <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/GameMenuView.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Location.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Game.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/AttackView.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/ItemControl.java</file>
         </group>
-        <group/>
-        <group/>
+        <group>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/MapControls.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Map.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/MapControls.java</file>
+            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Map.java</file>
+        </group>
     </open-files>
 </project-private>
