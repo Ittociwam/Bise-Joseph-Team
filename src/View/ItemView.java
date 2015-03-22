@@ -39,7 +39,7 @@ public class ItemView extends View {
             doAction(myStuff);
             return 1;
         } else {
-            throw new ItemViewException("Error");
+            throw new ItemViewException("Choice was not > 0");
         }
     }
 
