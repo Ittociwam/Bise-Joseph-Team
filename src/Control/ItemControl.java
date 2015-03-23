@@ -24,6 +24,7 @@ public class ItemControl {
 
         Item item = new Item();
 
+        if (description instanceof String) {
         item.setLocation(l);
         
         if (description instanceof String)
