@@ -128,9 +128,10 @@ public class GameControls {
             arr.set(index, arr.get(i));
             arr.set(i, smallerNumber);
             newListItem = arr.get(index);
+            System.out.println(newListItem.description + "\n");
             
         }
-        System.out.println("Your weapons from strongest to weakest" + newListItem.toString() + "\n");
+        System.out.println("Your weapons from weakest to strongest\n");
         
     }
 
