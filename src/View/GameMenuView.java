@@ -95,7 +95,7 @@ public class GameMenuView extends View {
             try {
                 itemView.openItemMenu(items, playerControls);
             } catch (ItemViewException ex) {
-                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
             }
         }
                 break;
