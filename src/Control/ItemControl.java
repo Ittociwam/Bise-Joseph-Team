@@ -23,8 +23,6 @@ public class ItemControl {
     public Item newItem(String description, int i, char c, Location l) throws ItemControlException {
 
         Item item = new Item();
-
-        if (description instanceof String) {
         item.setLocation(l);
         
         if (description instanceof String)
