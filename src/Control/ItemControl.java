@@ -7,6 +7,7 @@ package Control;
 
 import Model.Item;
 import Model.Location;
+import exceptions.ItemControlException;
 
 /**
  *
@@ -19,16 +20,34 @@ public class ItemControl {
         return true;
     }
 
-    public Item newItem(String description, int i, char c, Location l) {
+    public Item newItem(String description, int i, char c, Location l) throws ItemControlException {
         
         Item item = new Item();
 
-        item.setDescription(description);
-        item.setPoints(i);
-        item.setType(c);
         item.setLocation(l);
         
+        if (item.description instanceof String)
+        {
+            item.setDescription(description);
+        }
+        else
+            throw new ItemControlException("Incorrect description value:" + item.description + "Must be a string, description: ");
         
+        if (item.points < 0)
+        {
+            throw new ItemControlException("Incorrect point value: " + item.points + "Must be > 0, points: ");
+        }
+        else if (item.points == (int)item.points)
+        {
+            item.setPoints(i);
+        }
+        else 
+            throw new ItemControlException("Incorrect point value: " + item.points + "Must be an integer, points: ");
+        
+        if (item.type != 'w' || item.type != 'c')
+            throw new ItemControlException("Incorrect item type: " + item.type + "Must be a c or a w, type: ");
+        
+               
         return item;
     }
 

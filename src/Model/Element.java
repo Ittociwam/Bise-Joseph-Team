@@ -14,8 +14,8 @@ import java.util.Objects;
  */
 public class Element implements Serializable{
 
-    protected String description;
-    protected char type;
+    public String description;
+    public char type;
     
     protected Location location;
 

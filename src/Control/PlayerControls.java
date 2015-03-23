@@ -9,6 +9,7 @@ import Model.Character;
 import Model.Item;
 import Model.Player;
 import View.ClueView;
+import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
 import java.util.ArrayList;
 
@@ -153,7 +154,7 @@ public class PlayerControls {
         
     }
 
-    ArrayList<Item> createItemList(Player player) {
+    ArrayList<Item> createItemList(Player player) throws ItemControlException {
         ArrayList<Item> items = new ArrayList<>();
         
 

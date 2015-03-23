@@ -8,6 +8,7 @@ package View;
 import Control.PlayerControls;
 import Model.Item;
 import exceptions.PlayerControlsException;
+import exceptions.ItemViewException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,9 +27,9 @@ public class ItemView extends View {
 
     private final String INVENTORY = "\n Your current inventory: \n";
 
-    public int openItemMenu(ArrayList<Item> items, PlayerControls playerControls) {
+    public int openItemMenu(ArrayList<Item> items, PlayerControls playerControls) throws ItemViewException {
         if (!display(items)) {
-            return -1;
+            throw new ItemViewException("Invalid Display");
         }
         int choice = validateInput(items.size());
         if (choice > 0) {
@@ -38,7 +39,7 @@ public class ItemView extends View {
             doAction(myStuff);
             return 1;
         } else {
-            return -1;
+            throw new ItemViewException("Choice was not > 0");
         }
     }
 

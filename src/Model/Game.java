@@ -8,6 +8,7 @@ package Model;
 import Control.CharacterControl;
 import Control.ItemControl;
 import Control.LocationControl;
+import exceptions.ItemControlException;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -106,7 +107,7 @@ public class Game implements Serializable {
         this.time = time;
     }
 
-    public void initializeGameItems() {
+    public void initializeGameItems() throws ItemControlException {
 
         ItemControl itemControl = new ItemControl();
 

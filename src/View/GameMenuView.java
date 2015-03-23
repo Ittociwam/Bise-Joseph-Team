@@ -11,6 +11,7 @@ import Control.PlayerControls;
 import Model.Item;
 import Model.Player;
 import exceptions.GameControlException;
+import exceptions.ItemViewException;
 import exceptions.PlayerControlsException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -90,7 +91,13 @@ public class GameMenuView extends View {
                 this.viewMap();
                 break;
             case "I":
+        {
+            try {
                 itemView.openItemMenu(items, playerControls);
+            } catch (ItemViewException ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "F": {
                 try {

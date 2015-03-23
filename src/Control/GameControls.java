@@ -16,6 +16,7 @@ import Model.Character;
 import Model.Player;
 import View.BMIView;
 import exceptions.GameControlException;
+import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class GameControls {
         System.out.println("***createPerson function called ***\n");
     }
 
-    public static Game  createNewGame(String name) throws GameControlException, PlayerControlsException {
+    public static Game  createNewGame(String name) throws GameControlException, PlayerControlsException, ItemControlException {
         PlayerControls playerControls = new PlayerControls();
         
         Game game = new Game();
