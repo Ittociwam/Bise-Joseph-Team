@@ -20,11 +20,13 @@ public class Room implements Serializable{
 
     private String description;
     private Dimension size;
+    public Element[][] elements;
     
     
     
     
     public Room() {
+         elements = new Element [5][5];
         description = "a";
         size = new Dimension(5, 5);
     }

@@ -28,6 +28,8 @@ public class Element implements Serializable{
     }
 
     public Element() {
+        description = "";
+        type = ' ';
     }
  
     public Location getLocation() {
@@ -36,6 +38,7 @@ public class Element implements Serializable{
 
     public void setLocation(Location location) {
         this.location = location;
+        location.getRoom().elements[location.getPoint().x][location.getPoint().y] = this;
     }
 
     public String getDescription() {

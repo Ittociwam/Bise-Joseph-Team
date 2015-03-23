@@ -26,7 +26,7 @@ public class ItemControl {
 
         item.setLocation(l);
         
-        if (item.description instanceof String)
+        if (description instanceof String)
         {
             item.setDescription(description);
         }
