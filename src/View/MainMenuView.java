@@ -12,6 +12,7 @@ import Model.Game;
 import Model.Person;
 import Model.Player;
 import exceptions.GameControlException;
+import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +54,7 @@ public class MainMenuView extends View {
             selection = getInput();
             stuff.input = selection;
             this.doAction(stuff);
-            
+
         } while (!"E".equals(selection));
     }
 
@@ -73,7 +74,7 @@ public class MainMenuView extends View {
             case "N": {
                 try {
                     this.startNewGame(name);
-                } catch (GameControlException | PlayerControlsException ex) {
+                } catch (GameControlException | PlayerControlsException | ItemControlException ex) {
                     System.out.println(ex.getMessage());
                 }
             }
@@ -94,7 +95,7 @@ public class MainMenuView extends View {
         }
     }
 
-    private void startNewGame(String name) throws GameControlException, PlayerControlsException {
+    private void startNewGame(String name) throws GameControlException, PlayerControlsException, ItemControlException {
 
         Game game = GameControls.createNewGame(name);
 
