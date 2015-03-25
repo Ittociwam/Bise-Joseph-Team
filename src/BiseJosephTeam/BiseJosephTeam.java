@@ -57,6 +57,7 @@ public class BiseJosephTeam {
 
         StartProgramView startProgramView = new StartProgramView();
         try{
+            // open all files
         startProgramView.startProgram();
         }catch(Throwable te){
             System.out.println(te.getMessage());

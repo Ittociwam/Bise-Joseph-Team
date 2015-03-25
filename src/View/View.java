@@ -12,6 +12,8 @@ import java.util.Scanner;
  * @author Robbie
  */
 public abstract class View implements ViewInterface {
+    
+    //keyboard and console variables
 
     private String MENU;
 
