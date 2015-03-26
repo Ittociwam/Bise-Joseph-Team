@@ -47,34 +47,6 @@ public class BiseJosephTeam {
     public static void setLogFile(PrintWriter logFile) {
         BiseJosephTeam.logFile = logFile;
     }
-    
-    
-        try {
-    
-    BiseJosephTeam.inFile = new BufferedReader(new InputStreamReader(System.in));
-
-        BiseJosephTeam.outFile = new PrintWriter(System.out, true);
-
-        String filePath = "log.txt";
-        BiseJosephTeam.logFile = new PrintWriter(filePath);
-} 
-    catch (Exception e) {
-        System.out.println("Exception: " + e.toString() +
-                            "\nCause: " + e.getCause() +
-                            "\nMessage: " + e.getMessage());
-}
-    
-    finally {
-        try {
-            if (BiseJosephTeam.inFile != null) {
-                BiseJosephTeam.inFile.close();
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(BiseJosephTeam.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (BiseJosephTeam.outFile != null)
-        BiseJosephTeam.outFile.close();
-    }
 
     public static PrintWriter getOutFile() {
         return outFile;
@@ -113,21 +85,42 @@ public class BiseJosephTeam {
         return num;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         StartProgramView startProgramView = new StartProgramView();
+
         try {
+
+            BiseJosephTeam.inFile = new BufferedReader(new InputStreamReader(System.in));
+
+            BiseJosephTeam.outFile = new PrintWriter(System.out, true);
+
+            String filePath = "log.txt";
+            BiseJosephTeam.logFile = new PrintWriter(filePath);
+
             startProgramView.startProgram();
+
         } catch (Throwable te) {
-        try{
-            // open all files
-        startProgramView.startProgram();
-        }catch(Throwable te){
-            System.out.println(te.getMessage());
             te.printStackTrace();
+            System.out.println("Exception: " + te.toString()
+                    + "\nCause: " + te.getCause()
+                    + "\nMessage: " + te.getMessage());
             startProgramView.startProgram();
+        } finally {
+            try {
+                if (BiseJosephTeam.inFile != null) 
+                    BiseJosephTeam.inFile.close();
+                
+                if (BiseJosephTeam.outFile != null) 
+                    BiseJosephTeam.outFile.close();
+                
+                if (BiseJosephTeam.logFile != null) 
+                    BiseJosephTeam.logFile.close();
+                
+            } catch (IOException ex) {
+                System.out.println("Error closing files");
+            }
+
         }
-
     }
-
-}
+};

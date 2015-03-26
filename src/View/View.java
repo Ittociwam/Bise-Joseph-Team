@@ -5,7 +5,13 @@
  */
 package View;
 
+import BiseJosephTeam.BiseJosephTeam;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,6 +22,9 @@ public abstract class View implements ViewInterface {
     //keyboard and console variables
 
     private String MENU;
+    
+    protected final BufferedReader keyboard = BiseJosephTeam.getInFile();
+    protected final PrintWriter console = BiseJosephTeam.getOutFile();
 
     public boolean display(Object object) {
         MENU = null;
@@ -46,8 +55,12 @@ public abstract class View implements ViewInterface {
          while("".equals(value))
          {
              System.out.print("\t >");
-        Scanner input = new Scanner(System.in);
-        value=input.nextLine();
+        
+            try {
+                value = this.keyboard.readLine();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         try{
             
        firstLetter = String.valueOf(value.charAt(0));
