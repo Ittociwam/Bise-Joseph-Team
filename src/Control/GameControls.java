@@ -59,7 +59,7 @@ public class GameControls {
         
         Map map = new Map();
         game.setMap(map);
-        MapControls.movePlayerToStartingLocation(map);
+        MapControls.movePlayerToStartingLocation(map, player);
         
         ArrayList<Item> items = playerControls.createItemList(player);
         player.setItems(items);        

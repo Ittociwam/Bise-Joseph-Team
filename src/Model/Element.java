@@ -12,11 +12,11 @@ import java.util.Objects;
  *
  * @author Travis
  */
-public class Element implements Serializable{
+public class Element implements Serializable {
 
     public String description;
     public char type;
-    
+
     protected Location location;
 
     public char getType() {
@@ -31,14 +31,18 @@ public class Element implements Serializable{
         description = "";
         type = ' ';
     }
- 
+
     public Location getLocation() {
         return location;
     }
 
     public void setLocation(Location location) {
         this.location = location;
-        location.getRoom().elements[location.getPoint().x][location.getPoint().y] = this;
+        if (location.getRoom() == null) {
+            return;
+        } else {
+            location.getRoom().elements[location.getPoint().x][location.getPoint().y] = this;
+        }
     }
 
     public String getDescription() {
@@ -80,8 +84,4 @@ public class Element implements Serializable{
         return true;
     }
 
-
-    
-    
-    
 }
