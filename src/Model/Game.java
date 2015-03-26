@@ -75,7 +75,6 @@ public class Game implements Serializable {
     }
 
     public Person getPerson() {
-        System.out.println("getPerson called\n");
         return person;
     }
 

@@ -38,13 +38,13 @@ public class StartProgramView extends View{
     }
 
     private void displayBanner() {
-        System.out.println("\n\n************************************************\n");
+        this.console.println("\n\n************************************************\n");
 
-        System.out.println("*                                                  *\n"
+        this.console.println("*                                                  *\n"
                 + "*         ALL QUIET ON THE PACIFIC THEATER         *\n"
                 + "*               Add game banner here!              *\n");
 
-        System.out.println("****************************************************\n");
+        this.console.println("****************************************************\n");
 
     }
 
@@ -53,12 +53,12 @@ public class StartProgramView extends View{
         
         boolean valid = false;
         while (!valid) {
-            System.out.println("Please enter your name: ");
+            this.console.println("Please enter your name: ");
             playersName = this.keyboard.readLine();
             playersName = playersName.trim();
 
             if (playersName.length() < 2) {
-                System.out.println("Invalid name input, Please try again");
+                ErrorView.display(this.getClass().getName(),"Invalid name input, Please try again");
                 continue;
             }
             break;
@@ -69,7 +69,7 @@ public class StartProgramView extends View{
     }
 
     private void displayWelcomMessage(String name) {
-        System.out.println("\n\n================================\n"
+        this.console.println("\n\n================================\n"
                               +"Welcome to the game, " + name + "\n"
                               +"We hope you make it out alive!\n"
                               +"================================");

@@ -32,11 +32,11 @@ public class BMIView extends View{
         input = getInput();
         int height = parseInt(input);
         int newHealth = playerControls.calcBMI(weight, height);
-        System.out.println("Your new health is " + newHealth);
+        this.console.println("Your new health is " + newHealth);
         }
         
         catch(NumberFormatException nfe){
-            System.out.println(nfe.getMessage());
+            ErrorView.display(this.getClass().getName(),nfe.getMessage());
         }
     }
 

@@ -37,12 +37,10 @@ public class GameControls {
                     + "playersName: " + playersName);
         }
 
-        System.out.println(playersName);
         BiseJosephTeam.game.getPerson().setName(playersName);
 
         BMIView bMIView = new BMIView();
         bMIView.openBMIView();
-        System.out.println("***createPerson function called ***\n");
     }
 
     public static Game  createNewGame(String name) throws GameControlException, PlayerControlsException, ItemControlException {
@@ -81,7 +79,7 @@ public class GameControls {
         return game;
     }
     
-    public void findStrongestEnemy() throws GameControlException
+    public Character findStrongestEnemy() throws GameControlException
     {
         ArrayList<Character> characterCompare = new ArrayList<>();
         for(Character character : BiseJosephTeam.getGame().getEnemies())
@@ -104,35 +102,35 @@ public class GameControls {
             }
         }
         
-        System.out.println("The strongest enemy in this game is: " + tmp.toString() + "\n");
+        return tmp;
+        
         
         
     }
     
-    public void sortGameItems(){
-        
-        System.out.println("sort game called\n");
-        Item smallerNumber = new Item();
-        ArrayList<Item> arr = BiseJosephTeam.game.getItemGameList();
-        System.out.println(arr.toString());
-        Item newListItem = new Item();
-        for (int i = 0; i < arr.size() - 1; i++)
-        {
-            int index = i;
-            for (int j = i + 1; j < arr.size(); j++){
-                if (arr.get(j).getPoints() < arr.get(index).getPoints())
-                    index = j;
-            }
-      
-            smallerNumber = arr.get(index); 
-            arr.set(index, arr.get(i));
-            arr.set(i, smallerNumber);
-            newListItem = arr.get(index);
-            System.out.println(newListItem.description + "\n");
-            
-        }
-        System.out.println("Your weapons from weakest to strongest\n");
-        
-    }
+//    public void sortGameItems(){
+//        
+//        Item smallerNumber = new Item();
+//        ArrayList<Item> arr = BiseJosephTeam.game.getItemGameList();
+//        this.console.println(arr.toString());
+//        Item newListItem = new Item();
+//        for (int i = 0; i < arr.size() - 1; i++)
+//        {
+//            int index = i;
+//            for (int j = i + 1; j < arr.size(); j++){
+//                if (arr.get(j).getPoints() < arr.get(index).getPoints())
+//                    index = j;
+//            }
+//      
+//            smallerNumber = arr.get(index); 
+//            arr.set(index, arr.get(i));
+//            arr.set(i, smallerNumber);
+//            newListItem = arr.get(index);
+//            this.console.println(newListItem.description + "\n");
+//            
+//        }
+//        this.console.println("Your weapons from weakest to strongest\n");
+//        
+//    }
 
 }

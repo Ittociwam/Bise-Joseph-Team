@@ -22,9 +22,9 @@ public class AttackView extends View {
     void openMenu(PlayerControls playerControls) {
         Object object = null;
         String value = " ";
-        System.out.println("currentHealth: " + somePlayer.getHealth());
-        System.out.println("characterHealth: " + someCharacter.getHealth());
-        System.out.println("Would you like to attack again?");
+        this.console.println("currentHealth: " + somePlayer.getHealth());
+        this.console.println("characterHealth: " + someCharacter.getHealth());
+        this.console.println("Would you like to attack again?");
         value = getInput();
         object = value;
         this.doAction(object);
@@ -39,40 +39,40 @@ public class AttackView extends View {
             try {
                 returnValue = playerControls.attack(somePlayer, someCharacter);
             } catch (PlayerControlsException ex) {
-                System.out.println(ex.getMessage());
+                this.console.println(ex.getMessage());
             }
             //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
             switch (returnValue) {
                 case 2:
-                    System.out.println("Player has lost");
+                    this.console.println("Player has lost");
                     done = true;
                     break;
                 case 1:
-                    System.out.println("Enemy has lost");
+                    this.console.println("Enemy has lost");
                     done = true;
                     break;
                 case 0:
-                    System.out.println("Continue the fight");
+                    this.console.println("Continue the fight");
                     done = false;
                     break;
                 case -1:
-                    System.out.println("Invalid enemy type");
+                    ErrorView.display(this.getClass().getName(),"Invalid enemy type");
                     done = true;
                     break;
                 case -2:
-                    System.out.println("Invalid player type");
+                    ErrorView.display(this.getClass().getName(),"Invalid player type");
                     done = true;
                     break;
                 case -3:
-                    System.out.println("Invalid enemy attack value");
+                    ErrorView.display(this.getClass().getName(),"Invalid enemy attack value");
                     done = true;
                     break;
                 case -4:
-                    System.out.println("Invalid player attack value");
+                    ErrorView.display(this.getClass().getName(),"Invalid player attack value");
                     done = true;
                     break;
                 default:
-                    System.out.println("Attack has returned an invalid value!");
+                    ErrorView.display(this.getClass().getName(),"Attack has returned an invalid value!");
                     done = true;
                     break;
             }

@@ -16,7 +16,7 @@ import exceptions.ItemControlException;
 public class ItemControl {
 
     public boolean checkForItem(String item) {
-        System.out.println("check for item called");
+        // if item exists return true
         return true;
     }
 

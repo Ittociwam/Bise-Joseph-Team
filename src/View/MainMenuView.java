@@ -75,7 +75,7 @@ public class MainMenuView extends View {
                 try {
                     this.startNewGame(name);
                 } catch (GameControlException | PlayerControlsException | ItemControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(),ex.getMessage());
                 }
             }
             break;
@@ -91,7 +91,7 @@ public class MainMenuView extends View {
             case "E":
                 return;
             default:
-                System.out.println(input + "is not a Invalid Input");
+                ErrorView.display(this.getClass().getName(),input + "is not a Invalid Input");
         }
     }
 
@@ -103,18 +103,18 @@ public class MainMenuView extends View {
         PlayerControls playerControls = new PlayerControls();
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.openMenu(game.getPlayer(), playerControls);
-        System.out.println("*** StartNewGame Function called ***");
+        this.console.println("*** StartNewGame Function called ***");
     }
 
     private void startExistingGame() {
         // load a player
         GameMenuView gameMenu = new GameMenuView();
         // gameMenu.displayGameMenu(player, playerControls);
-        System.out.println("*** StartExistingGame Function called ***");
+        this.console.println("*** StartExistingGame Function called ***");
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame Function called ***");
+        this.console.println("*** saveGame Function called ***");
     }
 
 }

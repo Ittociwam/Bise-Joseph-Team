@@ -23,9 +23,9 @@ public class RoomView extends View{
         for(int i = 0; i < row; i++)
             for(int j = 0; i < col; i++)
             {
-                System.out.println("+-----+-----+-----+-----+-----+\n");
-                System.out.println("|     |     |  ^  |     |     |\n");
-                System.out.println("|     |     |     |     |     |\n");
+                this.console.println("+-----+-----+-----+-----+-----+\n");
+                this.console.println("|     |     |  ^  |     |     |\n");
+                this.console.println("|     |     |     |     |     |\n");
             }
     }
 

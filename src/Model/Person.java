@@ -17,7 +17,6 @@ public class Person implements Serializable{
     private int bmi;
 
     public Person() {
-        System.out.println("Person Constructor called\n");
         name = "noName";
         bmi = 0;
     }

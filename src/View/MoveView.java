@@ -38,8 +38,8 @@ public class MoveView extends View {
     }
 
     void openMenu(PlayerControls playerControls) {
-        System.out.println("Which way would you like to move?\n");
-        System.out.println("Press 'H' for help\n ");
+        this.console.println("Which way would you like to move?\n");
+        this.console.println("Press 'H' for help\n ");
         String choice = getInput();
         ContAndInput contAndInput = new ContAndInput();
         contAndInput.value = choice;
@@ -67,10 +67,10 @@ public class MoveView extends View {
             }
             break;
             case "H":
-                System.out.println(HELPMENU);
+                this.console.println(HELPMENU);
                 break;
             default:
-                System.out.println(input + "is not a Invalid Input");
+                ErrorView.display(this.getClass().getName(),input + "is not a Invalid Input");
         }
     }
 

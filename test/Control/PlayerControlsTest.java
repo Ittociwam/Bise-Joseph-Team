@@ -25,7 +25,7 @@ public class PlayerControlsTest {
     @Test
     public void testIsAlpha() 
     {
-        System.out.println("isAlpha");
+        this.console.println("isAlpha");
         String code = "Hello";
         PlayerControls instance = new PlayerControls();
         boolean expResult = true;
@@ -52,7 +52,7 @@ public class PlayerControlsTest {
     public void testDicipherCode() 
     {
         // no error
-        System.out.println("dicipherCode");
+        this.console.println("dicipherCode");
         String code = "prfne pvcure";
         PlayerControls instance = new PlayerControls();
         String expResult = "CESAR CIPHER";
@@ -92,7 +92,7 @@ public class PlayerControlsTest {
         somePlayer.setType('p');
         somePlayer.setHealth(22);
 
-        System.out.println("attack");
+        this.console.println("attack");
         PlayerControls instance = new PlayerControls();
 
         int expResult = 0;
@@ -108,7 +108,7 @@ public class PlayerControlsTest {
         somePlayer.setType('p');
         somePlayer.setHealth(0);
 
-        System.out.println("attack");
+        this.console.println("attack");
 
         expResult = 2;
         result = instance.attack(somePlayer, someCharacter);
@@ -123,7 +123,7 @@ public class PlayerControlsTest {
         somePlayer.setType('p');
         somePlayer.setHealth(22);
 
-        System.out.println("attack");
+        this.console.println("attack");
 
         expResult = 1;
         result = instance.attack(somePlayer, someCharacter);
@@ -138,7 +138,7 @@ public class PlayerControlsTest {
         somePlayer.setType('p');
         somePlayer.setHealth(22);
 
-        System.out.println("attack");
+        this.console.println("attack");
 
         expResult = -1;
         result = instance.attack(somePlayer, someCharacter);
@@ -153,7 +153,7 @@ public class PlayerControlsTest {
         somePlayer.setType('d');
         somePlayer.setHealth(22);
 
-        System.out.println("attack");
+        this.console.println("attack");
 
         expResult = -2;
         result = instance.attack(somePlayer, someCharacter);
@@ -168,7 +168,7 @@ public class PlayerControlsTest {
         somePlayer.setType('p');
         somePlayer.setHealth(22);
 
-        System.out.println("attack");
+        this.console.println("attack");
 
         expResult = -3;
         result = instance.attack(somePlayer, someCharacter);
@@ -183,7 +183,7 @@ public class PlayerControlsTest {
         somePlayer.setType('p');
         somePlayer.setHealth(22);
 
-        System.out.println("attack");
+        this.console.println("attack");
 
         expResult = -4;
         result = instance.attack(somePlayer, someCharacter);
@@ -196,7 +196,7 @@ public class PlayerControlsTest {
      @Test
     public void testCalcBMI() 
     {
-        System.out.println("calcBMI");
+        this.console.println("calcBMI");
         Player player = new Player();
         player.setHealth(25);
         int fat = 200;
@@ -206,7 +206,7 @@ public class PlayerControlsTest {
         int result = instance.calcBMI(player, fat, tall);
         assertEquals(expResult, result);
         
-        System.out.println("calcBMI");
+        this.console.println("calcBMI");
         player.setHealth(25);
         fat = 200;
         tall = -5;
@@ -214,7 +214,7 @@ public class PlayerControlsTest {
         result = instance.calcBMI(player, fat, tall);
         assertEquals(expResult, result);
         
-        System.out.println("calcBMI");
+        this.console.println("calcBMI");
         player.setHealth(25);
         fat = -200;
         tall = 5;
