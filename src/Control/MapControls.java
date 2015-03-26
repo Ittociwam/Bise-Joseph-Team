@@ -37,7 +37,6 @@ public class MapControls {
             roomTypes[i] = new Room();
         }
 
-        System.out.println(roomTypes[0].getDescription());
 
         roomTypes[0].setDescription("A forest area");
         roomTypes[1].setDescription("A Beach Area");
@@ -48,7 +47,6 @@ public class MapControls {
 
     public Room getARoom(int num) {
 
-        System.out.println("Returning room: " + roomTypes[num].getDescription() + "\n");
         return roomTypes[num];
     }
 

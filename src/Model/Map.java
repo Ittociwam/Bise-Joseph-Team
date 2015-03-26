@@ -34,7 +34,6 @@ public class Map {
         RoomControls roomControls = new RoomControls();
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
-                System.out.println("row: " + Integer.toString(row) + " col: " + Integer.toString(col) + "\n");
                 rooms[row][col] = roomControls.generateRandomRoom();
             }
         }

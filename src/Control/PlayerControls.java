@@ -106,19 +106,23 @@ public class PlayerControls {
     public void move(String direction) throws PlayerControlsException
     {
         // move the character in the direction sent in
-        System.out.print("You moved ");
+        
+        //******If we want this function to print where a character moved then we need it to return 
+        // the string of where they moved and print out the string in the view class
+        
+        //this.console.print("You moved ");
         switch (direction){
             case "N":
-                System.out.print("North.\n");
+                //this.console.print("North.\n");
                 break;
             case "E":
-                System.out.print("East.\n");
+                //this.console.print("East.\n");
                 break;
             case "W":
-                System.out.print("West.\n");
+                //this.console.print("West.\n");
                 break;
             case "S":
-                System.out.print("South.\n");
+                //this.console.print("South.\n");
                 break;
             default:
                 throw new PlayerControlsException("Cannot decode an empty string.");
@@ -127,7 +131,6 @@ public class PlayerControls {
     
     public void useItem(Item item) throws PlayerControlsException
     {
-        System.out.println("use item called\n");
         
         if(item.getType() == 'Q')
         {

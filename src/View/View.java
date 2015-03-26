@@ -18,13 +18,18 @@ import java.util.logging.Logger;
  * @author Robbie
  */
 public abstract class View implements ViewInterface {
-    
-    //keyboard and console variables
 
+    //keyboard and console variables
     private String MENU;
-    
-    protected final BufferedReader keyboard = BiseJosephTeam.getInFile();
-    protected final PrintWriter console = BiseJosephTeam.getOutFile();
+
+    protected final BufferedReader keyboard;
+    protected final PrintWriter console;
+
+    public View() {
+
+        keyboard = BiseJosephTeam.getInFile();
+        console = BiseJosephTeam.getOutFile();
+    }
 
     public boolean display(Object object) {
         MENU = null;
@@ -33,7 +38,7 @@ public abstract class View implements ViewInterface {
         } else {
             return false;
         }
-        System.out.println(MENU);
+        this.console.println(MENU);
         return true;
     }
 
@@ -41,35 +46,31 @@ public abstract class View implements ViewInterface {
         try {
             Integer.parseInt(input);
             return true;
-        } catch (NumberFormatException nf ) {
+        } catch (NumberFormatException nf) {
             return false;
         }
     }
 
     public String getInput() {
 
-       
-        
         String value = "";
         String firstLetter = "";
-         while("".equals(value))
-         {
-             System.out.print("\t >");
-        
+        while ("".equals(value)) {
+            this.console.print("\t >");
+
             try {
                 value = this.keyboard.readLine();
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                this.console.println(ex.getMessage());
             }
-        try{
-            
-       firstLetter = String.valueOf(value.charAt(0));
+            try {
+
+                firstLetter = String.valueOf(value.charAt(0));
+            } catch (StringIndexOutOfBoundsException siobe) {
+                continue;
+            }
         }
-        catch(StringIndexOutOfBoundsException siobe){
-            continue;
-        }
-         }
-        
+
         if (isInteger(firstLetter)) {
             return value;
         }

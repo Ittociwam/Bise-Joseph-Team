@@ -25,12 +25,12 @@ public class ClueView extends View {
 
     public void openClueView(PlayerControls playerControls, String code, ItemControl itemControl) {
         if (display(code)) {
-            System.out.println("Would you like to decode this clue?");
+            this.console.println("Would you like to decode this clue?");
             if (getInput() == "Y") {
                 doAction(code);
             }
         } else {
-            System.out.println("Your code cannot be read.");
+            ErrorView.display(this.getClass().getName(),"Your code cannot be read.");
         }
 
     }
@@ -45,7 +45,7 @@ public class ClueView extends View {
                 Logger.getLogger(ClueView.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            System.out.println("You don't have a decoder");
+            ErrorView.display(this.getClass().getName(),"You don't have a decoder");
         }
     }
 

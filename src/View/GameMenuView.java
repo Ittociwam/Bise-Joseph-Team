@@ -56,7 +56,7 @@ public class GameMenuView extends View {
 
         String value = " ";
         do {
-            System.out.println(MENU);
+            this.console.println(MENU);
             value = getInput();
             myStuff.myValue = value;
             this.doAction(myStuff);
@@ -67,8 +67,8 @@ public class GameMenuView extends View {
 
         Stuff myStuff = (Stuff) obj;
         String value = myStuff.myValue;
-
         ArrayList<Item> items = myStuff.items;
+        
 
         PlayerView playerView = new PlayerView();
 
@@ -92,38 +92,43 @@ public class GameMenuView extends View {
                 break;
             case "I":
         {
+            /*
             try {
                 itemView.openItemMenu(items, playerControls);
             } catch (ItemViewException ex) {
-                System.out.println(ex.getMessage());
+                ErrorView.display(this.getClass().getName(),ex.getMessage());
             }
+                    */
         }
                 break;
-            case "F": {
+            case "F": 
+            {
+                Model.Character tmp = null;
                 try {
-                    gameControls.findStrongestEnemy();
+                    tmp = gameControls.findStrongestEnemy();
                 } catch (GameControlException ex) {
-                    System.out.println(ex.getMessage());
+                    ErrorView.display(this.getClass().getName(),ex.getMessage());
                 }
+                this.console.println("The strongest enemy in this game is: " + tmp.toString() + "\n");
             }
             break;
             case "S":
-                gameControls.sortGameItems();
+                //gameControls.sortGameItems();
                 break;
             case "E":
                 break;
             default:
-                System.out.println("Invalid input, Try again\n");
+                this.console.println("Invalid input, Try again\n");
 
         }
     }
 
     private void viewRoom() {
-        System.out.println("View Room function called");
+        this.console.println("View Room function called");
     }
 
     private void viewMap() {
-        System.out.println("View Map function called");
+        this.console.println("View Map function called");
     }
 
 }

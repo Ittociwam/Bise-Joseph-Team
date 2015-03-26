@@ -20,7 +20,6 @@ public class RoomControls {
         Random randomGenerator = new Random();
         MapControls mapControls = new MapControls();
         int num = randomGenerator.nextInt(5);
-        System.out.println("random number: " + Integer.toString(num));
         return mapControls.getARoom(num);
     }
     

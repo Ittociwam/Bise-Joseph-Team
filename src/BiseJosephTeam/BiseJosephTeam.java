@@ -16,6 +16,7 @@ import Model.Player;
 import Model.Map;
 import Model.Person;
 import Model.Room;
+import View.ErrorView;
 import View.StartProgramView;
 import java.awt.Dimension;
 import java.io.BufferedReader;
@@ -64,12 +65,15 @@ public class BiseJosephTeam {
         BiseJosephTeam.inFile = inFile;
     }
 
+    private static String getName() {
+        return "BiseJosephTeam";
+    }
+
     public BiseJosephTeam() {
         game = new Game();
     }
 
     public static Game getGame() {
-        System.out.println("get game called\n");
         return game;
     }
 
@@ -87,8 +91,6 @@ public class BiseJosephTeam {
 
     public static void main(String[] args) throws IOException {
 
-        StartProgramView startProgramView = new StartProgramView();
-
         try {
 
             BiseJosephTeam.inFile = new BufferedReader(new InputStreamReader(System.in));
@@ -97,28 +99,32 @@ public class BiseJosephTeam {
 
             String filePath = "log.txt";
             BiseJosephTeam.logFile = new PrintWriter(filePath);
-
+            StartProgramView startProgramView = new StartProgramView();
             startProgramView.startProgram();
 
         } catch (Throwable te) {
             te.printStackTrace();
-            System.out.println("Exception: " + te.toString()
+            ErrorView.display(BiseJosephTeam.getName(), "Exception: " + te.toString()
                     + "\nCause: " + te.getCause()
                     + "\nMessage: " + te.getMessage());
+            StartProgramView startProgramView = new StartProgramView();
             startProgramView.startProgram();
         } finally {
             try {
-                if (BiseJosephTeam.inFile != null) 
+                if (BiseJosephTeam.inFile != null) {
                     BiseJosephTeam.inFile.close();
-                
-                if (BiseJosephTeam.outFile != null) 
+                }
+
+                if (BiseJosephTeam.outFile != null) {
                     BiseJosephTeam.outFile.close();
-                
-                if (BiseJosephTeam.logFile != null) 
+                }
+
+                if (BiseJosephTeam.logFile != null) {
                     BiseJosephTeam.logFile.close();
-                
+                }
+
             } catch (IOException ex) {
-                System.out.println("Error closing files");
+                ErrorView.display(BiseJosephTeam.getName(), "Error closing files");
             }
 
         }

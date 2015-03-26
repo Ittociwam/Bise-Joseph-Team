@@ -52,13 +52,13 @@ public class ItemView extends View {
 
         // if object is an array list
         if (items.isEmpty()) {
-            System.out.println("You have no items!\n");
+            ErrorView.display(this.getClass().getName(),"You have no items!\n");
             return false;
         }
-        System.out.println("Please select the item you wish to equip or use"
+        this.console.println("Please select the item you wish to equip or use"
                 + "Or press 'E to exit.");
         for (int i = 0; i < items.size(); i++) {
-            System.out.println(i + 1 + ". " + items.get(i).getDescription() + "\n");
+            this.console.println(i + 1 + ". " + items.get(i).getDescription() + "\n");
         }
         return true;
     }
@@ -68,7 +68,7 @@ public class ItemView extends View {
                 + "between 1 and " + size + "\n";
         boolean valid = false;
         if (size <= 0) {
-            System.out.println("Cannot select from an empty inventory!\n");
+            this.console.println("Cannot select from an empty inventory!\n");
             return -1;
         }
         while (!valid) {
@@ -84,8 +84,8 @@ public class ItemView extends View {
                 int index = Integer.parseInt(value);
 
                 if (index < 1 || index > size) {
-                    System.out.println(ERROR);
-                    System.out.println("value: " + index);
+                    ErrorView.display(this.getClass().getName(),ERROR);
+                    this.console.println("value: " + index);
                     valid = false; // input is less than one or greater than the size of array
                 } else if (index <= size) {
                     return index - 1; // return array index
@@ -93,7 +93,7 @@ public class ItemView extends View {
                     valid = false; // anything other than this is bad
                 }
             } catch (NumberFormatException nf) {
-                System.out.println("Please enter a number");
+                ErrorView.display(this.getClass().getName(),"Please enter a number");
                 valid = false;
                 continue;
             }
