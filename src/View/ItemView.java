@@ -17,26 +17,18 @@ import java.util.logging.Logger;
  *
  * @author Robbie
  */
-class ContAndItem {
-
-    public Item myItem;
-    public PlayerControls myPlayerControls;
-}
 
 public class ItemView extends View {
 
     private final String INVENTORY = "\n Your current inventory: \n";
 
-    public int openItemMenu(ArrayList<Item> items, PlayerControls playerControls) throws ItemViewException {
+    public int openItemMenu(ArrayList<Item> items) throws ItemViewException {
         if (!display(items)) {
             throw new ItemViewException("Invalid Display");
         }
         int choice = validateInput(items.size());
         if (choice > 0) {
-            ContAndItem myStuff = null;
-            myStuff.myItem = items.get(choice);
-            myStuff.myPlayerControls = playerControls;
-            doAction(myStuff);
+            doAction(items.get(choice));
             return 1;
         } else {
             throw new ItemViewException("Choice was not > 0");
@@ -104,13 +96,11 @@ public class ItemView extends View {
 
     public void doAction(Object obj) {
 
-        ContAndItem myStuff = (ContAndItem) obj;
-        Item item = myStuff.myItem;
-        PlayerControls playerControls = myStuff.myPlayerControls;
+        Item item = (Item)obj;
         try {
-            playerControls.useItem(item);
+            PlayerControls.useItem(item);
         } catch (PlayerControlsException ex) {
-            Logger.getLogger(ItemView.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorView.display(this.getClass().getName(), "Error assigning an item");
         }
     }
 }

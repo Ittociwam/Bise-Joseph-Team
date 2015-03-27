@@ -16,11 +16,11 @@ import java.util.Random;
  *
  * @author Robbie
  */
-public class CharacterControl {
+public final class CharacterControl {
 
-    private String[] enemyTypes;
+    private static String[] enemyTypes;
 
-    public Character generateRandomEnemy() {
+    public static Character generateRandomEnemy() {
 
         Character character = new Character();
         enemyTypes = new String[4];
@@ -40,7 +40,7 @@ public class CharacterControl {
 
     }
 
-    public void addEnemies(int numEnemies) {
+    public static void addEnemies(int numEnemies) {
 
         ArrayList<Character> enemies = new ArrayList<>();
 

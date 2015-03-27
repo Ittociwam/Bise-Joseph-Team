@@ -20,7 +20,6 @@ public class BMIView extends View{
         try{
             display("Add points to your health by entering your height"
                     + "and weight to calculate your bmi!\n");
-        PlayerControls playerControls = new PlayerControls();
         
         display("Please enter your weight: ");
         
@@ -31,7 +30,7 @@ public class BMIView extends View{
         
         input = getInput();
         int height = parseInt(input);
-        int newHealth = playerControls.calcBMI(weight, height);
+        int newHealth = PlayerControls.calcBMI(weight, height);
         this.console.println("Your new health is " + newHealth);
         }
         

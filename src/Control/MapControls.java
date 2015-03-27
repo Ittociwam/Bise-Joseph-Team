@@ -15,11 +15,11 @@ import java.util.ArrayList;
  *
  * @author Robbie
  */
-public class MapControls {
+public final class MapControls {
 
-    private Room[] roomTypes;
+    private static Room[] roomTypes;
 
-    public MapControls() {
+    private MapControls() {
         roomTypes = new Room[5];
         initializeRooms();
     }
@@ -28,20 +28,19 @@ public class MapControls {
         // this is done in map constructor
     }
 
-    static void movePlayerToStartingLocation(Map map, Player player) {
-        
+    public static void movePlayerToStartingLocation(Map map, Player player) {
+
         LocationControl locationControl = new LocationControl();
-        
+
         player.setLocation(locationControl.generateRandomLocation());
 
     }
 
-    public void initializeRooms() {
+    public static void initializeRooms() {
 
         for (int i = 0; i < 5; i++) {
             roomTypes[i] = new Room();
         }
-
 
         roomTypes[0].setDescription("A forest area");
         roomTypes[1].setDescription("A Beach Area");
@@ -50,7 +49,7 @@ public class MapControls {
         roomTypes[4].setDescription("A bathroom");
     }
 
-    public Room getARoom(int num) {
+    public static Room getARoom(int num) {
 
         return roomTypes[num];
     }

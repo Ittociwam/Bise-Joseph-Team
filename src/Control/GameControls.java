@@ -27,7 +27,10 @@ import static java.util.Collections.max;
  *
  * @author Robbie
  */
-public class GameControls {
+public final class GameControls {
+
+    private GameControls() {
+    }
 
     public static void createPerson(String playersName)throws GameControlException, PlayerControlsException {
         if(playersName == null)
@@ -44,7 +47,6 @@ public class GameControls {
     }
 
     public static Game  createNewGame(String name) throws GameControlException, PlayerControlsException, ItemControlException {
-        PlayerControls playerControls = new PlayerControls();
         
         Game game = new Game();
         
@@ -61,7 +63,7 @@ public class GameControls {
         game.setMap(map);
         MapControls.movePlayerToStartingLocation(map, player);
         
-        ArrayList<Item> items = playerControls.createItemList(player);
+        ArrayList<Item> items = PlayerControls.createItemList(player);
         player.setItems(items);        
         
         BiseJosephTeam.game.initializeGameItems();
@@ -79,7 +81,7 @@ public class GameControls {
         return game;
     }
     
-    public Character findStrongestEnemy() throws GameControlException
+    public static Character findStrongestEnemy() throws GameControlException
     {
         ArrayList<Character> characterCompare = new ArrayList<>();
         for(Character character : BiseJosephTeam.getGame().getEnemies())
@@ -108,7 +110,7 @@ public class GameControls {
         
     }
     
-//    public void sortGameItems(){
+//    public static void sortGameItems(){
 //        
 //        Item smallerNumber = new Item();
 //        ArrayList<Item> arr = BiseJosephTeam.game.getItemGameList();

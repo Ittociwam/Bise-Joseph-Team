@@ -7,6 +7,7 @@ package Control;
 
 import BiseJosephTeam.BiseJosephTeam;
 import Model.Room;
+import static java.lang.System.console;
 
 import java.util.Random;
 
@@ -14,13 +15,15 @@ import java.util.Random;
  *
  * @author Robbie
  */
-public class RoomControls {
+public final class RoomControls {
 
-    public Room generateRandomRoom() {
+    public static Room generateRandomRoom() {
         Random randomGenerator = new Random();
-        MapControls mapControls = new MapControls();
         int num = randomGenerator.nextInt(5);
-        return mapControls.getARoom(num);
+        return MapControls.getARoom(num);
+    }
+
+    private RoomControls() {
     }
     
 }

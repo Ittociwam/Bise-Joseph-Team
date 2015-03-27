@@ -28,13 +28,10 @@ public class Map {
         rooms = new Room[6][6];
 
         
-        MapControls mapControls = new MapControls();
         
-
-        RoomControls roomControls = new RoomControls();
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 6; col++) {
-                rooms[row][col] = roomControls.generateRandomRoom();
+                rooms[row][col] = RoomControls.generateRandomRoom();
             }
         }
     }

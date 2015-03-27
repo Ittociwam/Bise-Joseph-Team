@@ -13,7 +13,10 @@ import java.awt.Point;
  *
  * @author Robbie
  */
-public class LocationControl {
+public final class LocationControl {
+
+    public LocationControl() {
+    }
 
     public static Location generateRandomLocation() {
         Location location = new Location();

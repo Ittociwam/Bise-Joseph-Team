@@ -15,11 +15,6 @@ import java.util.logging.Logger;
  *
  * @author Robbie
  */
-class ContAndInput {
-
-    public String value;
-    public PlayerControls myPlayerControls;
-}
 
 public class MoveView extends View {
 
@@ -37,22 +32,16 @@ public class MoveView extends View {
     public MoveView() {
     }
 
-    void openMenu(PlayerControls playerControls) {
+    void openMenu() {
         this.console.println("Which way would you like to move?\n");
         this.console.println("Press 'H' for help\n ");
         String choice = getInput();
-        ContAndInput contAndInput = new ContAndInput();
-        contAndInput.value = choice;
-        contAndInput.myPlayerControls = playerControls;
-        doAction(contAndInput);
+        doAction(choice);
 
     }
 
     public void doAction(Object obj) {
-        ContAndInput myStuff = (ContAndInput) obj;
-        String input = myStuff.value;
-        PlayerControls playerControls = new PlayerControls();
-        playerControls = myStuff.myPlayerControls;
+        String input = (String)obj;
 
         switch (input) {
             case "N":
@@ -60,7 +49,7 @@ public class MoveView extends View {
             case "S":
             case "W": {
                 try {
-                    playerControls.move(input);
+                    PlayerControls.move(input);
                 } catch (PlayerControlsException ex) {
                     Logger.getLogger(MoveView.class.getName()).log(Level.SEVERE, null, ex);
                 }

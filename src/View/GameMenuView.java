@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 class Stuff {
 
     public ArrayList<Item> items;
-    public PlayerControls playerControls;
     public String myValue;
 
 }
@@ -49,10 +48,9 @@ public class GameMenuView extends View {
             + "------------------------------------------\n";
 
     // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
-    void openMenu(Player player, PlayerControls playerControls) throws PlayerControlsException {
+    void openMenu(Player player) throws PlayerControlsException {
         Stuff myStuff = new Stuff();
         myStuff.items = player.getItems();
-        myStuff.playerControls = playerControls;
 
         String value = " ";
         do {
@@ -72,17 +70,13 @@ public class GameMenuView extends View {
 
         PlayerView playerView = new PlayerView();
 
-        PlayerControls playerControls = myStuff.playerControls;
-
-        GameControls gameControls = new GameControls();
-
         switch (value) {
             case "H":
                 HelpMenuView helpMenu = new HelpMenuView();
                 helpMenu.openMenu();
                 break;
             case "M":
-                moveView.openMenu(playerControls);
+                moveView.openMenu();
                 break;
             case "L":
                 this.viewRoom();
@@ -94,7 +88,7 @@ public class GameMenuView extends View {
         {
             
             try {
-                itemView.openItemMenu(items, playerControls);
+                itemView.openItemMenu(items);
             } catch (ItemViewException ex) {
                 ErrorView.display(this.getClass().getName(),ex.getMessage());
             }
@@ -105,7 +99,7 @@ public class GameMenuView extends View {
             {
                 Model.Character tmp = null;
                 try {
-                    tmp = gameControls.findStrongestEnemy();
+                    tmp = GameControls.findStrongestEnemy();
                 } catch (GameControlException ex) {
                     ErrorView.display(this.getClass().getName(),ex.getMessage());
                 }
@@ -113,7 +107,7 @@ public class GameMenuView extends View {
             }
             break;
             case "S":
-                //gameControls.sortGameItems();
+                //GameControls.sortGameItems();
                 break;
             case "E":
                 break;

@@ -15,11 +15,10 @@ import java.util.logging.Logger;
 public class AttackView extends View {
 
     boolean done = false;
-    PlayerControls playerControls = new PlayerControls();
     Player somePlayer = new Player();
     Character someCharacter = new Character();
 
-    void openMenu(PlayerControls playerControls) {
+    void openMenu() {
         Object object = null;
         String value = " ";
         this.console.println("currentHealth: " + somePlayer.getHealth());
@@ -37,7 +36,7 @@ public class AttackView extends View {
         while (!done) {
             int returnValue = 0;
             try {
-                returnValue = playerControls.attack(somePlayer, someCharacter);
+                returnValue = PlayerControls.attack(somePlayer, someCharacter);
             } catch (PlayerControlsException ex) {
                 this.console.println(ex.getMessage());
             }

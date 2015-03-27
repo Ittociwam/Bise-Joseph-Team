@@ -18,16 +18,16 @@ import java.util.ArrayList;
  *
  * @author Robbie
  */
-public class PlayerControls {
+public final class PlayerControls {
 
-    public PlayerControls() {
+    private PlayerControls() {
     }
 
-    public boolean isAlpha(String code) {
+    public static boolean isAlpha(String code) {
         return code.matches("[a-zA-Z\\s]+");
     }
 
-    public String dicipherCode(String code) throws PlayerControlsException {
+    public static String dicipherCode(String code) throws PlayerControlsException {
 
         if (code.isEmpty()) {
             throw new PlayerControlsException("Cannot decode an empty string."); // EMPTY ERROR FLAG
@@ -57,7 +57,7 @@ public class PlayerControls {
         return "!"; // INVALID INPUT ERROR flag
     }
 
-    public int attack(Player player, Character enemy) throws PlayerControlsException {
+    public static int attack(Player player, Character enemy) throws PlayerControlsException {
 
         if (enemy.getType() != 'e') {
             throw new PlayerControlsException("Cannot fight this type of character");
@@ -90,7 +90,7 @@ public class PlayerControls {
         return 0;
     }
     
-    public int calcBMI(int fat, int tall)throws PlayerControlsException{
+    public static int calcBMI(int fat, int tall)throws PlayerControlsException{
         if (fat < 0)
             throw new PlayerControlsException("Invalid weight input in calcBMI"); // throw error
         else if (tall < 0)
@@ -103,7 +103,7 @@ public class PlayerControls {
         }
     }
     
-    public void move(String direction) throws PlayerControlsException
+    public static void move(String direction) throws PlayerControlsException
     {
         // move the character in the direction sent in
         
@@ -129,7 +129,7 @@ public class PlayerControls {
         }
     }
     
-    public void useItem(Item item) throws PlayerControlsException
+    public static void useItem(Item item) throws PlayerControlsException
     {
         
         if(item.getType() == 'Q')
@@ -145,8 +145,7 @@ public class PlayerControls {
          else if(item.getType() == 'C')
          {
              ClueView clueView = new ClueView();
-             ItemControl itemControl = new ItemControl();
-             clueView.openClueView(this, item.getDescription(), itemControl);
+             clueView.openClueView(item.getDescription());
          }
         
         else
@@ -157,14 +156,11 @@ public class PlayerControls {
         
     }
 
-    ArrayList<Item> createItemList(Player player) throws ItemControlException {
+    public static ArrayList<Item> createItemList(Player player) throws ItemControlException {
         ArrayList<Item> items = new ArrayList<>();
         
-
-                
-        ItemControl itemControl = new ItemControl();
         
-        Item pistol = itemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
+        Item pistol = ItemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
                                                                                                 // item will not follow player... set it to null? 
         items.add(pistol);
         

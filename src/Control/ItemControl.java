@@ -13,14 +13,17 @@ import exceptions.ItemControlException;
  *
  * @author Robbie
  */
-public class ItemControl {
+public final class ItemControl {
 
-    public boolean checkForItem(String item) {
+    private ItemControl() {
+    }
+
+    public static boolean checkForItem(String item) {
         // if item exists return true
         return true;
     }
 
-    public Item newItem(String description, int i, char c, Location l) throws ItemControlException {
+    public static Item newItem(String description, int i, char c, Location l) throws ItemControlException {
 
         Item item = new Item();
         item.setLocation(l);

@@ -100,9 +100,8 @@ public class MainMenuView extends View {
         Game game = GameControls.createNewGame(name);
 
         // Make a player
-        PlayerControls playerControls = new PlayerControls();
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.openMenu(game.getPlayer(), playerControls);
+        gameMenu.openMenu(game.getPlayer());
         this.console.println("*** StartNewGame Function called ***");
     }
 
