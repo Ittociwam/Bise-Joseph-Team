@@ -8,6 +8,8 @@ package Model;
 import Model.Element;
 import java.awt.Dimension;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -18,9 +20,15 @@ public class Room implements Serializable{
 
     private String description;
     private Dimension size;
+    public Element[][] elements;
+    
+    
     
     
     public Room() {
+         elements = new Element [5][5];
+        description = "a";
+        size = new Dimension(5, 5);
     }
 
     public String getDescription() {

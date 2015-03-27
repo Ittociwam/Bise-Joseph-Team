@@ -8,14 +8,26 @@ package View;
 import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
 import Control.PlayerControls;
+import Model.Game;
+import Model.Person;
 import Model.Player;
-import java.util.Scanner;
+import exceptions.GameControlException;
+import exceptions.ItemControlException;
+import exceptions.PlayerControlsException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Robbie
  */
-public class MainMenuView {
+class OtherStuff {
+
+    String name;
+    String input;
+}
+
+public class MainMenuView extends View {
 
     private final String MENU = "\n"
             + "-------------------------------------\n"
@@ -28,89 +40,81 @@ public class MainMenuView {
             + "          E - Exit                   \n"
             + "-------------------------------------\n";
 
+    private Person myPerson;
 
+    void openMenu(String name) {
+        OtherStuff stuff = new OtherStuff();
 
-    void displayMenu() {
-        char selection = ' ';
+        stuff.name = name;
+
+        String selection = "";
         do {
-            System.out.println(MENU);
+            display(MENU);
 
-            selection = this.getInput();
+            selection = getInput();
+            stuff.input = selection;
+            this.doAction(stuff);
 
-            this.doAction(selection);
-        } while (selection != 'E');
+        } while (!"E".equals(selection));
     }
 
     void displayHelpMenu() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.display();
+        helpMenuView.openMenu();
     }
 
-    private char getInput() {
+    public void doAction(Object obj) {
 
-        boolean valid = false;
-        while (!valid) {
-            Scanner keyboard = new Scanner(System.in);
-            char value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
-            switch (value) {
-                case 'G':
-                case 'N':
-                case 'H':
-                case 'S':
-                case 'E':
-                    return value;
-                default:
-                    System.out.println(value + " is not a valid input");
-                    valid = false;
-            }
+        OtherStuff stuff = (OtherStuff) obj;
 
-        }
-        return 0;
+        String input = stuff.input;
+        String name = stuff.name;
 
-    }
-
-    private void doAction(char input) {
         switch (input) {
-            case 'N':
-                this.startNewGame();
-                break;
-            case 'G':
+            case "N": {
+                try {
+                    this.startNewGame(name);
+                } catch (GameControlException | PlayerControlsException | ItemControlException ex) {
+                    ErrorView.display(this.getClass().getName(),ex.getMessage());
+                }
+            }
+            break;
+            case "G":
                 this.startExistingGame();
                 break;
-            case 'H':
+            case "H":
                 this.displayHelpMenu();
                 break;
-            case 'S':
+            case "S":
                 this.saveGame();
                 break;
-            case 'E':
+            case "E":
                 return;
             default:
-                System.out.println(input + "is not a Invalid Input");
+                ErrorView.display(this.getClass().getName(),input + "is not a Invalid Input");
         }
     }
 
-    private void startNewGame() {
-        GameControls.createNewGame(BiseJosephTeam.getPerson());
+    private void startNewGame(String name) throws GameControlException, PlayerControlsException, ItemControlException {
+
+        Game game = GameControls.createNewGame(name);
 
         // Make a player
-        Player player = new Player();
         PlayerControls playerControls = new PlayerControls();
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenu(player, playerControls);
-        System.out.println("*** StartNewGame Function called ***");
+        gameMenu.openMenu(game.getPlayer(), playerControls);
+        this.console.println("*** StartNewGame Function called ***");
     }
 
     private void startExistingGame() {
         // load a player
         GameMenuView gameMenu = new GameMenuView();
-       // gameMenu.displayGameMenu(player, playerControls);
-        System.out.println("*** StartExistingGame Function called ***");
+        // gameMenu.displayGameMenu(player, playerControls);
+        this.console.println("*** StartExistingGame Function called ***");
     }
 
     private void saveGame() {
-        System.out.println("*** saveGame Function called ***");
+        this.console.println("*** saveGame Function called ***");
     }
 
 }

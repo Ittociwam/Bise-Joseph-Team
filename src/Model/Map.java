@@ -4,49 +4,45 @@
  * and open the template in the editor.
  */
 package Model;
+
+import Control.MapControls;
+import Control.RoomControls;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Objects;
+
 /**
  *
  * @author Travis
  */
 public class Map {
-    private Dimension size;
-    private ArrayList <Location> locations; 
+
+
+
+    Dimension size;
+    //ArrayList<Room> rooms;
+    private Room[][] rooms;
 
     public Map() {
+        size = new Dimension(6, 6);
+        rooms = new Room[6][6];
+
+        
+        MapControls mapControls = new MapControls();
+        
+
+        RoomControls roomControls = new RoomControls();
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 6; col++) {
+                rooms[row][col] = roomControls.generateRandomRoom();
+            }
+        }
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.size);
-        hash = 13 * hash + Objects.hashCode(this.locations);
-        return hash;
+    public Map(int row, int col) {
+        // map must be 6 x 6 always. 
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Map other = (Map) obj;
-        if (!Objects.equals(this.size, other.size)) {
-            return false;
-        }
-        if (!Objects.equals(this.locations, other.locations)) {
-            return false;
-        }
-        return true;
-    }
-
-
-    
-    
     public Dimension getSize() {
         return size;
     }
@@ -55,17 +51,15 @@ public class Map {
         this.size = size;
     }
 
-    public ArrayList<Location> getRooms() {
-        return locations;
+    public Room[][] getRooms() {
+        return rooms;
+    }
+    
+    
+
+    public void setRooms(Room[][] rooms) {
+        this.rooms = rooms;
     }
 
-    public void setRooms(ArrayList<Location> locations) {
-        this.locations = locations;
-    }
-
-    @Override
-    public String toString() {
-        return "Map{" + "size=" + size + ", locations=" + locations + '}';
-    }
 
 }

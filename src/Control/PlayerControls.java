@@ -8,6 +8,9 @@ package Control;
 import Model.Character;
 import Model.Item;
 import Model.Player;
+import View.ClueView;
+import exceptions.ItemControlException;
+import exceptions.PlayerControlsException;
 import java.util.ArrayList;
 
 
@@ -24,10 +27,10 @@ public class PlayerControls {
         return code.matches("[a-zA-Z\\s]+");
     }
 
-    public String dicipherCode(String code) {
+    public String dicipherCode(String code) throws PlayerControlsException {
 
         if (code.isEmpty()) {
-            return "*"; // EMPTY ERROR FLAG
+            throw new PlayerControlsException("Cannot decode an empty string."); // EMPTY ERROR FLAG
         }
         String message = "";
         if (isAlpha(code)) {
@@ -54,22 +57,22 @@ public class PlayerControls {
         return "!"; // INVALID INPUT ERROR flag
     }
 
-    public int attack(Player player, Character enemy) {
+    public int attack(Player player, Character enemy) throws PlayerControlsException {
 
         if (enemy.getType() != 'e') {
-            return -1;
+            throw new PlayerControlsException("Cannot fight this type of character");
         } // Invalid enemy
 
         if (player.getType() != 'p') {
-            return -2; // invalid player
+            throw new PlayerControlsException("Cannot battle with this type of character"); // invalid player
         }
 
         if (enemy.getAttack() < 0) {
-            return -3; // invalid enemy attack value
+            throw new PlayerControlsException("Enemy attack cannot be below zero"); // invalid enemy attack value
         }
 
         if (player.getAttack() < 0) {
-            return -4; // invalid player attack value
+            throw new PlayerControlsException("Player attack cannot be below zero"); // invalid player attack value
         }
 
         enemy.setHealth(enemy.getHealth() - player.getAttack());
@@ -87,40 +90,47 @@ public class PlayerControls {
         return 0;
     }
     
-    public int calcBMI(Player player, int fat, int tall){
-        int bmi = fat / tall;
-        player.setHealth(player.getHealth() + bmi);
+    public int calcBMI(int fat, int tall)throws PlayerControlsException{
         if (fat < 0)
-            return -2;
+            throw new PlayerControlsException("Invalid weight input in calcBMI"); // throw error
         else if (tall < 0)
-            return -1;
+            throw new PlayerControlsException("Invalid height input in calcBMI"); // throw error
         else
-            return player.getHealth();
-    }
-    
-    public void move(char direction)
-    {
-        // move the character in the direction sent in
-        System.out.print("You moved ");
-        switch (direction){
-            case 'N':
-                System.out.print("North.\n");
-                break;
-            case 'E':
-                System.out.print("East.\n");
-                break;
-            case 'W':
-                System.out.print("West.\n");
-                break;
-            case 'S':
-                System.out.print("South.\n");
-                break;                
+        {
+            int bmi = fat / tall;
+           
+            return bmi;
         }
     }
     
-    public void useItem(Item item)
+    public void move(String direction) throws PlayerControlsException
     {
-        System.out.println("use item called\n");
+        // move the character in the direction sent in
+        
+        //******If we want this function to print where a character moved then we need it to return 
+        // the string of where they moved and print out the string in the view class
+        
+        //this.console.print("You moved ");
+        switch (direction){
+            case "N":
+                //this.console.print("North.\n");
+                break;
+            case "E":
+                //this.console.print("East.\n");
+                break;
+            case "W":
+                //this.console.print("West.\n");
+                break;
+            case "S":
+                //this.console.print("South.\n");
+                break;
+            default:
+                throw new PlayerControlsException("Cannot decode an empty string.");
+        }
+    }
+    
+    public void useItem(Item item) throws PlayerControlsException
+    {
         
         if(item.getType() == 'Q')
         {
@@ -131,12 +141,34 @@ public class PlayerControls {
         {
             // if item is of type U it is usable once
         }
+         
+         else if(item.getType() == 'C')
+         {
+             ClueView clueView = new ClueView();
+             ItemControl itemControl = new ItemControl();
+             clueView.openClueView(this, item.getDescription(), itemControl);
+         }
         
         else
          {
-             //is not an item!
+             throw new PlayerControlsException("Cannot use item of type: " + item.getType());
          }
         
+        
+    }
+
+    ArrayList<Item> createItemList(Player player) throws ItemControlException {
+        ArrayList<Item> items = new ArrayList<>();
+        
+
+                
+        ItemControl itemControl = new ItemControl();
+        
+        Item pistol = itemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
+                                                                                                // item will not follow player... set it to null? 
+        items.add(pistol);
+        
+        return items;
         
     }
         

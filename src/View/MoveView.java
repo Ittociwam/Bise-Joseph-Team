@@ -6,15 +6,24 @@
 package View;
 
 import Control.PlayerControls;
+import exceptions.PlayerControlsException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Robbie
  */
-public class MoveView {
-    
-        private final String HELPMENU = "\n"
+class ContAndInput {
+
+    public String value;
+    public PlayerControls myPlayerControls;
+}
+
+public class MoveView extends View {
+
+    private final String HELPMENU = "\n"
             + "-------------------------------------\n"
             + "            Move Menu                \n"
             + "-------------------------------------\n"
@@ -23,56 +32,46 @@ public class MoveView {
             + "          S - Move South             \n"
             + "          W - Move West              \n"
             + "          H - Display this menu      \n"
-            + "-------------------------------------\n";  
+            + "-------------------------------------\n";
 
     public MoveView() {
     }
-        
-        
-    void displayMoveMenu(PlayerControls playerControls){
-        System.out.println("Which way would you like to move?\n");
-        System.out.println("Press 'H' for help\n ");
-        char choice = getInput();
-        doAction(choice, playerControls);
-        
-    }
-    private char getInput() {
 
-        boolean valid = false;
-        while (!valid) {
-            Scanner keyboard = new Scanner(System.in);
-            char value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
-            switch (value) {
-                case 'N':
-                case 'E':
-                case 'S':
-                case 'W':
-                case 'H':
-                    return value;
-                default:
-                    System.out.println(value + " is not a valid input");
-                    valid = false;
-            }
+    void openMenu(PlayerControls playerControls) {
+        this.console.println("Which way would you like to move?\n");
+        this.console.println("Press 'H' for help\n ");
+        String choice = getInput();
+        ContAndInput contAndInput = new ContAndInput();
+        contAndInput.value = choice;
+        contAndInput.myPlayerControls = playerControls;
+        doAction(contAndInput);
 
-        }
-        return 0;
     }
 
-    private void doAction(char input, PlayerControls playerControls) {
+    public void doAction(Object obj) {
+        ContAndInput myStuff = (ContAndInput) obj;
+        String input = myStuff.value;
+        PlayerControls playerControls = new PlayerControls();
+        playerControls = myStuff.myPlayerControls;
+
         switch (input) {
-            case 'N':
-            case 'E':
-            case 'S':
-            case 'W':
-                playerControls.move(input);
-                break;
-            case 'H':
-                System.out.println(HELPMENU);
+            case "N":
+            case "E":
+            case "S":
+            case "W": {
+                try {
+                    playerControls.move(input);
+                } catch (PlayerControlsException ex) {
+                    Logger.getLogger(MoveView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+            case "H":
+                this.console.println(HELPMENU);
                 break;
             default:
-                System.out.println(input + "is not a Invalid Input");
+                ErrorView.display(this.getClass().getName(),input + "is not a Invalid Input");
         }
     }
-    
+
 }

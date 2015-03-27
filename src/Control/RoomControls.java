@@ -5,10 +5,22 @@
  */
 package Control;
 
+import BiseJosephTeam.BiseJosephTeam;
+import Model.Room;
+
+import java.util.Random;
+
 /**
  *
  * @author Robbie
  */
 public class RoomControls {
+
+    public Room generateRandomRoom() {
+        Random randomGenerator = new Random();
+        MapControls mapControls = new MapControls();
+        int num = randomGenerator.nextInt(5);
+        return mapControls.getARoom(num);
+    }
     
 }

@@ -4,16 +4,13 @@
  * and open the template in the editor.
  */
 package View;
-
-import java.util.Scanner;
-
 /**
  *
  * @author Robbie
  */
-public class HelpMenuView {
-    
-        private final String HELPMENU = "\n"
+public class HelpMenuView extends View {
+
+    private final String HELPMENU = "\n"
             + "-------------------------------------\n"
             + "            Help Menu                \n"
             + "-------------------------------------\n"
@@ -40,38 +37,42 @@ public class HelpMenuView {
             + " enemy inside of it. The game will then automatically apply \n"
             + " the first attack and ask you if you would like to flee or  \n"
             + " continue attacking\n";
-    
-    
-    void display() {
-    char value = ' ';
+
+    void openMenu() {
+        String value = " ";
         do {
-            System.out.println(HELPMENU);
+            display(HELPMENU);
 
-            Scanner keyboard = new Scanner(System.in);
-            value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
+            value = getInput();
+            doAction(value);
 
-            switch (value) {
-                    
-                case 'G':
-                    System.out.println(GOAL);
+            
+        } while (value != "E");
+    }
+    
+    public void doAction(Object obj)
+    {
+        String value = (String)obj;
+         switch (value) {
+
+                case "G":
+                    display(GOAL);
                     break;
-                case 'M':
-                    System.out.println(MOVING);
+                case "M":
+                    display(MOVING);
                     break;
-                case 'I':
-                    System.out.println(ITEM);
+                case "I":
+                    display(ITEM);
                     break;
-                case 'B':
-                    System.out.println(BATTLE);
+                case "B":
+                    display(BATTLE);
                     break;
-                case 'E':
+                case "E":
                     break;
                 default:
-                    System.out.println("Invalid input, Try again\n");
-                            
+                    display("Invalid input, Try again\n");
+
             }
-        } while (value != 'E');
-}
-    
+    }
+
 }

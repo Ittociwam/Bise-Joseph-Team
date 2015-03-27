@@ -5,57 +5,60 @@
  */
 package View;
 
+import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
+import Model.Game;
 import Model.Person;
 import Model.Player;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
  *
  * @author Robbie
  */
-public class StartProgramView {
+public class StartProgramView extends View{
     
     public StartProgramView() {
     }
 
-    public void startProgram() {
+    public void startProgram() throws IOException {
         this.displayBanner();
 
         String playersName = this.getPlayersName();
 
-        Person person = GameControls.createPerson(playersName);
+      
 
-        this.displayWelcomMessage(person);
+        this.displayWelcomMessage(playersName);
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.openMenu(playersName);
         
         
 
     }
 
     private void displayBanner() {
-        System.out.println("\n\n************************************************\n");
+        this.console.println("\n\n************************************************\n");
 
-        System.out.println("*                                                  *\n"
+        this.console.println("*                                                  *\n"
                 + "*         ALL QUIET ON THE PACIFIC THEATER         *\n"
                 + "*               Add game banner here!              *\n");
 
-        System.out.println("****************************************************\n");
+        this.console.println("****************************************************\n");
 
     }
 
-    private String getPlayersName() {
+    private String getPlayersName() throws IOException {
         String playersName = null;
-        Scanner keyboard = new Scanner(System.in);
+        
         boolean valid = false;
         while (!valid) {
-            System.out.println("Please enter your name: ");
-            playersName = keyboard.nextLine();
+            this.console.println("Please enter your name: ");
+            playersName = this.keyboard.readLine();
             playersName = playersName.trim();
 
             if (playersName.length() < 2) {
-                System.out.println("Invalid name input, Please try again");
+                ErrorView.display(this.getClass().getName(),"Invalid name input, Please try again");
                 continue;
             }
             break;
@@ -65,11 +68,17 @@ public class StartProgramView {
 
     }
 
-    private void displayWelcomMessage(Person person) {
-        System.out.println("\n\n================================\n"
-                              +"Welcome to the game, " + person.getName() + "\n"
+    private void displayWelcomMessage(String name) {
+        this.console.println("\n\n================================\n"
+                              +"Welcome to the game, " + name + "\n"
                               +"We hope you make it out alive!\n"
                               +"================================");
     }
 
+    @Override
+    public void doAction(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }
