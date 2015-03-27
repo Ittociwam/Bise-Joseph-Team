@@ -48,8 +48,6 @@ public class ItemControl {
             throw new ItemControlException("Incorrect item type: " + c + " Must be a c or a w");
         }
 
-        item.setLocation(l);
-
         return item;
     }
 

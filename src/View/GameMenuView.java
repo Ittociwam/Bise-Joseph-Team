@@ -92,13 +92,13 @@ public class GameMenuView extends View {
                 break;
             case "I":
         {
-            /*
+            
             try {
                 itemView.openItemMenu(items, playerControls);
             } catch (ItemViewException ex) {
                 ErrorView.display(this.getClass().getName(),ex.getMessage());
             }
-                    */
+                    
         }
                 break;
             case "F": 

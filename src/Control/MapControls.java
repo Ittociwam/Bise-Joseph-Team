@@ -6,6 +6,7 @@
 package Control;
 
 import Model.Map;
+import Model.Player;
 import Model.Room;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -27,7 +28,11 @@ public class MapControls {
         // this is done in map constructor
     }
 
-    static void movePlayerToStartingLocation(Map map) {
+    static void movePlayerToStartingLocation(Map map, Player player) {
+        
+        LocationControl locationControl = new LocationControl();
+        
+        player.setLocation(locationControl.generateRandomLocation());
 
     }
 
