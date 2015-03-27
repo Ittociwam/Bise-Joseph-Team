@@ -18,6 +18,12 @@ import View.BMIView;
 import exceptions.GameControlException;
 import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,6 +86,34 @@ public final class GameControls {
         
         return game;
     }
+
+    public static void saveGame(Game game, String filePath) throws GameControlException {
+        try( FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            output.writeObject(game);
+        }
+        catch(IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        Game game = null;
+        
+        try( FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            game = (Game) output.readObject();
+        }
+        catch(FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        BiseJosephTeam.setGame(game);
+    }
+    
     
     public static Character findStrongestEnemy() throws GameControlException
     {
