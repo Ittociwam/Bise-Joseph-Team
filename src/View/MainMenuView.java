@@ -122,6 +122,8 @@ public class MainMenuView extends View {
         
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display(filePath);
+        
+        System.out.println("Welcome back:" + BiseJosephTeam.game.getPerson().getName());
     }
 
     private void saveGame() {
