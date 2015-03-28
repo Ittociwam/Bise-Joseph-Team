@@ -76,9 +76,8 @@ public final class GameControls {
         ArrayList<Character> enemies = new ArrayList<>();
         
         
-        CharacterControl cC = new CharacterControl();
         
-        cC.addEnemies(10);
+       CharacterControl.addEnemies(10);
         
         game.setEnemiesKilled(0);
         
