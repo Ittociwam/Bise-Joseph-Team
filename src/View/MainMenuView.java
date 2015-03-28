@@ -14,6 +14,10 @@ import Model.Player;
 import exceptions.GameControlException;
 import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +40,7 @@ public class MainMenuView extends View {
             + "          G - Start Existing Game    \n"
             + "          N - Start New Game         \n"
             + "          H - Help                   \n"
+            + "          P - Print Error Report     \n"
             + "          S - Save Game              \n"
             + "          E - Exit                   \n"
             + "-------------------------------------\n";
@@ -90,6 +95,14 @@ public class MainMenuView extends View {
                 break;
             case "E":
                 return;
+            case "P":
+        {
+            try {
+                this.printErrorReport();
+            } catch (IOException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             default:
                 ErrorView.display(this.getClass().getName(),input + "is not a Invalid Input");
         }
@@ -136,5 +149,34 @@ public class MainMenuView extends View {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
     }
+
+    private void printErrorReport() throws IOException {
+        this.console.println("Where would you like the error report to be printed?\n");
+        this.console.println("\t>");
+        String filePath = this.keyboard.readLine();
+        this.actuallyPrintReport(filePath);
+    }
+
+    private void actuallyPrintReport(String filePath) throws FileNotFoundException, IOException {
+        ObjectOutputStream output = null;
+        try(FileOutputStream fops = new FileOutputStream(filePath))
+        {
+            output = new ObjectOutputStream(fops);
+            output.writeChars("***Error Report***\n");
+            output.writeChars("***Start New Game   |   Start Existing Game   |   Help Menu   |   Save Game***\n");
+            
+        }
+        catch(Throwable te)
+        {
+            output.writeChars(te.getMessage());
+            ErrorView.display(this.getClass().getName(), te.getMessage());
+            
+        }
+        this.console.println("Report printed\n");
+
+        
+    }
+
+
 
 }
