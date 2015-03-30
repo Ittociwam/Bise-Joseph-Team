@@ -5,6 +5,7 @@
  */
 package View;
 
+
 import Control.PlayerControls;
 import Model.Item;
 import exceptions.PlayerControlsException;
@@ -101,6 +102,19 @@ public class ItemView extends View {
             PlayerControls.useItem(item);
         } catch (PlayerControlsException ex) {
             ErrorView.display(this.getClass().getName(), "Error assigning an item");
+        }
+    }
+
+    void printItemList() {
+        this.console.println("\n\nEnter the file path for file where report"
+                + "will be saved.");
+        String filePath = this.getInput();
+        
+        try {
+            
+        }
+        catch (Exception ex) {
+            ErrorView.display("ItemView", ex.getMessage());
         }
     }
 }

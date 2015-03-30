@@ -44,6 +44,7 @@ public class GameMenuView extends View {
             + "            I - View Inventory            \n"
             + "            F - Find Strongest Enemy      \n"
             + "              S - Sort Items              \n"
+            + "             P - Print Report             \n"
             + "             E- Exit Menu                 \n"
             + "------------------------------------------\n";
 
@@ -109,6 +110,8 @@ public class GameMenuView extends View {
             case "S":
                 //GameControls.sortGameItems();
                 break;
+            case "P":
+                itemView.printItemList();
             case "E":
                 break;
             default:

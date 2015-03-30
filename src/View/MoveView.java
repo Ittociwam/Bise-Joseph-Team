@@ -15,7 +15,6 @@ import java.util.logging.Logger;
  *
  * @author Robbie
  */
-
 public class MoveView extends View {
 
     private final String HELPMENU = "\n"
@@ -41,7 +40,7 @@ public class MoveView extends View {
     }
 
     public void doAction(Object obj) {
-        String input = (String)obj;
+        String input = (String) obj;
 
         switch (input) {
             case "N":
@@ -59,7 +58,7 @@ public class MoveView extends View {
                 this.console.println(HELPMENU);
                 break;
             default:
-                ErrorView.display(this.getClass().getName(),input + "is not a Invalid Input");
+                ErrorView.display(this.getClass().getName(), input + "is not a Invalid Input");
         }
     }
 
