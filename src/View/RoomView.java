@@ -14,40 +14,45 @@ import Model.Room;
 public class RoomView extends View {
 
     public void display(Room room) {
-        int col = room.getSize().height;
-        int row = room.getSize().width;
-
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; i < col; i++) {
+        int numCol = room.getSize().height;
+        int numRow = room.getSize().width;
+        console.println('\n');
+        for (int row = 0; row < numRow; row++) {
+            for (int col = 0; col < numCol; col++) {
                 if (col == 0) 
                 {
-                    this.console.println("+-----+-----+-----+-----+-----+\n");
+                    console.print("+-----+-----+-----+-----+-----+\n");
                 }
-                if (row == 0) 
+                if (row == 0 && col == 0) 
                 {
-                    this.console.println("|     |     |  ^  |     |     |\n");
+                    console.print("|     |     |  ^  |     |     |\n");
                 } 
-                else 
+                else if(col == 0)
                 {
-                    this.console.println("|     |     |     |     |     |\n");
+                    console.print("|     |     |     |     |     |\n");
                 }
                 if (col == 4) 
                 {
                     if(row == 2)
-                        this.console.println("|  " + room.elements[col][row].getType() + " >|\n");
+                        console.print("|  " + room.elements[row][col].getType() + " >|\n");
                     else
-                        this.console.println("|  " + room.elements[col][row].getType() + "  |\n");
-                    this.console.println("|     |     |     |     |     |\n");
-                    this.console.println("+-----+-----+-----+-----+-----+\n");
+                        console.print("|  " + room.elements[row][col].getType() + "  |\n");
+                    if(row == 4 && col == 4)
+                        console.print("|     |     |  v  |     |     |\n");
+                    else
+                        console.print("|     |     |     |     |     |\n");
+                    
+                    if(row == 4)
+                    console.print("+-----+-----+-----+-----+-----+\n");
                 } 
                 else 
                 {
                     if (row == 2 && col == 0) 
                     {
-                        this.console.println("|< " + room.elements[col][row].getType() + "  ");
+                        console.print("|< " + room.elements[row][col].getType() + "  ");
                     } else 
                     {
-                        this.console.println("|  " + room.elements[col][row].getType() + "  ");
+                        console.print("|  " + room.elements[row][col].getType() + "  ");
                     }
                 }
 

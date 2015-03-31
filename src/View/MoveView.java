@@ -25,6 +25,7 @@ public class MoveView extends View {
             + "          E - Move East              \n"
             + "          S - Move South             \n"
             + "          W - Move West              \n"
+            + "          Q - Quit moving            \n"
             + "          H - Display this menu      \n"
             + "-------------------------------------\n";
 
@@ -34,8 +35,12 @@ public class MoveView extends View {
     void openMenu() {
         this.console.println("Which way would you like to move?\n");
         this.console.println("Press 'H' for help\n ");
-        String choice = getInput();
+        String choice = null;
+        while (choice != "q")
+        {
+        choice = getInput();
         doAction(choice);
+        }
 
     }
 

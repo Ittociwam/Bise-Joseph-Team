@@ -7,6 +7,7 @@ package Control;
 
 import Model.Character;
 import Model.Item;
+import Model.Location;
 import Model.Player;
 import View.ClueView;
 import exceptions.ItemControlException;
@@ -159,8 +160,9 @@ public final class PlayerControls {
     public static ArrayList<Item> createItemList(Player player) throws ItemControlException {
         ArrayList<Item> items = new ArrayList<>();
         
+        Location location = null;
         
-        Item pistol = ItemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
+        Item pistol = ItemControl.newItem("A short range pistol", 3, 'w', location); // this will be a problem because 
                                                                                                 // item will not follow player... set it to null? 
         items.add(pistol);
         

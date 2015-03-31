@@ -26,9 +26,15 @@ public class Room implements Serializable{
     
     
     public Room() {
-         elements = new Element [5][5];
-        description = "a";
-        size = new Dimension(5, 5);
+         this.elements = new Element [5][5];
+        for (int i=0; i < 5; i++) 
+        {
+            for (int j = 0; j < 5; j++)
+           elements[i][j] = new Element();
+       }
+         Element defaultE = new Element();
+        this.description = "a";
+        this.size = new Dimension(5, 5);
     }
 
     public String getDescription() {

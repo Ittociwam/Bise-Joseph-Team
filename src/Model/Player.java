@@ -18,6 +18,7 @@ public class Player extends Character implements Serializable{
     private ArrayList <Item> items;
 
     public Player() {
+        this.type = 'p';
         this.items = new ArrayList();
     }
 
