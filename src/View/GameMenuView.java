@@ -5,6 +5,7 @@
  */
 package View;
 
+import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
 import java.util.Scanner;
 import Control.PlayerControls;
@@ -111,7 +112,7 @@ public class GameMenuView extends View {
                 //GameControls.sortGameItems();
                 break;
             case "P":
-                itemView.printItemList();
+                this.printItemList();
             case "E":
                 break;
             default:
@@ -126,6 +127,17 @@ public class GameMenuView extends View {
 
     private void viewMap() {
         this.console.println("View Map function called");
+    }
+
+    private void printItemList() {
+        System.out.println("\nEnter the file path for file where the report will be saved.");
+        String filePath = this.getInput();
+        
+        try {
+            GameControls.printItemList(BiseJosephTeam.game, filePath);
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
     }
 
 }
