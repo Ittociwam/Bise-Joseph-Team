@@ -62,6 +62,8 @@ public class MoveView extends View {
             case "H":
                 this.console.println(HELPMENU);
                 break;
+            case "Q":
+                break;
             default:
                 ErrorView.display(this.getClass().getName(), input + "is not a Invalid Input");
         }
