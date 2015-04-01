@@ -5,10 +5,36 @@
  */
 package View;
 
+import Model.Map;
+
 /**
  *
  * @author Robbie
  */
-public class MapView {
-    
+public class MapView extends View {
+
+    public void display(Map map) {
+        int numCol = map.getSize().height;
+        int numRow = map.getSize().width;
+
+        console.println('\n');
+        for (int row = 0; row < numRow; row++) {
+            for (int col = 0; col < numCol; col++) {
+                if (col == 0) {
+                    console.print("+-----+-----+-----+-----+-----+-----+\n");
+                }
+                if (col == 0) {
+                    console.print("|     |     |     |     |     |     |\n");
+                }
+            }
+
+        }
+        console.println("+-----+-----+-----+-----+-----+-----+\n");
+    }
+
+    @Override
+    public void doAction(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
