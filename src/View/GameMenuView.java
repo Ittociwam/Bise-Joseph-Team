@@ -122,7 +122,8 @@ public class GameMenuView extends View {
     }
 
     private void viewRoom() {
-        this.console.println("View Room function called");
+        RoomView roomView = new RoomView();
+        roomView.display(BiseJosephTeam.BiseJosephTeam.game.getPlayer().getLocation().getRoom());
     }
 
     private void viewMap() {

@@ -18,6 +18,12 @@ public class Element implements Serializable {
     public char type;
 
     protected Location location;
+    
+        public Element() 
+        {
+        description = "";
+        type = ' ';
+    }
 
     public char getType() {
         return type;
@@ -27,10 +33,7 @@ public class Element implements Serializable {
         this.type = type;
     }
 
-    public Element() {
-        description = "";
-        type = ' ';
-    }
+
 
     public Location getLocation() {
         return location;
@@ -38,7 +41,7 @@ public class Element implements Serializable {
 
     public void setLocation(Location location) {
         this.location = location;
-        if (location.getRoom() == null) {
+        if (location == null) {
             return;
         } else {
             location.getRoom().elements[location.getPoint().x][location.getPoint().y] = this;

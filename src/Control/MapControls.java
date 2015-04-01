@@ -20,8 +20,7 @@ public final class MapControls {
     private static Room[] roomTypes;
 
     private MapControls() {
-        roomTypes = new Room[5];
-        initializeRooms();
+        
     }
 
     public static void createMap() {
@@ -50,7 +49,8 @@ public final class MapControls {
     }
 
     public static Room getARoom(int num) {
-
+        roomTypes = new Room[5];
+        initializeRooms();
         return roomTypes[num];
     }
 

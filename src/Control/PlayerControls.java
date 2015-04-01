@@ -7,10 +7,13 @@ package Control;
 
 import Model.Character;
 import Model.Item;
+import Model.Location;
 import Model.Player;
 import View.ClueView;
+import View.RoomView;
 import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
+import java.awt.Point;
 import java.util.ArrayList;
 
 
@@ -111,9 +114,14 @@ public final class PlayerControls {
         // the string of where they moved and print out the string in the view class
         
         //this.console.print("You moved ");
+        Player thisPlayer = BiseJosephTeam.BiseJosephTeam.game.getPlayer();
         switch (direction){
             case "N":
-                //this.console.print("North.\n");
+                Point point = thisPlayer.getLocation().getPoint();
+                point.y++;
+                Location location = thisPlayer.getLocation();
+                location.setPoint(point);
+                thisPlayer.setLocation(location);
                 break;
             case "E":
                 //this.console.print("East.\n");
@@ -127,6 +135,8 @@ public final class PlayerControls {
             default:
                 throw new PlayerControlsException("Cannot decode an empty string.");
         }
+        RoomView roomView = new RoomView();
+        roomView.display(thisPlayer.getLocation().getRoom());
     }
     
     public static void useItem(Item item) throws PlayerControlsException
@@ -159,8 +169,9 @@ public final class PlayerControls {
     public static ArrayList<Item> createItemList(Player player) throws ItemControlException {
         ArrayList<Item> items = new ArrayList<>();
         
+        Location location = null;
         
-        Item pistol = ItemControl.newItem("A short range pistol", 3, 'w', player.getLocation()); // this will be a problem because 
+        Item pistol = ItemControl.newItem("A short range pistol", 3, 'w', location); // this will be a problem because 
                                                                                                 // item will not follow player... set it to null? 
         items.add(pistol);
         
