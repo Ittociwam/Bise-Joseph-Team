@@ -7,6 +7,7 @@ package Control;
 
 import BiseJosephTeam.BiseJosephTeam;
 import Model.Location;
+import java.awt.Dimension;
 import java.awt.Point;
 
 /**
@@ -27,10 +28,14 @@ public final class LocationControl {
         point.y = BiseJosephTeam.randInt(0, 4);
         
         location.setPoint(point);
+        int randx = BiseJosephTeam.randInt(0, 5);
+        int randy = BiseJosephTeam.randInt(0, 5);
         
-        location.setRoom(BiseJosephTeam.game.getMap().getRooms()
-                [BiseJosephTeam.randInt(0, 5)]
-                [BiseJosephTeam.randInt(0, 5)]);
+        location.setRoom(BiseJosephTeam.game.getMap().getRooms()[randx][randy]);
+        Point mPoint = new Point();
+        mPoint.x = randx;
+        mPoint.y = randy;
+        location.getRoom().setCoords(mPoint);
         
         return location;
     }

@@ -6,6 +6,7 @@
 package View;
 
 import Control.PlayerControls;
+import Model.Player;
 import exceptions.PlayerControlsException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -33,13 +34,19 @@ public class MoveView extends View {
     }
 
     void openMenu() {
+        Player thisPlayer = BiseJosephTeam.BiseJosephTeam.game.getPlayer();
+        this.console.println("\n");
         this.console.println("Which way would you like to move?\n");
         this.console.println("Press 'H' for help\n ");
         String choice = null;
-        while (choice != "q")
+        while (!"Q".equals(choice))
         {
+        console.print(choice);
+        console.println("current Location: " + thisPlayer.getLocation());
         choice = getInput();
         doAction(choice);
+        RoomView roomView = new RoomView();
+        roomView.display(thisPlayer.getLocation().getRoom());
         }
 
     }
@@ -55,7 +62,7 @@ public class MoveView extends View {
                 try {
                     PlayerControls.move(input);
                 } catch (PlayerControlsException ex) {
-                    Logger.getLogger(MoveView.class.getName()).log(Level.SEVERE, null, ex);
+                    ErrorView.display(this.getClass().getName(), ex.getMessage());
                 }
             }
             break;

@@ -55,7 +55,6 @@ public class MainMenuView extends View {
         String selection = "";
         do {
             display(MENU);
-
             selection = getInput();
             stuff.input = selection;
             this.doAction(stuff);

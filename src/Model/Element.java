@@ -44,7 +44,7 @@ public class Element implements Serializable {
         if (location == null) {
             return;
         } else {
-            location.getRoom().elements[location.getPoint().x][location.getPoint().y] = this;
+            location.getRoom().elements[location.getPoint().y][location.getPoint().x] = this;
         }
     }
 

@@ -6,6 +6,7 @@
 package View;
 
 import Model.Map;
+import java.awt.Point;
 
 /**
  *
@@ -16,6 +17,7 @@ public class MapView extends View {
     public void display(Map map) {
         int numCol = map.getSize().height;
         int numRow = map.getSize().width;
+        Point playerPoint = BiseJosephTeam.BiseJosephTeam.game.getPlayer().getLocation().getRoom().getCoords();
 
         console.println('\n');
         for (int row = 0; row < numRow; row++) {
@@ -23,8 +25,18 @@ public class MapView extends View {
                 if (col == 0) {
                     console.print("+-----+-----+-----+-----+-----+-----+\n");
                 }
-                if (col == 0) {
-                    console.print("|     |     |     |     |     |     |\n");
+                if (col == playerPoint.x && row == playerPoint.y)
+                {
+                    if(col == 5)
+                        console.print("|  x  |\n");
+                    else
+                        console.print("|  x  ");
+                    continue;
+                }
+                console.print("|     ");
+                if(col == 5)
+                {
+                    console.print("|\n");
                 }
             }
 

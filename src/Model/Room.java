@@ -7,6 +7,7 @@ package Model;
 
 import Model.Element;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,15 @@ public class Room implements Serializable{
 
     private String description;
     private Dimension size;
+    private Point coords;
+
+    public Point getCoords() {
+        return coords;
+    }
+
+    public void setCoords(Point coords) {
+        this.coords = coords;
+    }
     public Element[][] elements;
     
     
@@ -82,7 +92,7 @@ public class Room implements Serializable{
 
     @Override
     public String toString() {
-        return "Room{" + "description=" + description + ", size=" + size + '}';
+        return "Room{" + "description=" + description + ", size=" + size + ", mapSpot=" + coords + '}';
     }
     
     

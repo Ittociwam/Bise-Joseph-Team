@@ -9,6 +9,7 @@ import Model.Character;
 import Model.Item;
 import Model.Location;
 import Model.Player;
+import Model.Room;
 import View.ClueView;
 import View.RoomView;
 import exceptions.ItemControlException;
@@ -112,31 +113,62 @@ public final class PlayerControls {
         
         //******If we want this function to print where a character moved then we need it to return 
         // the string of where they moved and print out the string in the view class
-        
-        //this.console.print("You moved ");
-        Player thisPlayer = BiseJosephTeam.BiseJosephTeam.game.getPlayer();
+        Player tempPlayer = BiseJosephTeam.BiseJosephTeam.game.getPlayer();
+        Point point = tempPlayer.getLocation().getPoint();
+        Location location = tempPlayer.getLocation();
+        Room room = tempPlayer.getLocation().getRoom();
         switch (direction){
             case "N":
-                Point point = thisPlayer.getLocation().getPoint();
-                point.y++;
-                Location location = thisPlayer.getLocation();
-                location.setPoint(point);
-                thisPlayer.setLocation(location);
+                point.y--;
                 break;
             case "E":
-                //this.console.print("East.\n");
+                point.x++;
                 break;
             case "W":
-                //this.console.print("West.\n");
+                point.x--;
                 break;
             case "S":
-                //this.console.print("South.\n");
+                point.y++;
                 break;
             default:
-                throw new PlayerControlsException("Cannot decode an empty string.");
+                throw new PlayerControlsException("Invalid Direction");
         }
-        RoomView roomView = new RoomView();
-        roomView.display(thisPlayer.getLocation().getRoom());
+        Point mapPoint = room.getCoords();
+        if (mapPoint.x == 5 || mapPoint.x == 0 || mapPoint.y == 5 || mapPoint.x == 0)
+        {
+            System.out.println("map about to be out of bounds\n");
+            // do nothing because we are at the edge of the map. 
+        }
+        else if(point.x == -1)
+        {
+            System.out.println("point.x = -1 and mapPoint.x = " + mapPoint.x + "\n");
+            mapPoint.x--;
+            point.x = 4;
+        }
+        else if(point.x == 5)
+        {
+            System.out.println("point.x = 5 and mapPoint.x = " + mapPoint.x + "\n");
+            mapPoint.x++;
+            point.x = 0;
+        }
+        else if(point.y == -1)
+        {
+            System.out.println("point.y = -1 and mapPoint.x = " + mapPoint.y + "\n");
+            mapPoint.y++;
+            point.y = 4;
+        }
+        else if(point.y == 5)
+        {
+            System.out.println("point.y = 5 and mapPoint.y = " + mapPoint.y + "\n");
+            mapPoint.y--;
+            point.y = 0;
+        }
+       room = BiseJosephTeam.BiseJosephTeam.game.getMap().getRooms()[mapPoint.x][mapPoint.y];
+       location.setRoom(room);
+        location.setPoint(point);
+        tempPlayer.setLocation(location);
+        BiseJosephTeam.BiseJosephTeam.game.setPlayer(tempPlayer);
+        tempPlayer = new Player();
     }
     
     public static void useItem(Item item) throws PlayerControlsException

@@ -56,7 +56,7 @@ public abstract class View implements ViewInterface {
         String value = "";
         String firstLetter = "";
         while ("".equals(value)) {
-            this.console.print("\t >");
+
 
             try {
                 value = this.keyboard.readLine();
