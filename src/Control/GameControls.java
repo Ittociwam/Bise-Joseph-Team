@@ -35,6 +35,32 @@ import static java.util.Collections.max;
  */
 public final class GameControls {
 
+    public static void printItemList(Game game, String filePath) throws GameControlException {
+        ArrayList<Item> reportList = BiseJosephTeam.game.getItemGameList();
+        
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(reportList);
+        }
+        catch (IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+//    public static void printItemList() {
+//        Item storeList = new Item();
+//        ArrayList<Item> reportList = BiseJosephTeam.game.getItemGameList();
+//        
+//        this.console.println("Description----------Points-----Type--");
+//        for (int i = 0; i < reportList.size(); i++)
+//        {
+//            storeList = reportList.get(i);
+//            this.console.println(storeList.description);
+////            this.console.println(newListItem.description + "\n");
+//        }
+//    }
+
     private GameControls() {
     }
 

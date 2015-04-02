@@ -5,6 +5,7 @@
  */
 package View;
 
+import BiseJosephTeam.BiseJosephTeam;
 import Control.GameControls;
 import java.util.Scanner;
 import Control.PlayerControls;
@@ -40,7 +41,7 @@ public class GameMenuView extends View {
             + "          H - Get Help/Display Menu       \n"
             + "M -  Move Menu (N-north, E-east, S-south, W-west)\n"
             + "         L - Look around the room         \n"
-            + "             V - View Room                \n"
+            + "             V - View Map                 \n"
             + "            I - View Inventory            \n"
             + "            F - Find Strongest Enemy      \n"
             + "              S - Sort Items              \n"
@@ -111,7 +112,7 @@ public class GameMenuView extends View {
                 //GameControls.sortGameItems();
                 break;
             case "P":
-                itemView.printItemList();
+                this.printItemList();
             case "E":
                 break;
             default:
@@ -122,11 +123,24 @@ public class GameMenuView extends View {
 
     private void viewRoom() {
         RoomView roomView = new RoomView();
-        roomView.display(BiseJosephTeam.BiseJosephTeam.game.getPlayer().getLocation().getRoom());
+        roomView.display(BiseJosephTeam.game.getPlayer().getLocation().getRoom());
     }
 
     private void viewMap() {
         this.console.println("View Map function called");
+        MapView mapView = new MapView();
+        mapView.display(BiseJosephTeam.game.getMap());
+    }
+
+    private void printItemList() {
+        System.out.println("\nEnter the file path for file where the report will be saved.");
+        String filePath = this.getInput();
+        
+        try {
+            GameControls.printItemList(BiseJosephTeam.game, filePath);
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
     }
 
 }
