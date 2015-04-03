@@ -10,6 +10,7 @@ import Model.Item;
 import Model.Location;
 import Model.Player;
 import Model.Room;
+import View.AttackView;
 import View.ClueView;
 import View.RoomView;
 import exceptions.ItemControlException;
@@ -134,41 +135,59 @@ public final class PlayerControls {
                 throw new PlayerControlsException("Invalid Direction");
         }
         Point mapPoint = room.getCoords();
-        if (mapPoint.x == 5 || mapPoint.x == 0 || mapPoint.y == 5 || mapPoint.x == 0)
-        {
-            System.out.println("map about to be out of bounds\n");
-            // do nothing because we are at the edge of the map. 
-        }
-        else if(point.x == -1)
-        {
-            System.out.println("point.x = -1 and mapPoint.x = " + mapPoint.x + "\n");
-            mapPoint.x--;
-            point.x = 4;
-        }
-        else if(point.x == 5)
-        {
-            System.out.println("point.x = 5 and mapPoint.x = " + mapPoint.x + "\n");
-            mapPoint.x++;
-            point.x = 0;
-        }
-        else if(point.y == -1)
-        {
-            System.out.println("point.y = -1 and mapPoint.x = " + mapPoint.y + "\n");
-            mapPoint.y++;
-            point.y = 4;
-        }
-        else if(point.y == 5)
-        {
-            System.out.println("point.y = 5 and mapPoint.y = " + mapPoint.y + "\n");
-            mapPoint.y--;
-            point.y = 0;
+        if (point.x == -1 || point.x == 5 || point.y == -1 || point.y == 5) {
+            if (mapPoint.x == 5 || mapPoint.x == 0 || mapPoint.y == 5 || mapPoint.x == 0) {
+                System.out.println("map about to be out of bounds\n");
+                // do nothing because we are at the edge of the map. 
+            } else if (point.x == -1) {
+                System.out.println("point.x = -1 and mapPoint.x = " + mapPoint.x + "\n");
+                mapPoint.x--;
+                point.x = 4;
+            } else if (point.x == 5) {
+                System.out.println("point.x = 5 and mapPoint.x = " + mapPoint.x + "\n");
+                mapPoint.x++;
+                point.x = 0;
+            } else if (point.y == -1) {
+                System.out.println("point.y = -1 and mapPoint.x = " + mapPoint.y + "\n");
+                mapPoint.y++;
+                point.y = 4;
+            } else if (point.y == 5) {
+                System.out.println("point.y = 5 and mapPoint.y = " + mapPoint.y + "\n");
+                mapPoint.y--;
+                point.y = 0;
+            }
         }
        room = BiseJosephTeam.BiseJosephTeam.game.getMap().getRooms()[mapPoint.x][mapPoint.y];
        location.setRoom(room);
         location.setPoint(point);
+        
+        checkForEnemies(location);
+        checkForItems(location);
+        
         tempPlayer.setLocation(location);
         BiseJosephTeam.BiseJosephTeam.game.setPlayer(tempPlayer);
         tempPlayer = new Player();
+    }
+    
+    public static void checkForEnemies(Location location)
+    {
+     
+       ArrayList<Character> enemies = BiseJosephTeam.BiseJosephTeam.game.getEnemies();
+        
+        for(int i = 0; i < enemies.size(); i++)
+        {
+            //System.out.println("Checking pl: " + location + " el: " + enemies.get(i).getLocation());
+            if(location.equals(enemies.get(i).getLocation()))
+            {
+                System.out.println("They are equal !!!!!!!!!!!!!!!!!!!!");
+                AttackView attackView = new AttackView();
+                attackView.openMenu(BiseJosephTeam.BiseJosephTeam.game.getPlayer(), enemies.get(i));
+            }
+        }
+    }
+    public static void checkForItems(Location location)
+    {
+         ArrayList<Item> itemGameList = BiseJosephTeam.BiseJosephTeam.game.getItemGameList();
     }
     
     public static void useItem(Item item) throws PlayerControlsException

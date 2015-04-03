@@ -15,13 +15,10 @@ import java.util.logging.Logger;
  *
  * @author Robbie
  */
-class myStuff {
-}
+
 
 public class ClueView extends View {
 
-    private ItemControl itemControl;
-    private PlayerControls playerControls;
 
     public void openClueView(String code) {
         if (display(code)) {
@@ -38,9 +35,9 @@ public class ClueView extends View {
     @Override
     public void doAction(Object obj) {
         String code = (String) obj;
-        if (itemControl.checkForItem("decoder")) {
+        if (ItemControl.checkForItem("decoder")) {
             try {
-                playerControls.dicipherCode(code);
+                PlayerControls.dicipherCode(code);
             } catch (PlayerControlsException ex) {
                 Logger.getLogger(ClueView.class.getName()).log(Level.SEVERE, null, ex);
             }

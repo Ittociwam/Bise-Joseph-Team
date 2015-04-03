@@ -12,35 +12,45 @@ import java.util.logging.Logger;
  *
  * @author Travis
  */
+class MyStuff {
+        Player tp = new Player();
+    Character te = new Character();
+}
 public class AttackView extends View {
 
     boolean done = false;
-    Player somePlayer = new Player();
-    Character someCharacter = new Character();
 
-    void openMenu() {
-        Object object = null;
+
+    public void openMenu(Player p, Character e) {
+        MyStuff myStuff = null;
+        myStuff.te = e;
+        myStuff.tp = p;
+        
         String value = " ";
-        this.console.println("currentHealth: " + somePlayer.getHealth());
-        this.console.println("characterHealth: " + someCharacter.getHealth());
-        this.console.println("Would you like to attack again?");
+       
+       
+        do
+        {
+        this.doAction(myStuff);
+        this.console.println("currentHealth: " + p.getHealth());
+        this.console.println("characterHealth: " + e.getHealth());
+        this.console.println("Would you like to attack again? Y/N");
         value = getInput();
-        object = value;
-        this.doAction(object);
-        if (value == "Y") {
-            this.doAction(object);
         }
+        while (value == "Y");
     }
 
     public void doAction(Object obj) {
+        MyStuff myStuff = (MyStuff)obj;
+        Player p = myStuff.tp;
+        Character e = myStuff.te;
         while (!done) {
             int returnValue = 0;
             try {
-                returnValue = PlayerControls.attack(somePlayer, someCharacter);
+                returnValue = PlayerControls.attack(p, e);
             } catch (PlayerControlsException ex) {
                 this.console.println(ex.getMessage());
             }
-            //DISPLAY CURRENT HEALTH AND PROMPT USER IF THEY WANT TO ATTACK AGAIN
             switch (returnValue) {
                 case 2:
                     this.console.println("Player has lost");

@@ -7,6 +7,7 @@ package Model;
 
 import java.awt.Point;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -15,6 +16,14 @@ import java.io.Serializable;
 public class Location implements Serializable{
 
     private Room room;
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+
     private Point point;
 
     public Room getRoom() {
@@ -41,6 +50,23 @@ public class Location implements Serializable{
     @Override
     public String toString() {
         return "Location{" + "room=" + room + ", point=" + point + '}';
+    }
+        @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Location other = (Location) obj;
+        if (!Objects.equals(this.room, other.room)) {
+            return false;
+        }
+        if (!Objects.equals(this.point, other.point)) {
+            return false;
+        }
+        return true;
     }
 
 }
