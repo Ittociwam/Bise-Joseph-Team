@@ -41,12 +41,14 @@ public class MoveView extends View {
         String choice = null;
         while (!"Q".equals(choice))
         {
+        RoomView roomView = new RoomView();
+        MapView mapView = new MapView();
+        mapView.display(BiseJosephTeam.BiseJosephTeam.game.getMap());
+        roomView.display(thisPlayer.getLocation().getRoom());
         console.print(choice);
         console.println("current Location: " + thisPlayer.getLocation());
         choice = getInput();
         doAction(choice);
-        RoomView roomView = new RoomView();
-        roomView.display(thisPlayer.getLocation().getRoom());
         }
 
     }

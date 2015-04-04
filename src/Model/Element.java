@@ -40,6 +40,7 @@ public class Element implements Serializable {
     }
 
     public void setLocation(Location location) {
+        System.out.println("attempting to assign location: " + location + "\n To " + this);
         this.location = location;
         if (location == null) {
             return;

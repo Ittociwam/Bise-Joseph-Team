@@ -22,7 +22,7 @@ public class AttackView extends View {
 
 
     public void openMenu(Player p, Character e) {
-        MyStuff myStuff = null;
+        MyStuff myStuff = new MyStuff();
         myStuff.te = e;
         myStuff.tp = p;
         

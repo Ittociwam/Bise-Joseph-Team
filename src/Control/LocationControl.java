@@ -35,6 +35,7 @@ public final class LocationControl {
         Point mPoint = new Point();
         mPoint.x = randx;
         mPoint.y = randy;
+        System.out.println("map Point: " + mPoint);
         location.getRoom().setCoords(mPoint);
         
         return location;

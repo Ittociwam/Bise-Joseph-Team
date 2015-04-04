@@ -45,7 +45,7 @@ public class Item extends Element implements Serializable {
 
     @Override
     public String toString() {
-        return "Item{" + "type=" + type + '}';
+        return "Item{" + "type=" + type + " description=" + description +'}';
     }
 
     public int getPoints() {
