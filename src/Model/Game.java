@@ -118,6 +118,9 @@ public class Game implements Serializable {
         itemGameList.add(ItemControl.newItem("A sexy shotgun", 7, 'w', LocationControl.generateRandomLocation())); // move this to item control
         itemGameList.add(ItemControl.newItem("A friggen Katana", 10, 'w', LocationControl.generateRandomLocation()));
         itemGameList.add(ItemControl.newItem("A flame-thrower", 10, 'w', LocationControl.generateRandomLocation()));
+        
+        for(int i = 0; i < 10; i++)
+        itemGameList.add(ItemControl.newItem("First Aid Kit", BiseJosephTeam.BiseJosephTeam.randInt(2, 7), 'h', LocationControl.generateRandomLocation()));
 
         // Add clues
         itemGameList.add(ItemControl.newItem("wklv lv d vhfuhw phvvdjh", 0, 'c', LocationControl.generateRandomLocation())); // move this to item control

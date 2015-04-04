@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -73,6 +74,11 @@ public class Room implements Serializable{
     }
 
     @Override
+    public String toString() {
+        return "Room{" + "description=" + description + ", size=" + size + ", mapSpot=" + coords + '}';
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -87,12 +93,13 @@ public class Room implements Serializable{
         if (!Objects.equals(this.size, other.size)) {
             return false;
         }
+        if (!Objects.equals(this.coords, other.coords)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.elements, other.elements)) {
+            return false;
+        }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Room{" + "description=" + description + ", size=" + size + ", mapSpot=" + coords + '}';
     }
     
     
