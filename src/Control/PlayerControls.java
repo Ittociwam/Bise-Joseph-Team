@@ -18,6 +18,7 @@ import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -32,37 +33,10 @@ public final class PlayerControls {
         return code.matches("[a-zA-Z\\s]+");
     }
 
-    public static String dicipherCode(String code) throws PlayerControlsException {
-
-        if (code.isEmpty()) {
-            throw new PlayerControlsException("Cannot decode an empty string."); // EMPTY ERROR FLAG
-        }
-        String message = "";
-        if (isAlpha(code)) {
-            code = code.toUpperCase();
-            for (int i = 0; i < code.length(); i++) {
-                char c = code.charAt(i);
-                if (c == ' ') {
-                    message += ' ';
-                    continue;
-                }
-                int n = (int) c;
-                n = ((n - 65) - 13);
-                if (n < 0) {
-                    n += 26;
-                }
-                n = ((n % 26) + 65);
-                c = (char) n;
-                message += c;
-            }
-
-            return message;
-        }
-        return "!"; // INVALID INPUT ERROR flag
-    }
-
     public static int attack(Player player, Character enemy) throws PlayerControlsException {
 
+        System.out.println("playercontrols attack emeny: " + enemy);
+                System.out.println("player: " + player);
         if (enemy.getType() != 'e') {
             throw new PlayerControlsException("Cannot fight this type of character");
         } // Invalid enemy
@@ -82,8 +56,15 @@ public final class PlayerControls {
         enemy.setHealth(enemy.getHealth() - player.getAttack());
 
         player.setHealth(player.getHealth() - enemy.getAttack());
+        
+        if(enemy.getHealth() <= 0 && player.getHealth() <=0)
+        {
+            player.setHealth(1); // player won but blacked out
+               return 3; 
+        }
 
         if (enemy.getHealth() <= 0) {
+
             return 1; // Player has won the fight
         }
 
@@ -174,23 +155,15 @@ public final class PlayerControls {
         switch (direction) {
             case "N": // if the user wants to move north
                 roomPoint.y--; // subtract 1 from players y point
-                //if(roomPoint.y == -1)
-                  //  roomPoint.y = 4;
                 break;
             case "E":
                 roomPoint.x++;
-                //if(roomPoint.x == 5)
-                    //roomPoint.x = 0;
                 break;
             case "W":
                 roomPoint.x--;
-                //if(roomPoint.x == -1)
-                  //  roomPoint.x = 4;
                 break;
             case "S":
                 roomPoint.y++;
-                //if(roomPoint.y == 5)
-                    //roomPoint.y = 0;
                 break;
             default:
                 throw new PlayerControlsException("Invalid Direction");
@@ -255,8 +228,9 @@ public final class PlayerControls {
 
         if (exceedsRoom(direction, tempLocation)) {
             System.out.println("!!!!This move is taking us to a new room!!!!");
-            if (exceedsMap(direction, tempLocation)) System.out.println("!!!!cannot go this way, out of bounds!!!!"); // do nothing
-            else {
+            if (exceedsMap(direction, tempLocation)) {
+                System.out.println("!!!!cannot go this way, out of bounds!!!!"); // do nothing
+            } else {
                 removePastLocation(tempLocation);
                 tempLocation = shiftInMap(direction, tempLocation);
             }
@@ -269,7 +243,6 @@ public final class PlayerControls {
         checkForEnemies(tempLocation);
         //checkForItems(tempLocation);
         BiseJosephTeam.BiseJosephTeam.game.getPlayer().setLocation(tempLocation);
-
 
     }
 
@@ -290,17 +263,28 @@ public final class PlayerControls {
         ArrayList<Item> itemGameList = BiseJosephTeam.BiseJosephTeam.game.getItemGameList();
     }
 
-    public static void useItem(Item item) throws PlayerControlsException {
+    public static String useItem(Item item) throws PlayerControlsException {
 
-        if (item.getType() == 'Q') {
-            //if item is of type Q it is equipable
-        } else if (item.getType() == 'U') {
-            // if item is of type U it is usable once
-        } else if (item.getType() == 'C') {
-            ClueView clueView = new ClueView();
-            clueView.openClueView(item.getDescription());
-        } else {
-            throw new PlayerControlsException("Cannot use item of type: " + item.getType());
+        switch (item.type) {
+            case 'w':
+                BiseJosephTeam.BiseJosephTeam.game.getPlayer().equip(item);
+                return item.description + " equipped! Your attack is now " + BiseJosephTeam.BiseJosephTeam.game.getPlayer().getAttack();
+            case 'c':
+                if (ItemControl.checkForItem("decoder")) {
+                    return "The clue has beed deciphered!: " + ItemControl.dicipherCode(item.getDescription());
+                } else {
+                    return "You don't have the decoder yet! The clue reads: " + item.getDescription();
+                }
+
+            case 'h':
+                BiseJosephTeam.BiseJosephTeam.game.getPlayer().setHealth(BiseJosephTeam.BiseJosephTeam.game.getPlayer().getHealth() + item.getPoints());
+                return "Your health is now at:  " + BiseJosephTeam.BiseJosephTeam.game.getPlayer().getHealth();
+            case 'd':
+                BiseJosephTeam.BiseJosephTeam.game.getPlayer().getItems().add(item);
+                return "You have the decoder!";
+            default:
+                throw new PlayerControlsException("Cannot use item of type: " + item.getType());
+
         }
 
     }
@@ -310,9 +294,9 @@ public final class PlayerControls {
 
         Location location = null;
 
-        Item pistol = ItemControl.newItem("A short range pistol", 3, 'w', location); // this will be a problem because 
-        // item will not follow player... set it to null? 
+        Item pistol = ItemControl.newItem("A short range pistol", 3, 'w', location); 
         items.add(pistol);
+        player.equip(pistol);
 
         return items;
 
