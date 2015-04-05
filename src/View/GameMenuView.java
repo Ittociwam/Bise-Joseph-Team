@@ -157,7 +157,7 @@ public class GameMenuView extends View {
         console.println("bmi: " + pr.getBmi());
         console.println("Health: " + pl.getHealth());
         console.println("Attack Strength: " + pl.getAttack());
-        console.println("Equiped Item: " + pl.getEquipedItem());
+        console.println("Equiped Item: " + pl.getEquipedItem().getDescription());
 
         
     }

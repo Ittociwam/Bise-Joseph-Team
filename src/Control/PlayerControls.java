@@ -30,14 +30,10 @@ public final class PlayerControls {
     private PlayerControls() {
     }
 
-    public static boolean isAlpha(String code) {
-        return code.matches("[a-zA-Z\\s]+");
-    }
+
 
     public static int attack(Player player, Character enemy) throws PlayerControlsException {
 
-        System.out.println("playercontrols attack emeny: " + enemy);
-                System.out.println("player: " + player);
         if (enemy.getType() != 'e') {
             throw new PlayerControlsException("Cannot fight this type of character");
         } // Invalid enemy
@@ -100,10 +96,8 @@ public final class PlayerControls {
         Point mapPoint = room.getCoords();
 
         if (LocationControl.exceedsRoom(direction, tempLocation)) {
-            System.out.println("!!!!This move is taking us to a new room!!!!");
-            if (LocationControl.exceedsMap(direction, tempLocation)) {
-                System.out.println("!!!!cannot go this way, out of bounds!!!!"); // do nothing
-            } else {
+            if (LocationControl.exceedsMap(direction, tempLocation)); // do nothing
+            else {
                 LocationControl.removePastLocation(tempLocation);
                 tempLocation = LocationControl.shiftInMap(direction, tempLocation);
             }
@@ -125,7 +119,6 @@ public final class PlayerControls {
 
         for (int i = 0; i < enemies.size(); i++) {
             if (location.equals(enemies.get(i).getLocation())) {
-                System.out.println("They are equal !!!!!!!!!!!!!!!!!!!!");
                 AttackView attackView = new AttackView();
                 attackView.openMenu(BiseJosephTeam.BiseJosephTeam.game.getPlayer(), enemies.get(i));
             }
@@ -137,7 +130,6 @@ public final class PlayerControls {
 
         for (int i = 0; i < items.size(); i++) {
             if (location.equals(items.get(i).getLocation())) {
-                System.out.println("They are equal !!!!!!!!!!!!!!!!!!!!");
                 PickupView pV = new PickupView();
                 pV.openPickupMenu(items.get(i));
                 

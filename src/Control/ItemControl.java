@@ -5,7 +5,6 @@
  */
 package Control;
 
-import static Control.PlayerControls.isAlpha;
 import Model.Item;
 import Model.Location;
 import exceptions.ItemControlException;
@@ -19,6 +18,10 @@ import java.util.ArrayList;
 public final class ItemControl {
 
     private ItemControl() {
+    }
+
+    public static boolean isAlpha(String code) {
+        return code.matches("[a-zA-Z\\s]+");
     }
 
     public static String dicipherCode(String code) throws PlayerControlsException {
@@ -80,9 +83,7 @@ public final class ItemControl {
             throw new ItemControlException("Incorrect point value: " + i + "Must be an integer, points: ");
         }
 
-
-            item.setType(c);
-
+        item.setType(c);
 
         return item;
     }

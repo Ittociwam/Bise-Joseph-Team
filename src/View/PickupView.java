@@ -6,6 +6,7 @@
 package View;
 
 import Control.ItemControl;
+import Control.LocationControl;
 import Control.PlayerControls;
 import Model.Item;
 import exceptions.PlayerControlsException;
@@ -43,9 +44,11 @@ public class PickupView extends View {
         Item i = (Item) obj;
         try {
             console.println(PlayerControls.useItem(i));
+
         } catch (PlayerControlsException ex) {
             Logger.getLogger(PickupView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        LocationControl.removePastLocation(i.getLocation());
 
     }
 

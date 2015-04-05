@@ -41,8 +41,7 @@ public class StartProgramView extends View{
         this.console.println("\n\n************************************************\n");
 
         this.console.println("*                                                  *\n"
-                + "*         ALL QUIET ON THE PACIFIC THEATER         *\n"
-                + "*               Add game banner here!              *\n");
+                + "*         ALL QUIET ON THE PACIFIC THEATER         *\n");
 
         this.console.println("****************************************************\n");
 

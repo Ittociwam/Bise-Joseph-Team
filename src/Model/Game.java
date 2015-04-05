@@ -120,27 +120,42 @@ public class Game implements Serializable {
         itemGameList.add(ItemControl.newItem("A friggen Katana", 10, 'w', LocationControl.generateRandomLocation()));
         itemGameList.add(ItemControl.newItem("A flame-thrower", 10, 'w', LocationControl.generateRandomLocation()));
         
+        for(int i = 0; i < 4; i++)
+        itemGameList.add(ItemControl.newItem("decoder", 0, 'd', LocationControl.generateRandomLocation()));
+
+        
         for(int i = 0; i < 10; i++)
         itemGameList.add(ItemControl.newItem("First Aid Kit", BiseJosephTeam.BiseJosephTeam.randInt(2, 7), 'h', LocationControl.generateRandomLocation()));
+        
 
         // Add clues
-        itemGameList.add(ItemControl.newItem("wklv lv d vhfuhw phvvdjh", 0, 'c', LocationControl.generateRandomLocation())); // move this to item control
-        itemGameList.add(ItemControl.newItem("Brx qrwlfh d udelg udeelw krsslqj wrzdugv brx... Brx vkrrw lw ehiruh lw jhwv wrr forvh. Brx fdq qhyhu eh wrr fduhixo.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx qrwlfh eduuhov ri elr-kducdugrxv pdwhuldov qhdu wkh frdvw ri wkh ehdfk. Vrphrqh pxvw eh gxpslqj fkhplfdo zdvwh khuh.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx khdu vrph guhdgixo prdqlqj lq wkh glvwdqfh.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx hadplqh d ghdg qdcl vroglhu dqg qrwlfh elwh  pdunv dqg vfudwfkhv iurp d vwuxjjoh zlwk vrph hylo fuhdwxuh.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Wkh exvkhv uxvwoh qhaw wr brx dqg brx dlp brxu jxq wr vkrrw zkdwhyhu pljkw mxps rxw dw brx. D vpdoo ghhu exuvwv rxw, iohhlqj iurp vrph xqvhhq wkuhdw.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("D ehooljhuhqw pdq vwxpeohv diwhu brx, vhhplqjob pdg. Kh dwwhpswv wr elwh brx, exw ehiruh kh fdq uhdfk brxu vkrxoghu brx sxw d exoohw lq klp.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx khdu dq Dphulfdq pdq fdoolqj iru khos lq wkh iruhvw, exw grq'w nqrz zkhuh kh lv. Brx iroorz wkh yrlfh, exw zkhq brx duulyh dw wkh vrxufh brx vhh rqob wkh uhpdlqv ri wkh pdq.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx qrwlfh d odujh iruwuhvv rii lq wkh glvwdqfh. Brx nqrz wkdw lv zkb brx kdyh ehhq vhqw wr wklv lvodqg.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx qrwlfh Eduuhov ri hasorvlyh oltxlg lq wkh fruqhu ri wkh urrp. Wklv pljkw eh krz brx fdq ulg wkh zruog ri wklv zlfnhg iruwuhvv.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx wklqn wr brxuvhoi, li rqob brx kdg eurxjkw hasorvlyhv. Wkhq brx frxog ghvwurb wkdw iruwuhvv qr sureohp.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx qrwlfh dqrwkhu rqh ri wkh Qdcl'v glvjxvwlqj hashulphqwv uxqqlqj wrzdugv brx. Wklv rqh lv gliihuhqw. Lw wdnhv vhyhudo exoohwv wr wdnh grzq ehiruh lw idoov dw brxu ihhw. Wkhb duh jhwwlqj vwurqjhu.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx wklqn derxw krph, derxw brxu vzhhw khduw wkdw brx ohiw wkhuh, zrqghulqj li brx'oo hyhu vhh wkdw vzhhw idfh djdlq.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Wkh wlph eoxuv wrjhwkhu. Brx fdq'w uhphpehu krz orqj brx kdyh ehhq rq wkh lvodqg, exw d vhqvh ri gxwb exuqv lq brx wr frpsohwh brxu plvvlrq dv vrrq dv srvvleoh.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx ghvsdlu dv brx qrwlfh ghdg prqnhbv rq wkh jurxqg. Wkhlu whhwk odujhu dqg vkdushu wkdq dqb brx kdyh hyhu vhhq. Brx qrwlfh wkh whoo-wdoh vljqv ri qdcl hashulphqwdwlrq rq wkhp.", 0, 'c', LocationControl.generateRandomLocation()));
-        itemGameList.add(ItemControl.newItem("Brx glvwdqwob uhplqlvfh ri wkdw zdup ehg dqg wkh frpiruwv ri krph.", 0, 'c', LocationControl.generateRandomLocation()));        
+        for(int i = 0; i < 3; i++)
+        itemGameList.add(ItemControl.newItem("UVRY MBZOVRF", 0, 'c', LocationControl.generateRandomLocation())); // move this to item control
+        for(int i = 0; i < 3; i++)
+        itemGameList.add(ItemControl.newItem("CEBWRPG HAQRNQ", 0, 'c', LocationControl.generateRandomLocation())); // move this to item control
+        for(int i = 0; i < 3; i++)
+        itemGameList.add(ItemControl.newItem("FRPERG JRNCBA", 0, 'c', LocationControl.generateRandomLocation())); // move this to item control
+        for(int i = 0; i < 3; i++)
+        itemGameList.add(ItemControl.newItem("HAQRNQ NEZL", 0, 'c', LocationControl.generateRandomLocation())); // move this to item control
+        
+        /*
+        itemGameList.add(ItemControl.newItem("Brx qrwlfh d udelg udeelw krsslqj wrzdugv brx Brx vkrrw lw ehiruh lw jhwv wrr forvh Brx fdq qhyhu eh wrr fduhixo", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx qrwlfh eduuhov ri elr-kducdugrxv pdwhuldov qhdu wkh frdvw ri wkh ehdfk Vrphrqh pxvw eh gxpslqj fkhplfdo zdvwh khuh", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx khdu vrph guhdgixo prdqlqj lq wkh glvwdqfh", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx hadplqh d ghdg qdcl vroglhu dqg qrwlfh elwh  pdunv dqg vfudwfkhv iurp d vwuxjjoh zlwk vrph hylo fuhdwxuh", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Wkh exvkhv uxvwoh qhaw wr brx dqg brx dlp brxu jxq wr vkrrw zkdwhyhu pljkw mxps rxw dw brx D vpdoo ghhu exuvwv rxw iohhlqj iurp vrph xqvhhq wkuhdw", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("D ehooljhuhqw pdq vwxpeohv diwhu brx vhhplqjob pdg Kh dwwhpswv wr elwh brx exw ehiruh kh fdq uhdfk brxu vkrxoghu brx sxw d exoohw lq klp", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx khdu dq Dphulfdq pdq fdoolqj iru khos lq wkh iruhvw exw grq'w nqrz zkhuh kh lv Brx iroorz wkh yrlfh exw zkhq brx duulyh dw wkh vrxufh brx vhh rqob wkh uhpdlqv ri wkh pdq", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx qrwlfh d odujh iruwuhvv rii lq wkh glvwdqfh Brx nqrz wkdw lv zkb brx kdyh ehhq vhqw wr wklv lvodqg", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx qrwlfh Eduuhov ri hasorvlyh oltxlg lq wkh fruqhu ri wkh urrp Wklv pljkw eh krz brx fdq ulg wkh zruog ri wklv zlfnhg iruwuhvv", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx wklqn wr brxuvhoi li rqob brx kdg eurxjkw hasorvlyhv Wkhq brx frxog ghvwurb wkdw iruwuhvv qr sureohp", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx qrwlfh dqrwkhu rqh ri wkh Qdcl'v glvjxvwlqj hashulphqwv uxqqlqj wrzdugv brx Wklv rqh lv gliihuhqw Lw wdnhv vhyhudo exoohwv wr wdnh grzq ehiruh lw idoov dw brxu ihhw. Wkhb duh jhwwlqj vwurqjhu", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx wklqn derxw krph derxw brxu vzhhw khduw wkdw brx ohiw wkhuh, zrqghulqj li brx'oo hyhu vhh wkdw vzhhw idfh djdlq", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Wkh wlph eoxuv wrjhwkhu Brx fdq'w uhphpehu krz orqj brx kdyh ehhq rq wkh lvodqg, exw d vhqvh ri gxwb exuqv lq brx wr frpsohwh brxu plvvlrq dv vrrq dv srvvleoh", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx ghvsdlu dv brx qrwlfh ghdg prqnhbv rq wkh jurxqg Wkhlu whhwk odujhu dqg vkdushu wkdq dqb brx kdyh hyhu vhhq Brx qrwlfh wkh whoo-wdoh vljqv ri qdcl hashulphqwdwlrq rq wkhp", 0, 'c', LocationControl.generateRandomLocation()));
+        itemGameList.add(ItemControl.newItem("Brx glvwdqwob uhplqlvfh ri wkdw zdup ehg dqg wkh frpiruwv ri krph", 0, 'c', LocationControl.generateRandomLocation()));        
 
+                */
     }
 
     @Override
