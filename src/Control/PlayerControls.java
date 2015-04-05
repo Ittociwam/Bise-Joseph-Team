@@ -13,6 +13,7 @@ import Model.Player;
 import Model.Room;
 import View.AttackView;
 import View.ClueView;
+import View.PickupView;
 import View.RoomView;
 import exceptions.ItemControlException;
 import exceptions.PlayerControlsException;
@@ -87,134 +88,6 @@ public final class PlayerControls {
         }
     }
 
-    private static boolean exceedsRoom(String direction, Location tempLocation) throws PlayerControlsException {
-        Point roomPoint = tempLocation.getPoint();
-
-        switch (direction) {
-            case "N": // if the user wants to move north
-                if (roomPoint.y - 1 == -1) {
-                    return true;
-                }
-                break;
-            case "E":
-                if (roomPoint.x + 1 == 5) {
-                    return true;
-                }
-                break;
-            case "W":
-                if (roomPoint.x - 1 == -1) {
-                    return true;
-                }
-                break;
-            case "S":
-                if (roomPoint.y + 1 == 5) {
-                    return true;
-                }
-                break;
-            default:
-                throw new PlayerControlsException("Invalid Direction");
-        }
-
-        return false;
-    }
-
-    private static boolean exceedsMap(String direction, Location tempLocation) throws PlayerControlsException {
-        Point mapPoint = tempLocation.getRoom().getCoords();
-        //Point roomPoint = tempLocation.getPoint();
-        switch (direction) {
-            case "N": // if the user wants to move north
-                if (mapPoint.y - 1 == -1) {
-                    return true;
-                }
-                break;
-            case "E":
-                if (mapPoint.x + 1 == 6) {
-                    return true;
-                }
-                break;
-            case "W":
-                if (mapPoint.x - 1 == -1) {
-                    return true;
-                }
-                break;
-            case "S":
-                if (mapPoint.y + 1 == 6) {
-                    return true;
-                }
-                break;
-            default:
-                throw new PlayerControlsException("Invalid Direction");
-
-        }
-
-        return false;
-    }
-
-    private static Location shiftInRoom(String direction, Location tempLocation) throws PlayerControlsException {
-        Point roomPoint = tempLocation.getPoint();
-        switch (direction) {
-            case "N": // if the user wants to move north
-                roomPoint.y--; // subtract 1 from players y point
-                break;
-            case "E":
-                roomPoint.x++;
-                break;
-            case "W":
-                roomPoint.x--;
-                break;
-            case "S":
-                roomPoint.y++;
-                break;
-            default:
-                throw new PlayerControlsException("Invalid Direction");
-        }
-
-        tempLocation.setPoint(roomPoint);
-        System.out.println("shiftInRoom is returning: " + tempLocation);
-        return tempLocation;
-
-    }
-
-    private static Location shiftInMap(String direction, Location tempLocation) {
-        Point roomPoint = tempLocation.getPoint();
-        Room room = tempLocation.getRoom();
-        Point mapPoint = room.getCoords();
-
-        System.out.println("mappoint before: " + mapPoint + "direction: " + direction);
-        switch (direction) {
-            case "N":
-                System.out.println("changing y: " + mapPoint.y);
-                mapPoint.y--;
-                System.out.println("to: " + mapPoint.y);
-                roomPoint.y = 4;
-                break;
-            case "S":
-                mapPoint.y++;
-                roomPoint.y = 0;
-                break;
-            case "E":
-                mapPoint.x++;
-                roomPoint.x = 0;
-                break;
-            case "W":
-                mapPoint.x--;
-                roomPoint.x = 4;
-                break;
-        }
-        System.out.println("mappoint after: " + mapPoint);
-        System.out.println("room before: " + room);
-        room = BiseJosephTeam.BiseJosephTeam.game.getMap().getRooms()[mapPoint.x][mapPoint.y];
-        room.setCoords(mapPoint);
-        System.out.println("room after: " + room);
-        tempLocation.setPoint(roomPoint);
-        tempLocation.setRoom(room);
-        System.out.println("shiftInMap is returning: " + tempLocation);
-        return tempLocation;
-    }
-
-    private static void removePastLocation(Location tempLocation) {
-        tempLocation.getRoom().elements[tempLocation.getPoint().y][tempLocation.getPoint().x] = new Element();
-    }
 
     public static void move(String direction) throws PlayerControlsException {
         // move the character in the direction sent in
@@ -226,22 +99,22 @@ public final class PlayerControls {
         Room room = tempLocation.getRoom();
         Point mapPoint = room.getCoords();
 
-        if (exceedsRoom(direction, tempLocation)) {
+        if (LocationControl.exceedsRoom(direction, tempLocation)) {
             System.out.println("!!!!This move is taking us to a new room!!!!");
-            if (exceedsMap(direction, tempLocation)) {
+            if (LocationControl.exceedsMap(direction, tempLocation)) {
                 System.out.println("!!!!cannot go this way, out of bounds!!!!"); // do nothing
             } else {
-                removePastLocation(tempLocation);
-                tempLocation = shiftInMap(direction, tempLocation);
+                LocationControl.removePastLocation(tempLocation);
+                tempLocation = LocationControl.shiftInMap(direction, tempLocation);
             }
 
         } else {
-            removePastLocation(tempLocation);
-            tempLocation = shiftInRoom(direction, tempLocation);
+            LocationControl.removePastLocation(tempLocation);
+            tempLocation = LocationControl.shiftInRoom(direction, tempLocation);
         }
 
         checkForEnemies(tempLocation);
-        //checkForItems(tempLocation);
+        checkForItems(tempLocation);
         BiseJosephTeam.BiseJosephTeam.game.getPlayer().setLocation(tempLocation);
 
     }
@@ -260,15 +133,24 @@ public final class PlayerControls {
     }
 
     public static void checkForItems(Location location) {
-        ArrayList<Item> itemGameList = BiseJosephTeam.BiseJosephTeam.game.getItemGameList();
+               ArrayList<Item> items = BiseJosephTeam.BiseJosephTeam.game.getItemGameList();
+
+        for (int i = 0; i < items.size(); i++) {
+            if (location.equals(items.get(i).getLocation())) {
+                System.out.println("They are equal !!!!!!!!!!!!!!!!!!!!");
+                PickupView pV = new PickupView();
+                pV.openPickupMenu(items.get(i));
+                
+            }
+        }
     }
 
     public static String useItem(Item item) throws PlayerControlsException {
 
         switch (item.type) {
             case 'w':
-                BiseJosephTeam.BiseJosephTeam.game.getPlayer().equip(item);
-                return item.description + " equipped! Your attack is now " + BiseJosephTeam.BiseJosephTeam.game.getPlayer().getAttack();
+                BiseJosephTeam.BiseJosephTeam.game.getPlayer().getItems().add(item);
+                return item.description + " added! Go to your inventory to equip ";
             case 'c':
                 if (ItemControl.checkForItem("decoder")) {
                     return "The clue has beed deciphered!: " + ItemControl.dicipherCode(item.getDescription());

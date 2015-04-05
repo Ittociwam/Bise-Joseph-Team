@@ -30,8 +30,8 @@ public class BMIView extends View{
         
         input = getInput();
         int height = parseInt(input);
-        int newHealth = PlayerControls.calcBMI(weight, height);
-        this.console.println("Your new health is " + newHealth);
+        BiseJosephTeam.BiseJosephTeam.game.getPerson().setBmi(PlayerControls.calcBMI(weight, height));
+        this.console.println("Your starting health will be " + BiseJosephTeam.BiseJosephTeam.game.getPerson().getBmi());
         }
         
         catch(NumberFormatException nfe){

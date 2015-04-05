@@ -30,9 +30,9 @@ public class Game implements Serializable {
 
 
     public Game() {
-        player = new Player();
-        player.setHealth(15);
+
         person = new Person();
+        player = new Player();
         
         itemGameList = new ArrayList<>();
         enemies = new ArrayList<>();

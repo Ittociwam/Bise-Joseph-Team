@@ -36,11 +36,15 @@ public class AttackView extends View {
             this.doAction(myStuff);
             this.console.println("Your health: health: " + p.getHealth());
             this.console.println("Your enemies health: " + e.getHealth());
-            if(p.getHealth() > 0 && e.getHealth() > 0)
+            if (p.getHealth() > 0 && e.getHealth() > 0) {
                 this.console.println("Would you like to attack back? Y/N");
-            else
+                value = getInput();
+            } else {
+                console.println("Enter 'c' to continue");
+                value = getInput();
                 break;
-            value = getInput();
+            }
+
         } while (value == "Y");
     }
 

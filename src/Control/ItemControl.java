@@ -58,7 +58,7 @@ public final class ItemControl {
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     public static Item newItem(String description, int i, char c, Location l) throws ItemControlException {

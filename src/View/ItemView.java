@@ -98,11 +98,8 @@ public class ItemView extends View {
     public void doAction(Object obj) {
 
         Item item = (Item)obj;
-        try {
-            PlayerControls.useItem(item);
-        } catch (PlayerControlsException ex) {
-            ErrorView.display(this.getClass().getName(), "Error assigning an item");
-        }
+        BiseJosephTeam.BiseJosephTeam.game.getPlayer().equip(item);
+        console.println(item.getDescription() + " equiped. Attack is now " + item.getPoints());
     }
 
     void printItemList() {
