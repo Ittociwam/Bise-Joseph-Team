@@ -49,6 +49,7 @@ public class PickupView extends View {
             Logger.getLogger(PickupView.class.getName()).log(Level.SEVERE, null, ex);
         }
         LocationControl.removePastLocation(i.getLocation());
+        
 
     }
 
