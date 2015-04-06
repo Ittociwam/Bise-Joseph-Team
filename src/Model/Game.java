@@ -38,6 +38,7 @@ public class Game implements Serializable {
         enemies = new ArrayList<>();
 
         map = new Map();
+        enemiesKilled = 0;
 
     }
 

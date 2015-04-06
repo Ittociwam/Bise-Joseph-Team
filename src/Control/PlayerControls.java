@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static BiseJosephTeam.BiseJosephTeam.game;
 import Model.Character;
 import Model.Element;
 import Model.Item;
@@ -56,12 +57,13 @@ public final class PlayerControls {
         
         if(enemy.getHealth() <= 0 && player.getHealth() <=0)
         {
+            game.setEnemiesKilled(game.getEnemiesKilled() + 1);
             player.setHealth(1); // player won but blacked out
                return 3; 
         }
 
         if (enemy.getHealth() <= 0) {
-
+            game.setEnemiesKilled(game.getEnemiesKilled() + 1);
             return 1; // Player has won the fight
         }
 

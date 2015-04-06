@@ -2,25 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
         <group>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/MoveView.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/RoomView.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/PlayerControls.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/LocationControl.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/MapControls.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/RoomControls.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Element.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Map.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/View.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/StartProgramView.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/MainMenuView.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Room.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/MapView.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/GameMenuView.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Location.java</file>
-            <file>file:/C:/Users/Robbie/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Game.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Game.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/PlayerControls.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Player.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Person.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/MainMenuView.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/GameControls.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/AttackView.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/GameMenuView.java</file>
         </group>
-        <group/>
-        <group/>
+        <group>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Game.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/PlayerControls.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Player.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Model/Person.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/MainMenuView.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/Control/GameControls.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/AttackView.java</file>
+            <file>file:/C:/Users/Travis/Documents/NetBeansProjects/Bise-Joseph-Team/src/View/GameMenuView.java</file>
+        </group>
     </open-files>
 </project-private>

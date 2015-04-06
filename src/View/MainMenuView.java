@@ -84,7 +84,13 @@ public class MainMenuView extends View {
             }
             break;
             case "G":
+        {
+            try {
                 this.startExistingGame();
+            } catch (PlayerControlsException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "H":
                 this.displayHelpMenu();
@@ -117,7 +123,7 @@ public class MainMenuView extends View {
         this.console.println("*** StartNewGame Function called ***");
     }
 
-    private void startExistingGame() {
+    private void startExistingGame() throws PlayerControlsException {
         // load a player
 //        GameMenuView gameMenu = new GameMenuView();
         // gameMenu.displayGameMenu(player, playerControls);
@@ -131,19 +137,20 @@ public class MainMenuView extends View {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display(filePath);
-        
         System.out.println("Welcome back:" + BiseJosephTeam.game.getPerson().getName());
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.openMenu(BiseJosephTeam.game.getPlayer());
+        
     }
 
     private void saveGame() {
-        this.console.println("*** saveGame Function called ***");
+//        this.console.println("*** saveGame Function called ***");
         System.out.println("\nEnter the file path for file where the game is to be saved.");
         String filePath = this.getInput();
         
         try {
-            GameControls.saveGame(BiseJosephTeam.game, filePath);
+            GameControls.saveGame(BiseJosephTeam.game, filePath, BiseJosephTeam.game.getPerson());
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
