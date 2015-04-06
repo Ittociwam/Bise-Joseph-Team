@@ -22,36 +22,41 @@ class MyStuff {
 
 public class AttackView extends View {
 
-    boolean done = false;
-
     public void openMenu(Player p, Character e) {
         MyStuff myStuff = new MyStuff();
         myStuff.te = e;
         myStuff.tp = p;
+        this.doAction(myStuff); // initial attack
         console.println("You were attacked by " + e.getDescription());
 
         String value = " ";
 
         do {
-            this.doAction(myStuff);
+
             this.console.println("Your health: health: " + p.getHealth());
             this.console.println("Your enemies health: " + e.getHealth());
-            if (p.getHealth() > 0 && e.getHealth() > 0) {
+            if (p.getHealth() >= 0 && e.getHealth() >= 0) {
+                this.doAction(myStuff);
                 this.console.println("Would you like to attack back? Y/N");
                 value = getInput();
-            } else {
-                console.println("Enter 'c' to continue");
-                value = getInput();
-                break;
+                if ("Y".equals(value)) {
+                    this.console.println("yes");
+                    this.doAction(myStuff);
+                    continue;
+                } 
             }
+            console.println("Enter 'c' to continue");
+            value = getInput();
 
-        } while (value == "Y");
+        } while (value == "C");
     }
 
     public void doAction(Object obj) {
         MyStuff myStuff = (MyStuff) obj;
         Player p = myStuff.tp;
         Character e = myStuff.te;
+        boolean done = false;
+
         while (!done) {
             int returnValue = 0;
             try {
@@ -83,7 +88,7 @@ public class AttackView extends View {
                     break;
                 case 0:
                     this.console.println("Continue the fight");
-                    done = false;
+                    done = true;
                     break;
                 case -1:
                     ErrorView.display(this.getClass().getName(), "Invalid enemy type");
