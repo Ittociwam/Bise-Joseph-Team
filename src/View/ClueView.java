@@ -37,7 +37,7 @@ public class ClueView extends View {
         String code = (String) obj;
         if (ItemControl.checkForItem("decoder")) {
             try {
-                PlayerControls.dicipherCode(code);
+                ItemControl.dicipherCode(code);
             } catch (PlayerControlsException ex) {
                 Logger.getLogger(ClueView.class.getName()).log(Level.SEVERE, null, ex);
             }

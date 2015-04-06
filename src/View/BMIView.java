@@ -18,7 +18,7 @@ public class BMIView extends View{
     
     public void openBMIView() throws PlayerControlsException{
         try{
-            display("Add points to your health by entering your height"
+            display("Add points to your health by entering your height "
                     + "and weight to calculate your bmi!\n");
         
         display("Please enter your weight: ");
@@ -26,12 +26,12 @@ public class BMIView extends View{
         String input = getInput();
         int weight = parseInt(input);
         
-        display("Please enter your height: ");
+        display("Please enter your height(feet): ");
         
         input = getInput();
         int height = parseInt(input);
-        int newHealth = PlayerControls.calcBMI(weight, height);
-        this.console.println("Your new health is " + newHealth);
+        BiseJosephTeam.BiseJosephTeam.game.getPerson().setBmi(PlayerControls.calcBMI(weight, height));
+        this.console.println("Your starting health will be " + BiseJosephTeam.BiseJosephTeam.game.getPerson().getBmi());
         }
         
         catch(NumberFormatException nfe){

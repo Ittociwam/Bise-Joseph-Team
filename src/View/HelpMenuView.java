@@ -24,9 +24,9 @@ public class HelpMenuView extends View {
             + "The goal of the game is to find the secret base, discover a \n"
             + " key to unlock the base and find a bomb to destroy the base \n";
     private final String MOVING = "\n"
-            + "To move around the map you simply use the arrow keys. You  \n"
-            + " move from room to room by passing your character over the \n"
-            + " arrows at the top, bottom, left or right of the screen.   \n";
+            + "To move around the map you simply use 'n' for north, 's' for south "
+            + "and so forth. You move from room to room by passing your character \n"
+            + " over the threshold of the current room.\n";
     private final String ITEM = "\n"
             + "To pick up an item you simply walk over it. The game will \n"
             + " then ask you if you would like to pick it up or not. You \n"
@@ -45,9 +45,8 @@ public class HelpMenuView extends View {
 
             value = getInput();
             doAction(value);
-
             
-        } while (value != "E");
+        } while (!"E".equals(value));
     }
     
     public void doAction(Object obj)

@@ -10,6 +10,7 @@ import Control.GameControls;
 import java.util.Scanner;
 import Control.PlayerControls;
 import Model.Item;
+import Model.Person;
 import Model.Player;
 import exceptions.GameControlException;
 import exceptions.ItemViewException;
@@ -39,7 +40,8 @@ public class GameMenuView extends View {
             + "                 Game Menu                \n"
             + "------------------------------------------\n"
             + "          H - Get Help/Display Menu       \n"
-            + "M -  Move Menu (N-north, E-east, S-south, W-west)\n"
+            + "            M -  Move Player              \n"
+            + "            A - View Player Attributes    \n"
             + "         L - Look around the room         \n"
             + "             V - View Map                 \n"
             + "            I - View Inventory            \n"
@@ -82,6 +84,9 @@ public class GameMenuView extends View {
                 break;
             case "L":
                 this.viewRoom();
+                break;
+            case "A":
+                this.displayStats();
                 break;
             case "V":
                 this.viewMap();
@@ -141,6 +146,20 @@ public class GameMenuView extends View {
         } catch (Exception ex) {
             ErrorView.display("GameMenuView", ex.getMessage());
         }
+    }
+
+    private void displayStats() {
+        Person pr = BiseJosephTeam.game.getPerson();
+        Player pl = BiseJosephTeam.game.getPlayer();
+        console.println("*********Player Stats and Attributes*********");
+        console.println("Name: " + pr.getName());
+        console.println("Discription: " + pl.getDescription());
+        console.println("bmi: " + pr.getBmi());
+        console.println("Health: " + pl.getHealth());
+        console.println("Attack Strength: " + pl.getAttack());
+        console.println("Equiped Item: " + pl.getEquipedItem().getDescription());
+
+        
     }
 
 }

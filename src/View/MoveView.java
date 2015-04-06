@@ -41,12 +41,18 @@ public class MoveView extends View {
         String choice = null;
         while (!"Q".equals(choice))
         {
-        console.print(choice);
-        console.println("current Location: " + thisPlayer.getLocation());
+        RoomView roomView = new RoomView();
+        MapView mapView = new MapView();
+
+        mapView.display(BiseJosephTeam.BiseJosephTeam.game.getMap());
+        
+        roomView.display(thisPlayer.getLocation().getRoom());
+        if(choice != null)
+        console.println("You have moved: " + choice);
+        console.println("You are currently in " + thisPlayer.getLocation().getRoom().getDescription());
+        console.println("Press 'q' at any time to return to main menu");
         choice = getInput();
         doAction(choice);
-        RoomView roomView = new RoomView();
-        roomView.display(thisPlayer.getLocation().getRoom());
         }
 
     }

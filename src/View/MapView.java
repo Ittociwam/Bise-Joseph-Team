@@ -19,7 +19,7 @@ public class MapView extends View {
         int numRow = map.getSize().width;
         Point playerPoint = BiseJosephTeam.BiseJosephTeam.game.getPlayer().getLocation().getRoom().getCoords();
 
-        console.println('\n');
+        console.println("Map ('x' = You!)");
         for (int row = 0; row < numRow; row++) {
             for (int col = 0; col < numCol; col++) {
                 if (col == 0) {

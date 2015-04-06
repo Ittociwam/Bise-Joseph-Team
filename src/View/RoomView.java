@@ -16,7 +16,7 @@ public class RoomView extends View {
     public void display(Room room) {
         int numCol = room.getSize().height;
         int numRow = room.getSize().width;
-        console.println('\n');
+        console.println("Current Room ('w' = weapon, 'c' = clue, 'h' = health pack, 'd' = decoder, 'e' = enemy, 'p' = you!)");
         for (int row = 0; row < numRow; row++) {
             for (int col = 0; col < numCol; col++) {
                 if (col == 0) 

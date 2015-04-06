@@ -18,7 +18,6 @@ public class Person implements Serializable{
 
     public Person() {
         name = "noName";
-        bmi = 0;
     }
 
     public int getBmi() {

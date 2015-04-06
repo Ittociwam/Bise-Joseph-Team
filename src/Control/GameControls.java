@@ -76,6 +76,7 @@ public final class GameControls {
 
         BMIView bMIView = new BMIView();
         bMIView.openBMIView();
+        
     }
 
     public static Game  createNewGame(String name) throws GameControlException, PlayerControlsException, ItemControlException {
@@ -89,7 +90,10 @@ public final class GameControls {
         game.setPerson(BiseJosephTeam.game.getPerson());
         
         Player player = new Player();
+        
         game.setPlayer(player);
+        
+        game.getPlayer().setHealth(game.getPerson().getBmi());
         
         Map map = new Map();
         game.setMap(map);

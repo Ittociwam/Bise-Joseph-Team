@@ -9,6 +9,8 @@ import Model.Character;
 import BiseJosephTeam.BiseJosephTeam;
 import Model.Room;
 import Control.LocationControl;
+import Model.Element;
+import Model.Location;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -29,8 +31,6 @@ public final class CharacterControl {
         enemyTypes[2] = ("A really ugly looking zombie");
         enemyTypes[3] = ("An ugly looking nazi-zombie");
 
-        LocationControl lC = new LocationControl();
-
         character.setDescription(enemyTypes[BiseJosephTeam.randInt(0, 3)]);
         character.setAttack(BiseJosephTeam.randInt(1, 20));
         character.setHealth(BiseJosephTeam.randInt(1, 15));
@@ -38,6 +38,10 @@ public final class CharacterControl {
 
         return character;
 
+    }
+    
+    public static void killCharacter(Location tempLocation){
+        tempLocation.getRoom().elements[tempLocation.getPoint().y][tempLocation.getPoint().x] = new Element();
     }
 
     public static void addEnemies(int numEnemies) {
