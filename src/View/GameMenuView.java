@@ -51,7 +51,6 @@ public class GameMenuView extends View {
             + "             E- Exit Menu                 \n"
             + "------------------------------------------\n";
 
-    // i think displaygamemenu will have to take a player parameter so it can call openItemMenu
     void openMenu(Player player) throws PlayerControlsException {
         Stuff myStuff = new Stuff();
         myStuff.items = player.getItems();
@@ -138,7 +137,7 @@ public class GameMenuView extends View {
     }
 
     private void printItemList() {
-        System.out.println("\nEnter the file path for file where the report will be saved.");
+        console.println("\nEnter the file path for file where the report will be saved.");
         String filePath = this.getInput();
         
         try {

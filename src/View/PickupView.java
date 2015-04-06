@@ -32,6 +32,7 @@ public class PickupView extends View {
         String input = getInput();
         if ("Y".equals(input)) {
             doAction(item);
+            LocationControl.removePastLocation(item.getLocation());
         }
         console.println("Enter 'c' to continue");
         String cont = getInput();
@@ -48,7 +49,7 @@ public class PickupView extends View {
         } catch (PlayerControlsException ex) {
             Logger.getLogger(PickupView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        LocationControl.removePastLocation(i.getLocation());
+
         
 
     }

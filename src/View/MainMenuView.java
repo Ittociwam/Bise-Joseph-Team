@@ -127,7 +127,7 @@ public class MainMenuView extends View {
         // load a player
 //        GameMenuView gameMenu = new GameMenuView();
         // gameMenu.displayGameMenu(player, playerControls);
-        System.out.println("\nEnter the file path for file where the game is to be loaded.");
+        console.println("\nEnter the file path for file where the game is to be loaded.");
         
         String filePath = this.getInput();
         
@@ -145,8 +145,7 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-//        this.console.println("*** saveGame Function called ***");
-        System.out.println("\nEnter the file path for file where the game is to be saved.");
+        console.println("\nEnter the file path for file where the game is to be saved.");
         String filePath = this.getInput();
         
         try {
