@@ -116,7 +116,7 @@ public final class GameControls {
         return game;
     }
 
-    public static void saveGame(Game game, String filePath) throws GameControlException {
+    public static void saveGame(Game game, String filePath, Person person) throws GameControlException {
         try( FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
             output.writeObject(game);
@@ -132,7 +132,7 @@ public final class GameControls {
         try( FileInputStream fips = new FileInputStream(filePath)) {
             ObjectInputStream output = new ObjectInputStream(fips);
             
-            game = (Game) output.readObject();
+            game = (Game)output.readObject();
         }
         catch(FileNotFoundException fnfe) {
             throw new GameControlException(fnfe.getMessage());

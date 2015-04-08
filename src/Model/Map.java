@@ -8,6 +8,7 @@ package Model;
 import Control.MapControls;
 import Control.RoomControls;
 import java.awt.Dimension;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ import java.util.Objects;
  *
  * @author Travis
  */
-public class Map {
+public class Map implements Serializable{
 
 
 
