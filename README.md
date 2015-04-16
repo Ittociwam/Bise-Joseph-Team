@@ -1,5 +1,5 @@
 
-##Too Quiet on the Pacific Theater
+![Title](tqotpt.jpg)
 
 ###Description 
 This is a text-based RPG. You play the part of a young man newly enlisted in the American army in 1944. After intense assessments you are put on a special team and sent to an uncharted island in the south pacific for a top secret mission. Your briefing is vague and unspecific but you deduct that the Nazis have been conducting experiments and developing a weapon of some sorts on this island.  
