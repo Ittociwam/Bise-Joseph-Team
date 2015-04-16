@@ -16,11 +16,22 @@ import java.util.Objects;
 public class Player extends Character implements Serializable{
 
     private ArrayList <Item> items;
+    private Item equipedItem;
 
     public Player() {
+        this.type = 'p';
         this.items = new ArrayList();
     }
 
+    public Item getEquipedItem() {
+        return equipedItem;
+    }
+
+    public void setEquipedItem(Item equipedItem) {
+        this.equipedItem = equipedItem;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -55,6 +66,11 @@ public class Player extends Character implements Serializable{
 
     public void setItems(ArrayList items) {
         this.items = items;
+    }
+
+    public void equip(Item item) {
+        this.equipedItem = item;
+        this.setAttack(item.points);
     }
 
 }

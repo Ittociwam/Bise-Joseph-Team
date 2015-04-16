@@ -7,7 +7,11 @@ package Model;
 
 import Model.Element;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -18,9 +22,30 @@ public class Room implements Serializable{
 
     private String description;
     private Dimension size;
+    private Point coords;
+
+    public Point getCoords() {
+        return coords;
+    }
+
+    public void setCoords(Point coords) {
+        this.coords = coords;
+    }
+    public Element[][] elements;
+    
+    
     
     
     public Room() {
+         this.elements = new Element [5][5];
+        for (int i=0; i < 5; i++) 
+        {
+            for (int j = 0; j < 5; j++)
+           elements[i][j] = new Element();
+       }
+         Element defaultE = new Element();
+        this.description = "a";
+        this.size = new Dimension(5, 5);
     }
 
     public String getDescription() {
@@ -49,6 +74,11 @@ public class Room implements Serializable{
     }
 
     @Override
+    public String toString() {
+        return "Room{" + "description=" + description + ", size=" + size + ", mapSpot=" + coords + '}';
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -63,12 +93,13 @@ public class Room implements Serializable{
         if (!Objects.equals(this.size, other.size)) {
             return false;
         }
+        if (!Objects.equals(this.coords, other.coords)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.elements, other.elements)) {
+            return false;
+        }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Room{" + "description=" + description + ", size=" + size + '}';
     }
     
     

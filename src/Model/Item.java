@@ -11,8 +11,11 @@ import java.io.Serializable;
  *
  * @author Robbie
  */
+
+
+
 public class Item extends Element implements Serializable {
-    private int points;
+    public int points;
 
     public Item() {
     }
@@ -42,7 +45,7 @@ public class Item extends Element implements Serializable {
 
     @Override
     public String toString() {
-        return "Item{" + "type=" + type + '}';
+        return "Item{" + "type=" + type + " description=" + description +'}';
     }
 
     public int getPoints() {

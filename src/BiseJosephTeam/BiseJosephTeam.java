@@ -16,147 +16,117 @@ import Model.Player;
 import Model.Map;
 import Model.Person;
 import Model.Room;
+import View.ErrorView;
 import View.StartProgramView;
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Robbie
  */
 public class BiseJosephTeam {
 
-    private static Game currentGame = null;
-    private static Person person = null;
+    public static Game game;
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    private static PrintWriter logFile = null;
 
-    public static Game getCurrentGame() {
-        return currentGame;
+    public static PrintWriter getLogFile() {
+        return logFile;
     }
 
-    public static void setCurrentGame(Game currentGame) {
-        BiseJosephTeam.currentGame = currentGame;
+    public static void setLogFile(PrintWriter logFile) {
+        BiseJosephTeam.logFile = logFile;
     }
 
-    public static Person getPerson() {
-        return person;
+    public static PrintWriter getOutFile() {
+        return outFile;
     }
 
-    public static void setPerson(Person person) {
-        BiseJosephTeam.person = person;
+    public static void setOutFile(PrintWriter outFile) {
+        BiseJosephTeam.outFile = outFile;
     }
-    public static void main(String[] args) {
-        
-        StartProgramView startProgramView = new StartProgramView();
-        
-        startProgramView.startProgram();
-        
-        
-        PlayerControls playerControls = new PlayerControls();
-        //TESTING ELEMENT
-        Element someElement = new Element();
-        someElement.setDescription("This is an empty Element");
-        someElement.setLocation(new Location());
-        String someElementTest = someElement.toString();
-        System.out.println(someElementTest);
 
-        //TESTING COORDINATES
-        Coordinates someCoords = new Coordinates();
-        someCoords.setX(4);
-        someCoords.setY(3);
-        String someCoordsTest = someCoords.toString();
-        System.out.println(someCoordsTest);
-
-        //TESTING LOCATION
-        Location someLocation = new Location();
-        someLocation.setMapCoords(someCoords);
-        someLocation.setRoomCoords(someCoords);
-        String someLocationTest = someLocation.toString();
-        System.out.println(someLocationTest);
-
-        //TESTING CHARACTER
-        Character someCharacter = new Character();
-        someCharacter.setAttack(5);
-        someCharacter.setType('e');
-        someCharacter.setDescription("One crazy dude who will kill you.");
-        someCharacter.setHealth(10);
-        someCharacter.setLocation(someLocation);
-        String someCharacterTest = someCharacter.toString();
-        System.out.println(someCharacterTest);
-
-        //TESTING ITEM
-        Item someItem = new Item();
-        someItem.setDescription("A beautiful piece of cheese");
-        someItem.setLocation(someLocation);
-        someItem.setType('c');
-        someItem.setPoints(5);
-        someItem.setLocation(someLocation);
-        String someItemTest = someItem.toString();
-        System.out.println(someItemTest);
-
-        //TESTING PLAYER
-        Player somePlayer = new Player();
-        somePlayer.setAttack(9);
-        somePlayer.setType('p');        
-        somePlayer.setDescription("A not so crazy heroic dude");
-        somePlayer.setHealth(22);
-        
-    //this is the bmi control function, I didn't feel the need to include anything in another class, since everything worked so efficiently here. if you'd like I can make it into another class.
-        /*System.out.println("How much do you weigh?");    
-        Scanner weight = new Scanner(System.in);
-        int fat = weight.nextInt();
-        System.out.println("How tall are you?");
-        Scanner height = new Scanner(System.in);
-        int tall = height.nextInt();
-        int bmi = fat / tall;
-        somePlayer.setHealth(somePlayer.getHealth() + bmi);
-        if (bmi < 0)
-            System.out.println("Error: incorrect BMI value");
-        else if (fat < 0)
-            System.out.println("Error: incorrect weight value");
-        else if (tall < 0)
-            System.out.println("Error: incorrect height value");
-        else
-            System.out.println("Your Health =" + somePlayer.getHealth());
-        */
-        
-        somePlayer.setLocation(someLocation);
-        ArrayList items = new ArrayList();
-        items.add(someItem);
-        somePlayer.setItems(items);
-        String somePlayerTest = somePlayer.toString();
-        System.out.println(somePlayerTest);
-
-        //TESTING ROOM
-        Room someRoom = new Room();
-        Room someOtherRoom = new Room();
-        someRoom.setDescription("A big room.");
-        someOtherRoom.setDescription("A small room.");
-        Dimension someDimension = new Dimension(20, 20);
-        someRoom.setSize(someDimension);
-        someOtherRoom.setSize(someDimension);
-        String someRoomTest = someRoom.toString();
-        System.out.println(someRoomTest);
-
-        //TESTING MAP
-        Map someMap = new Map();
-        ArrayList rooms = new ArrayList();
-        rooms.add(someRoom);
-        rooms.add(someOtherRoom);
-
-        //TESTING ROOM
-        someMap.setRooms(rooms);
-        someMap.setSize(someDimension);
-        String someMapTest = someMap.toString();
-        System.out.println(someMapTest);
-
-        //TESTING GAME
-        Game someGame = new Game();
-        someGame.setEnemiesKilled(5);
-        someGame.setMap(someMap);
-        someGame.setTime(LocalTime.MIN);
-        String someGameTest = someGame.toString();
-        System.out.println(someGameTest);       
+    public static BufferedReader getInFile() {
+        return inFile;
     }
-    
-}
+
+    public static void setInFile(BufferedReader inFile) {
+        BiseJosephTeam.inFile = inFile;
+    }
+
+    private static String getName() {
+        return "BiseJosephTeam";
+    }
+
+    public BiseJosephTeam() {
+        game = new Game();
+    }
+
+    public static Game getGame() {
+        return game;
+    }
+
+    public static void setGame(Game game) {
+        BiseJosephTeam.game = game;
+    }
+
+    // a random number function to use in the game. pass in 2 ints and it will give
+    // you an int in that range. 
+    public static int randInt(int min, int max) {
+        Random randomGenerator = new Random();
+        int num = randomGenerator.nextInt((max - min) + 1) + min;
+        return num;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        try {
+
+            BiseJosephTeam.inFile = new BufferedReader(new InputStreamReader(System.in));
+
+            BiseJosephTeam.outFile = new PrintWriter(System.out, true);
+
+            String filePath = "log.txt";
+            BiseJosephTeam.logFile = new PrintWriter(filePath);
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.startProgram();
+
+        } catch (Throwable te) {
+            te.printStackTrace();
+            ErrorView.display(BiseJosephTeam.getName(), "Exception: " + te.toString()
+                    + "\nCause: " + te.getCause()
+                    + "\nMessage: " + te.getMessage());
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.startProgram();
+        } finally {
+            try {
+                if (BiseJosephTeam.inFile != null) {
+                    BiseJosephTeam.inFile.close();
+                }
+
+                if (BiseJosephTeam.outFile != null) {
+                    BiseJosephTeam.outFile.close();
+                }
+
+                if (BiseJosephTeam.logFile != null) {
+                    BiseJosephTeam.logFile.close();
+                }
+
+            } catch (IOException ex) {
+                ErrorView.display(BiseJosephTeam.getName(), "Error closing files");
+            }
+
+        }
+    }
+};

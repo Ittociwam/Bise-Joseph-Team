@@ -4,16 +4,13 @@
  * and open the template in the editor.
  */
 package View;
-
-import java.util.Scanner;
-
 /**
  *
  * @author Robbie
  */
-public class HelpMenuView {
-    
-        private final String HELPMENU = "\n"
+public class HelpMenuView extends View {
+
+    private final String HELPMENU = "\n"
             + "-------------------------------------\n"
             + "            Help Menu                \n"
             + "-------------------------------------\n"
@@ -27,9 +24,9 @@ public class HelpMenuView {
             + "The goal of the game is to find the secret base, discover a \n"
             + " key to unlock the base and find a bomb to destroy the base \n";
     private final String MOVING = "\n"
-            + "To move around the map you simply use the arrow keys. You  \n"
-            + " move from room to room by passing your character over the \n"
-            + " arrows at the top, bottom, left or right of the screen.   \n";
+            + "To move around the map you simply use 'n' for north, 's' for south "
+            + "and so forth. You move from room to room by passing your character \n"
+            + " over the threshold of the current room.\n";
     private final String ITEM = "\n"
             + "To pick up an item you simply walk over it. The game will \n"
             + " then ask you if you would like to pick it up or not. You \n"
@@ -40,38 +37,41 @@ public class HelpMenuView {
             + " enemy inside of it. The game will then automatically apply \n"
             + " the first attack and ask you if you would like to flee or  \n"
             + " continue attacking\n";
-    
-    
-    void display() {
-    char value = ' ';
+
+    void openMenu() {
+        String value = " ";
         do {
-            System.out.println(HELPMENU);
+            display(HELPMENU);
 
-            Scanner keyboard = new Scanner(System.in);
-            value = keyboard.next().charAt(0);
-            value = Character.toUpperCase(value);
+            value = getInput();
+            doAction(value);
+            
+        } while (!"E".equals(value));
+    }
+    
+    public void doAction(Object obj)
+    {
+        String value = (String)obj;
+         switch (value) {
 
-            switch (value) {
-                    
-                case 'G':
-                    System.out.println(GOAL);
+                case "G":
+                    display(GOAL);
                     break;
-                case 'M':
-                    System.out.println(MOVING);
+                case "M":
+                    display(MOVING);
                     break;
-                case 'I':
-                    System.out.println(ITEM);
+                case "I":
+                    display(ITEM);
                     break;
-                case 'B':
-                    System.out.println(BATTLE);
+                case "B":
+                    display(BATTLE);
                     break;
-                case 'E':
+                case "E":
                     break;
                 default:
-                    System.out.println("Invalid input, Try again\n");
-                            
+                    display("Invalid input, Try again\n");
+
             }
-        } while (value != 'E');
-}
-    
+    }
+
 }
