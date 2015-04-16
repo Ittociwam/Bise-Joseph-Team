@@ -5,6 +5,9 @@
 This is a text-based RPG. You play the part of a young man newly enlisted in the American army in 1944. After intense assessments you are put on a special team and sent to an uncharted island in the south pacific for a top secret mission. Your briefing is vague and unspecific but you deduct that the Nazis have been conducting experiments and developing a weapon of some sorts on this island.  
 
 The game map consists of 6x6 squares and each square will be a 5x5 “room” or area that contains either enemies items or animals. As you go through this room you will explore unidentified tiles that, as you walk over them, will reveal what is in that tile and an interaction will take place. These interactions can include a battle or initiate end user stories such as pick up item.
+
+###Quick video demo
+[Too Quiet on the  Pacific Theater Video Demo](https://www.youtube.com/watch?v=m8FvUzBhiUM)
  
 
 ###Our UML Diagram
